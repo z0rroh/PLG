@@ -8,7 +8,6 @@ var bcrypt=require('bcrypt');
 
 module.exports = {
 	schema: true,
-
 	new: function(req,res){
 		res.view();
 	},
