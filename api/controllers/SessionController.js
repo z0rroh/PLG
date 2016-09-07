@@ -14,14 +14,13 @@ module.exports = {
 	create: function(req, res, next){
 		var email = req.param('email');
 		var password = req.param('password');
-		if(!email || password){
+		if(!email || !password){
 			var NoEmailOrPassword =[{message: 'Debe ingresar Email y Contraseña'}]
 			req.session.flash={
 				err: NoEmailOrPassword
 			}
-			return res.redirect('/');
+			return res.redirect('session/new');
 		}
 	}
-	
-};
 
+};

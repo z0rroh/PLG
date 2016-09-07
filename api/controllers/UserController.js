@@ -9,7 +9,7 @@ module.exports = {
 
     new:function (req, res){
 		//console.log("pagina de registro");
-		res.view('user/new');
+		res.view();
 
 	},
 
