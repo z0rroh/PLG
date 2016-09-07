@@ -9,7 +9,7 @@ module.exports = {
 
     new:function (req, res){
 		//console.log("pagina de registro");
-		res.view();
+		res.view('user/new');
 
 	},
 
@@ -50,6 +50,5 @@ module.exports = {
 			});
 		});
 	}
-	
-};
 
+};
