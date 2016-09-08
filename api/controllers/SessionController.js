@@ -56,14 +56,10 @@ module.exports = {
                 }); //end bcrypt.compare
               });//end findOneByEmail
 	},
-	show: function(req, res, next){
-		User.findOne(req.param('id'), function userFounded(err, user){
-			if(err)
-				return next(err);
-			res.view({
-				user: user
-			});
-		});
-	}
+  destroy: function(req, res, next){
+    req.session.destroy();
+    res.redirect('session/new');
+  }
+
 
 };

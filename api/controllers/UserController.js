@@ -40,7 +40,7 @@ module.exports = {
 
 
 	},
-
+	
 	show: function(req, res, next){
 		User.findOne(req.param('id'), function userFounded(err, user){
 			if(err)
