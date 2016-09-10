@@ -37,8 +37,9 @@ module.exports = {
 	        required: true
 	  		
 	  	},
-	  	tipo:{
-	   		type:'string'
+	  	admin:{
+	   		type:'boolean',
+	   		defaultsTo: false
 	  		
 	  	},
 	  	image:{

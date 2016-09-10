@@ -27,9 +27,12 @@ module.exports.policies = {
   ***************************************************************************/
 
   '*': 'flash',
+
   'user':{
     new : 'flash',
-    '*': 'authenticated'
+    create : 'flash',
+    show : 'userCanSeeProfile',
+    '*': 'admin'
 
   }
 

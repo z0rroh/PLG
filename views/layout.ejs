@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%=typeof title == 'undefined' ? 'Proyecto Live Group' : title%></title>
+    <title><%=typeof title == 'LG' ? 'Proyecto Live Group' : title%></title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -36,10 +36,46 @@
 
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/linker/styles/app.css">
+    <link rel="stylesheet" href="/linker/styles/custom.css">
+    <link rel="stylesheet" href="/linker/styles/flexboxgrid.css">
+    <link rel="stylesheet" href="/linker/styles/flexboxgrid.min.css">
+    <link rel="stylesheet" href="/linker/styles/materialize.css">
     <!--STYLES END-->
   </head>
 
   <body>
+    
+    <div class="Header-Info row between-xs">
+        <div class="Header-User col-xs-3"> 
+          <div class="User row">
+            <% if(session.authenticated) { %>
+            <div class="col-xs-3"><img src="images/50x50.png" class="circle"></div>
+            <div class="col-xs">
+              <li class="active"><p href="/user/show<%= session.User.id %>"> <%= session.User.name + " " + session.User.lastname %></p></li>
+              <p>Lugar de trabajo</p>
+            </div>
+            <% } %>
+          </div>
+        </div>
+        <div class="Header-Logo col-xs-3">
+          <% if(session.authenticated) { %>
+          <div class="Logo row end-xs"><img src="images/150x50.png"></div>
+          <% } %>
+        </div>
+      </div>
+      <div class="Header-Nav">
+        <div class="Nav-Items row around-xs">
+          <% if(session.authenticated) { %>
+          <a href="index.html" class="Nav-Item is-active">Anuncios</a>
+          <a class="Nav-Item">Turnos</a>
+          <% } %>
+          <% if(session.authenticated && session.User.admin) { %>
+          <a href="grupo.html" class="Nav-Item">Grupo</a>
+          <a class="Nav-Item">Admin</a></div>
+          <% } %>
+      </div>
+      
 
     
     <%- body %>
@@ -97,6 +133,10 @@
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/linker/js/app.js"></script>
+    <script src="/linker/js/jquery.min.js"></script>
+    <script src="/linker/js/materialize.js"></script>
     <!--SCRIPTS END-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </body>
 </html>

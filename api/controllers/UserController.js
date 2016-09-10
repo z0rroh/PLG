@@ -9,7 +9,9 @@ module.exports = {
 
     new:function (req, res){
 		//console.log("pagina de registro");
+		//res.locals.flash=._clone(req.session.flash);
 		res.view();
+		//req.session.flas={};
 
 	},
 
@@ -24,17 +26,22 @@ module.exports = {
 		}
 
 
-		User.create(userObj,function(err, user) {
+		User.create(userObj,function (err, user) {
 
 			if(err){
-				//console.log(JSON.stringify(err));
 				req.session.flash={
 					err:err
 				}
 				return res.redirect('user/new');
 			}
 			console.log("se creo bien el usuario");
+
+			req.session.authenticated = true;
+			req.session.User = user;
+
 			res.redirect('user/show/'+user.id);
+
+
 
 		});
 
@@ -49,6 +56,23 @@ module.exports = {
 				user: user
 			});
 		});
+	},
+
+	destroy: function(req, res, next){
+
+		User.findOne(req.param('id'), function foundUser(err){
+			if(err) return next(err);
+
+			if(!user) return next('El usuario no existe.');
+
+			User.destroy(req.param('id'), function userDestroyed(err){
+				if(err) return next(err);
+			});
+
+			res.redirect('user');
+		});
+		
 	}
+	
 
 };
