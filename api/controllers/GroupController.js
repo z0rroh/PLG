@@ -22,6 +22,30 @@ module.exports = {
 			});
 
 		});
+	},
+
+	create: function(req, res){
+
+        // req.param toma el parametro del html con name = ''
+		var groupObj={
+			name : req.param('name'),
+			description : req.param('description'),
+			ubication: req.param('ubication')
+		}
+
+		Group.create(groupObj,function (err, user) {
+
+			if(err){
+				req.session.flash={
+					err:err
+				}
+				return res.redirect('group/show');
+			}
+			console.log("El grupo se creo con exito");
+			res.redirect('group');
+
+		});
+
 	}
 
 };

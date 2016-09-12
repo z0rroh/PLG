@@ -43,7 +43,17 @@ module.exports = {
 	  		
 	  	},
 	  	image:{
-	   		type:'string' 
+	   		type:'string'
+	  	},
+	  	phone:{
+	  		type: 'string',
+	  		unique: true,
+	  		defaultsTo: '569-xxxxxxx'
+
+	  	},
+	  	adress:{
+	  		type: 'string',
+	  		defaultsTo: 'Sin ingresar'
 	  	},
 	  	 toJSON: function(){
 		 	var obj= this.toObject();

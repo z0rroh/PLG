@@ -83,7 +83,7 @@ module.exports = {
 			if(err) {
 				return res.redirect('user/edit/' + req.param('id'));
 			}
-			res.redirect('user/show/' + req.param('id'));
+			res.redirect('group/show');
 		});
 	},
 

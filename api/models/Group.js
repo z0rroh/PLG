@@ -8,36 +8,23 @@
 module.exports = {
 
   attributes: {
-  	nombre:{
+  	name:{
   		type:'string',
   		required: true
 
   	},
-  	descripcion:{
+  	description:{
   		type:'text',
   		required: true
 
   	},
+    ubication:{
+      type: 'string',
+      required: true
+    },
   	image:{
    		type:'string'
-  		
-  		
-  	},
-  	id_group_user:{
-  		type:'integer'
-
-  	},
-  	color:{
-  		type:'string',
-  		required: true
-  	},
-  	start:{
-  		type:'datetime'
-
-  	},
-  	end:{
-  		type:'datetime'
-
+  			
   	}
 
   }
