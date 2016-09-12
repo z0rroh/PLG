@@ -1,0 +1,46 @@
+    <section class="Main">
+      <section class="Group">
+        <div class="Filter row center-xs">
+          <button class="btn">Todos</button>
+          <input type="text" placeholder="Buscar...">
+        </div>
+        <div class="Group-Items row center-xs">
+          <table class="col-xs-11 bordered">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Grupos</th>
+                <th>Tokens</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <% _.each(users, function(user){ %> 
+  
+              <tr>
+                <td><%= user.id %></td>
+                <td><%= user.name + ' ' + user.lastname %></td>
+                <td><%= user.email %></td>
+                <td>
+                  <button class="btn bc-green">Coordinadores</button>
+                </td>
+                <td>
+                  <input>
+                </td>
+                <td> <button class="btn btn-floating bc-green"><i class="material-icons">create </i></button> </td>
+                <td><form action="/user/destroy/<%=user.id %>" method="POST" accept-charset="utf-8">
+                  <input type="hidden" name="_method" value="Clear"/>
+                  <input type="submit" class="btn btn-floating bc-green" value="Clear"></input>
+                  <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                </form></td>
+                
+              </tr>
+
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>

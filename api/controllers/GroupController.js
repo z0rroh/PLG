@@ -5,7 +5,24 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+
 module.exports = {
+
+
 	
+	new: function(req,res){
+		res.view();
+	},
+
+	show: function(req, res, next){
+		User.find(function foundUsers(err, user){
+			if(err) return next();
+			res.view({	
+				users: user
+			});
+
+		});
+	}
+
 };
 

@@ -32,7 +32,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'GET /': 'SessionController.new'
+  'GET /': 'SessionController.new',
+
+  //'delete /userDelete/:id?': 'UserController.destroy'
   
 
   /***************************************************************************

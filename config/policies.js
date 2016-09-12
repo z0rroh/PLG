@@ -34,9 +34,14 @@ module.exports.policies = {
     show : 'userCanSeeProfile',
     edit : 'userCanSeeProfile',
     update : 'userCanSeeProfile',
+    destroy: 'userCanSeeProfile',
     '*': 'admin'
-
+  },
+  'group':{
+    show: 'userCanSeeProfile',
+    new: 'flash'
   }
+
 
   /***************************************************************************
   *                                                                          *
