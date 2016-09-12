@@ -74,6 +74,10 @@
           <a href="grupo.html" class="Nav-Item">Grupo</a>
           <a class="Nav-Item">Admin</a></div>
           <% } %>
+          <% if(session.authenticated) { %>
+          <a href="/session/destroy">Cerrar Sesión</a>
+          <% } %>
+
       </div>
       
 
