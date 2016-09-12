@@ -30,7 +30,7 @@
                   <input>
                 </td>
                 <td> <button class="btn btn-floating bc-green"><i class="material-icons">create </i></button> </td>
-                <td><form action="/user/destroy/<%=user.id %>" method="POST" accept-charset="utf-8">
+                <td><form action="/user/destroy/<%= user.id %>" method="POST" accept-charset="utf-8">
                   <input type="hidden" name="_method" value="Clear"/>
                   <input type="submit" class="btn btn-floating bc-green" value="Clear"></input>
                   <input type="hidden" name="_csrf" value="<%= _csrf %>"/>

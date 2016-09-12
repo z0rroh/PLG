@@ -35,6 +35,7 @@ module.exports.policies = {
     edit : 'userCanSeeProfile',
     update : 'userCanSeeProfile',
     destroy: 'userCanSeeProfile',
+    index: 'userCanSeeProfile',
     '*': 'admin'
   },
   'group':{

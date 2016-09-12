@@ -59,7 +59,7 @@ module.exports = {
 	},
 
 	index: function(req, res, next){
-		User.find(function foundUsers(err, user){
+		User.find(function foundUsers(err, users){
 			if(err) return next();
 			res.view({	
 				users: users
@@ -88,20 +88,15 @@ module.exports = {
 	},
 
 	destroy: function(req, res, next){
-
-		User.findOne(req.param('id'), function foundUser(err){
-			if(err) return next(err);
-
-			if(!user) return next('El usuario no existe.');
-
-			User.destroy(req.param('id'), function userDestroyed(err){
-				if(err) return next(err);
-			});
-
-			res.redirect('user');
+		User.destroy(req.param('id'), function userDestroy(err){
+			if(err){
+				console.log(err);
+				return next(err);
+			}
+			res.redirect('group/show');
 		});
-		
 	}
+
 	
 
 };

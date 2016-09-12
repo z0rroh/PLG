@@ -15,10 +15,10 @@ module.exports = {
 	},
 
 	show: function(req, res, next){
-		User.find(function foundUsers(err, user){
+		User.find(function foundUsers(err, users){
 			if(err) return next();
 			res.view({	
-				users: user
+				users: users
 			});
 
 		});
