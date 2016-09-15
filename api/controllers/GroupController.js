@@ -9,7 +9,7 @@
 module.exports = {
 
 
-	
+
 	new: function(req,res){
 		res.view();
 	},
@@ -17,7 +17,7 @@ module.exports = {
 	show: function(req, res, next){
 		User.find(function foundUsers(err, users){
 			if(err) return next();
-			res.view({	
+			res.view({
 				users: users
 			});
 
@@ -42,11 +42,10 @@ module.exports = {
 				return res.redirect('group/show');
 			}
 			console.log("El grupo se creo con exito");
-			res.redirect('group');
+			res.redirect('group/show/'+group.id);
 
 		});
 
 	}
 
 };
-

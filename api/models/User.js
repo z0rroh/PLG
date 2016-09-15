@@ -6,41 +6,30 @@
  */
 
 module.exports = {
-	schema: true,
 	attributes: {
 	  	name:{
 	  		type:'string',
 	      required: true
-	  	
+
 	  	},
 	    lastname:{
 	      type:'string',
 	      required: true
 	    },
 	  	password:{
-	  		type:'string',
-	      required: true
-	  		 
-	  	},
-	  	passwordc:{
 	  	type:'string',
 	      required: true
-	  		 
-	  	},
-	  	passworden:{
-	  	  type:'string',
-	  		 
+
 	  	},
 	  	email:{
 	  		type:'email',
 	  		unique: true,
 	        required: true
-	  		
+
 	  	},
 	  	admin:{
 	   		type:'boolean',
 	   		defaultsTo: false
-	  		
 	  	},
 	  	image:{
 	   		type:'string'
@@ -49,14 +38,25 @@ module.exports = {
 	  		type: 'string',
 	  		unique: true,
 	  		defaultsTo: '569-xxxxxxx'
-
 	  	},
 	  	adress:{
 	  		type: 'string',
 	  		defaultsTo: 'Sin ingresar'
 	  	},
-	  	 toJSON: function(){
-		 	var obj= this.toObject();
+			tokens:{
+				type: 'int',
+				defaultsTo : '3'
+			},
+			anuncios:{
+				collection: 'anuncios',
+				via: 'user',
+			},
+			groups:{
+				collection: 'Group',
+				via: 'users'
+			},
+	  	toJSON: function(){
+		 		var obj= this.toObject();
 		  	delete obj.password;
 		  	delete obj.passwordc;
 		  	delete obj._csrf;
@@ -66,7 +66,7 @@ module.exports = {
     },
       beforeCreate: function (values, next) {
 
-	    if (!values.password || values.password != values.passwordc) {
+	    /*if (!values.password || values.password != values.passwordc) {
 	    	var passwordError = [{
 	    		name: 'passwordError',
 	    		message: 'Las contraseñas ingresadas no coinciden'
@@ -79,9 +79,9 @@ module.exports = {
 	      if (err) return next(err);
 	      values.passworden = passworden;
 	      next();
-	    });
-	  }	
+	    }); */
+			next();
+	  }
 
 
 };
-

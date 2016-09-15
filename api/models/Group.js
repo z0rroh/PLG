@@ -9,12 +9,12 @@ module.exports = {
 
   attributes: {
   	name:{
-  		type:'string',
+  		type: 'string',
   		required: true
 
   	},
   	description:{
-  		type:'text',
+  		type: 'text',
   		required: true
 
   	},
@@ -23,10 +23,14 @@ module.exports = {
       required: true
     },
   	image:{
-   		type:'string'
-  			
-  	}
-
+   		type: 'string'
+  	},
+    group_parent:{
+      type: 'int'
+    },
+    users:{
+      collection: 'user',
+      via: 'groups'
+    }
   }
 };
-
