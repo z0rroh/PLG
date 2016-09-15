@@ -1,8 +1,7 @@
-
-<div class="container">
-		<div class="row">
-			<div style="margin:0% auto; max-width:300px;">
-				<div class="card-panel grey lighten-4 z-depth-4 center">
+<section class="content">
+      <div class="Login row center-xs">
+        <div class="Login-Logo col-xs-12"><img src="images/login.jpeg" class="circle responsive-img"></div>
+        <div class="Login-Card col-lg-6 card-panel grey lighten-4">
 					<% if(flash && flash.err) { %>
 						<ul class="alert alert-success">
 							<% Object.keys(flash.err).forEach(function(error){ %>
@@ -10,50 +9,23 @@
 						    <% }); %>
 						</ul>
 					<% } %>
-					<form action="/session/create" method="POST" accept-charset="utf-8" class="form-singin">
-							<div class="row">
-							<img src="http://lorempixel.com/100/100/" class="circle responsive-img valign profile-image-login">
-							<p class="center">Login Materialize</p>
+          <form action="/session/create" method="post" class="row">
+            <div class="Login-Email col-xs-12">
+              <input type="email" name="email" autofocus>
+            </div>
+            <div class="Login-Pass col-xs-12">
+              <input name="password" type="password">
+            </div>
+            <div class="Login-Remember col-xs-6">
+              <input type="checkbox" id="remember-me">
+            </div>
+            <div class="Login-Forgot col-xs-6"><a href="#" class="btn-flat"></a></div>
+            <div class="Login-Button col-xs-12">
+							<input class="btn" type="submit" value="Ingresar">
+							<input type="hidden" name="_csrf" value="<%=_csrf %>"/>
 						</div>
-						<div class="row margin">
-							<div class="input-field col s12">
-								<i class="mdi-social-person-outline prefix"></i>
-		            			<input name="email" id="email" type="text" autofocus>
-		            			<label for="email" class="center-align">Email</label>
-							</div>
-						</div>
-						<div class="row margin">
-						    <div class="input-field col s12">
-						        <i class="mdi-action-lock-outline prefix"></i>
-						        <input name="password" id="password" type="password">
-						        <label for="password">Password</label>
-						    </div>
-		        		</div>
-		          		<div class="row">
-		          			<div class="input-field col s12 l12 login-text">
-		          				<input id="remember-me" type="checkbox">
-		          				<label for="remember-me">Recuerdame</label>
-		          			</div>
-		          		</div>
-		          		<div class="row">
-		          			<div class="input-field col s12">
-		          				<input type="submit" class="btn waves-effect waves-light col s12" value="Entrar"/>
-		          				<input type="hidden" name="_csrf" value="<%=_csrf %>"/>
-		          			</div>
-		          		</div>
-		          		<div class="card-action clearfix">
-		          			<div class="row">
-		           				<div class="col s6 text-p">
-		              				<a href="#" class=" tooltipped" data-position="top" data-delay="50" data-tooltip="Forgot your password?">Olvidó password?</a>
-		            			</div>
-		            			<div class="col s6 right-align text-p">
-		              				<a href="/user/new" class=" tooltipped" data-position="top" data-delay="50" data-tooltip="Register now!">Registrate</a>
-		            			</div>
-		          			</div>
-		        		</div>
 
-					</form>
-				</div>
-			</div>
-		</div>
-</div>
+          </form>
+        </div>
+      </div>
+</section>
