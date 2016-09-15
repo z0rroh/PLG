@@ -46,6 +46,15 @@ module.exports = {
 
 		});
 
+	},
+	update: function(req, res, next){
+		Group.update(req.param('id'), req.params.all(), function userUpdate(err){
+			if(err) {
+				return res.redirect('group/show/' + req.param('id'));
+			}
+			res.redirect('group/show');
+		});
 	}
+
 
 };

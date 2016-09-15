@@ -33,9 +33,9 @@ module.exports.routes = {
   ***************************************************************************/
 
   'GET /': 'SessionController.new',
-
+  'GET /user/todos': {blueprint: 'find'}
   //'delete /userDelete/:id?': 'UserController.destroy'
-  
+
 
   /***************************************************************************
   *                                                                          *

@@ -53,7 +53,8 @@ module.exports = {
 			},
 			groups:{
 				collection: 'Group',
-				via: 'users'
+				via: 'users',
+				dominant: true
 			},
 	  	toJSON: function(){
 		 		var obj= this.toObject();

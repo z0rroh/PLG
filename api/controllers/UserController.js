@@ -47,7 +47,7 @@ module.exports = {
 
 
 	},
-	
+
 	show: function(req, res, next){
 		User.findOne(req.param('id'), function userFounded(err, user){
 			if(err) return next(err);
@@ -61,8 +61,8 @@ module.exports = {
 	index: function(req, res, next){
 		User.find(function foundUsers(err, users){
 			if(err) return next();
-			res.view({	
-				users: users
+			res.json({
+				users
 			});
 
 		});
@@ -97,6 +97,6 @@ module.exports = {
 		});
 	}
 
-	
+
 
 };
