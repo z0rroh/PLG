@@ -41,22 +41,25 @@
   </head>
 
   <body>
-
+    <% if(session.authenticated) { %>
+    <header>
     <div class="Header-Info row between-xs">
         <div class="Header-User col-xs-3">
           <div class="User row">
-            <% if(session.authenticated) { %>
+
             <div class="col-xs-3"><img src="images/50x50.png" class="circle"></div>
             <div class="col-xs">
               <li class="active"><p href="/user/show<%= session.User.id %>"> <%= session.User.name + " " + session.User.lastname %></p></li>
               <p>Lugar de trabajo</p>
+              <a href="/session/destroy">Cerrar Sesión</a>
             </div>
-            <% } %>
+
           </div>
         </div>
         <div class="Header-Logo col-xs-3">
           <% if(session.authenticated) { %>
           <div class="Logo row end-xs"><img src="images/150x50.png"></div>
+
           <% } %>
         </div>
       </div>
@@ -70,13 +73,10 @@
           <a href="/group/show" class="Nav-Item">Grupo</a>
           <a class="Nav-Item">Admin</a></div>
           <% } %>
-          <% if(session.authenticated) { %>
-          <a href="/session/destroy">Cerrar Sesión</a>
-          <% } %>
 
       </div>
-
-
+    </header>
+    <% } %>
 
     <%- body %>
 
@@ -104,7 +104,7 @@
     -->
 
     <!--TEMPLATES-->
-    
+
     <!--TEMPLATES END-->
 
 
