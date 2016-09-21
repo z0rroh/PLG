@@ -25,27 +25,21 @@ module.exports = {
 	},
 
 	create: function(req, res){
-
-        // req.param toma el parametro del html con name = ''
-		var groupObj={
-			name : req.param('name'),
-			description : req.param('description'),
-			ubication: req.param('ubication')
-		}
-
-		Group.create(groupObj,function (err, user) {
-
+		User.findOne(req.session.User.id, function (err, user) {
 			if(err){
-				req.session.flash={
-					err:err
-				}
-				return res.redirect('group/show');
+
 			}
-			console.log("El grupo se creo con exito");
-			res.redirect('group/show/'+group.id);
-
+			user.groups.add(
+				{
+					name: req.param('name'),
+					description: req.param('description'),
+					ubication: req.param('ubication'),
+					id_group_parent: user.id_group
+				}
+			);
+			 user.save(function(err) {});
 		});
-
+		return res.redirect('group/new')
 	},
 	update: function(req, res, next){
 		Group.update(req.param('id'), req.params.all(), function userUpdate(err){

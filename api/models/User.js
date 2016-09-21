@@ -46,6 +46,9 @@ module.exports = {
 				type: 'int',
 				defaultsTo : '3'
 			},
+			id_group:{
+				type: 'string'
+			},
 			anuncios:{
 				collection: 'anuncios',
 				via: 'user',

@@ -26,7 +26,7 @@ module.exports = {
    		type: 'string'
   	},
     group_parent:{
-      type: 'int'
+      type: 'string'
     },
     users:{
       collection: 'user',

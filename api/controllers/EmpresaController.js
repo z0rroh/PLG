@@ -36,7 +36,8 @@ module.exports = {
 				lastname : req.param('nombre'),
 				email : req.param('email'),
 				password: hash,
-				groups: group.id
+				groups: group.id,
+        id_group: group.id
 			}
 			User.create(userObj,function (err, user) {
 
