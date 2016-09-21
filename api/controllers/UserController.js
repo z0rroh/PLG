@@ -5,6 +5,8 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+ var bcrypt=require('bcrypt');
+
 module.exports = {
 
     new:function (req, res){
@@ -16,16 +18,14 @@ module.exports = {
 	},
 
 	create: function(req, res){
+    var hash = bcrypt.hashSync(req.param('password'), 10);
 
-		var userObj={
+    var userObj={
 			name : req.param('name'),
 			lastname : req.param('lastname'),
 			email : req.param('email'),
-			password : req.param('password'),
-			passwordc : req.param('passwordc')
+      password: hash
 		}
-
-
 		User.create(userObj,function (err, user) {
 
 			if(err){

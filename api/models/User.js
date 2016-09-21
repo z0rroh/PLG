@@ -19,7 +19,6 @@ module.exports = {
 	  	password:{
 	  	type:'string',
 	      required: true
-
 	  	},
 	  	email:{
 	  		type:'email',
@@ -59,7 +58,6 @@ module.exports = {
 	  	toJSON: function(){
 		 		var obj= this.toObject();
 		  	delete obj.password;
-		  	delete obj.passwordc;
 		  	delete obj._csrf;
 		  	return obj;
   		}
