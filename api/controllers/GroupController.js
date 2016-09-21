@@ -23,7 +23,6 @@ module.exports = {
 
 		});
 	},
-
 	create: function(req, res){
 		User.findOne(req.session.User.id, function (err, user) {
 			if(err){
