@@ -2232,59 +2232,129 @@ body {
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp; }
 
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Material Icons"), local("MaterialIcons-Regular");
+  /* For IE6-8 */
+  src: url("http://fonts.gstatic.com/s/materialicons/v7/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2") format("woff2"); }
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga'; }
+
 header {
-  height: 8em;
-  color: white;
+  height: 9em;
+  color: #558B2F;
   background-color: #fafafa;
   width: 100%;
-  display: block;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   margin: 0; }
-  header .Header-Info {
-    margin: 0; }
-  header .Header-User {
-    padding: 1em; }
-    header .Header-User .User {
-      color: #558b2f; }
-      header .Header-User .User img {
-        margin-left: .5em; }
-      header .Header-User .User p {
-        margin: 0; }
-  header .Header-Logo {
-    margin: 0; }
-    header .Header-Logo .Logo {
-      margin: 0;
-      padding: 1em; }
-  header .Header-Nav {
-    margin-top: 0.85em; }
-    header .Header-Nav .Nav-Items {
-      width: 50%; }
-    header .Header-Nav .Nav-Item {
-      color: #558b2f;
-      cursor: pointer; }
-    header .Header-Nav .Nav-Item.is-active {
-      border-bottom: 2px solid #558b2f; }
+
+.Header .box {
+  width: 100%;
+  height: 100%; }
+
+.User {
+  padding-top: .4em; }
+  .User .User-name {
+    font-size: 2em;
+    font-family: 'Varela Round';
+    letter-spacing: 0;
+    color: #558B2F;
+    cursor: pointer; }
+    .User .User-name i {
+      position: relative;
+      top: 5%; }
+  .User .User-image img {
+    float: right;
+    margin-top: .4em; }
+  .User .User-empresa {
+    margin: 0;
+    font-size: 1.3em;
+    line-height: 1; }
+
+.Logo {
+  padding-top: 1em; }
+  .Logo img {
+    float: right; }
+
+.Nav .box {
+  width: 100%; }
+
+.Nav .Nav-Items {
+  width: 60%;
+  margin-left: 1em;
+  margin-top: .7em; }
+  .Nav .Nav-Items div {
+    text-align: center; }
+
+.Nav .Nav-Item {
+  color: #558B2F;
+  cursor: pointer;
+  font-size: 1.3em;
+  padding: .4em 1em; }
+
+.Nav .Nav-Item:hover {
+  border-bottom: 3px solid #558B2F; }
+
+.Nav .Nav-Item.is-active {
+  border-bottom: 3px solid #558B2F; }
 
 .background {
   background-color: #8bc34a;
   height: 100vh; }
 
-.Login .Login-Card {
-  width: 18.750em;
+.Login-Card {
   margin-top: 10em; }
-  .Login .Login-Card .Login-Button a {
+  .Login-Card form {
+    margin-top: 2.5em; }
+  .Login-Card .input-field label {
+    width: initial !important;
+    left: 4%; }
+  .Login-Card .input-field i {
+    margin-top: .4em; }
+  .Login-Card .input-field input[type=email]:focus + label,
+  .Login-Card .input-field input[type=password]:focus + label,
+  .Login-Card .input-field input[type=text]:focus + label {
+    color: #558B2F; }
+  .Login-Card .Login-Remember {
+    margin-top: .4em !important; }
+  .Login-Card .Login-Forgot a {
+    font-size: 1em;
+    float: right;
+    padding: 0;
     text-transform: capitalize;
-    width: 90%;
-    height: 3em; }
-  .Login .Login-Card form {
-    margin: 5em 0 1em 0; }
-    .Login .Login-Card form label {
-      width: initial;
-      color: black; }
-    .Login .Login-Card form .input-field {
-      width: 80%; }
+    text-decoration: underline;
+    color: #558B2F; }
+  .Login-Card .Login-Button {
+    margin-top: 2em; }
+    .Login-Card .Login-Button a {
+      padding: 0 5em;
+      background-color: #558B2F; }
 
-.Login .Login-Logo {
+.Login-Logo {
   position: absolute;
   top: 10%;
   right: 0;
