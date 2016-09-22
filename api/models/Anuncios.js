@@ -9,7 +9,7 @@ module.exports = {
 
   attributes: {
 
-  	texto:{
+  	text:{
   		type:'mediumtext',
   		required: true
   	},
@@ -18,9 +18,9 @@ module.exports = {
   		required: true
   	},
   	id_group:{
-  		type:'integer'
+  		type:'string'
   	},
-    user:{
+    autor:{
       model: 'user'
     }
 

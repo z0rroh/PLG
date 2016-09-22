@@ -50,8 +50,8 @@ module.exports = {
 			type: 'string'
 		},
 		anuncios:{
-			collection: 'anuncios',
-			via: 'user',
+			collection: 'Anuncios',
+			via: 'autor',
 		},
 		groups:{
 			collection: 'Group',
@@ -59,8 +59,8 @@ module.exports = {
 			dominant: true
 		},
 	  	toJSON: function(){
-		 		var obj= this.toObject();
-		  	delete obj.password;
+		 	var obj= this.toObject();
+		  	//delete obj.password;
 		  	delete obj._csrf;
 		  	return obj;
   		}

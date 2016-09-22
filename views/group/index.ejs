@@ -1,0 +1,43 @@
+    <section class="Main">
+      <section class="Group">
+        <div class="Filter row center-xs">
+          <button class="btn">Todos</button>
+          <input type="text" placeholder="Buscar...">
+        </div>
+        <div class="Group-Items row center-xs">
+          <table class="col-xs-11 bordered">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Ubicacion</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <% _.each(groups, function(group){ %> 
+  
+              <tr>
+                <td><a href="/group/show"><%= group.name %></a></td>
+                <td><%= group.description %></td>
+                <td><%= group.ubication %></td>
+                <td>
+                  <button class="btn bc-green">Coordinadores</button>
+                </td>
+                <td>
+                  <input>
+                </td>
+                <td> <button class="btn btn-floating bc-green"><a href="" class="material-icons">Edit</a></button> </td>
+                <td><form action="" method="POST" accept-charset="utf-8">
+                  <input type="hidden" name="_method" value="Clear"/>
+                  <input type="submit" class="btn btn-floating bc-green" value="Clear"></input>
+                  <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                </form></td>
+              </tr>
+
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>

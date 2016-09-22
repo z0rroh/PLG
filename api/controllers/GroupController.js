@@ -40,6 +40,15 @@ module.exports = {
 		});
 		return res.redirect('group/new')
 	},
+	index: function(req, res, next){
+		Group.find(function foundGroups(err, groups){
+			if(err) return next();
+			res.view({
+				groups: groups
+			});
+
+		});
+	},
 	update: function(req, res, next){
 		Group.update(req.param('id'), req.params.all(), function userUpdate(err){
 			if(err) {
