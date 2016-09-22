@@ -17,7 +17,7 @@ module.exports = {
 	      required: true
 	    },
 	  	password:{
-	  	type:'string',
+	  	  type:'string',
 	      required: true
 	  	},
 	  	email:{
@@ -42,22 +42,22 @@ module.exports = {
 	  		type: 'string',
 	  		defaultsTo: 'Sin ingresar'
 	  	},
-			tokens:{
-				type: 'int',
-				defaultsTo : '3'
-			},
-			id_group:{
-				type: 'string'
-			},
-			anuncios:{
-				collection: 'anuncios',
-				via: 'user',
-			},
-			groups:{
-				collection: 'Group',
-				via: 'users',
-				dominant: true
-			},
+		tokens:{
+			type: 'int',
+			defaultsTo : '3'
+		},
+		id_group:{
+			type: 'string'
+		},
+		anuncios:{
+			collection: 'anuncios',
+			via: 'user',
+		},
+		groups:{
+			collection: 'Group',
+			via: 'users',
+			dominant: true
+		},
 	  	toJSON: function(){
 		 		var obj= this.toObject();
 		  	delete obj.password;
