@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalabel=no,initial-scale=1.0,maximun-scale=1.0,minium-scale=1.0">
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 
     <!--
         Stylesheets and Preprocessors
@@ -32,52 +32,15 @@
 
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/importer.css">
-    <link rel="stylesheet" href="/linker/styles/app.css">
-    <link rel="stylesheet" href="/linker/styles/custom.css">
-    <link rel="stylesheet" href="/linker/styles/flexboxgrid.css">
-    <link rel="stylesheet" href="/linker/styles/flexboxgrid.min.css">
-    <link rel="stylesheet" href="/linker/styles/materialize.css">
+    <link rel="stylesheet" href="/linker/styles/1materialize.css">
+    <link rel="stylesheet" href="/linker/styles/2flexboxgrid.min.css">
+    <link rel="stylesheet" href="/linker/styles/3app.css">
     <!--STYLES END-->
   </head>
 
   <body>
-    <% if(session.authenticated) { %>
-    <header>
-    <div class="Header-Info row between-xs">
-        <div class="Header-User col-xs-3">
-          <div class="User row">
 
-            <div class="col-xs-3"><img src="images/50x50.png" class="circle"></div>
-            <div class="col-xs">
-              <li class="active"><p href="/user/show<%= session.User.id %>"> <%= session.User.name + " " + session.User.lastname %></p></li>
-              <p>Lugar de trabajo</p>
-              <a href="/session/destroy">Cerrar Sesión</a>
-            </div>
-
-          </div>
-        </div>
-        <div class="Header-Logo col-xs-3">
-          <% if(session.authenticated) { %>
-          <div class="Logo row end-xs"><img src="images/150x50.png"></div>
-
-          <% } %>
-        </div>
-      </div>
-      <div class="Header-Nav">
-        <div class="Nav-Items row around-xs">
-          <% if(session.authenticated) { %>
-          <a href="index.html" class="Nav-Item is-active">Anuncios</a>
-          <a class="Nav-Item">Turnos</a>
-          <% } %>
-          <% if(session.authenticated && session.User.admin) { %>
-          <a href="/group/index" class="Nav-Item">Grupo</a>
-          <a class="Nav-Item">Admin</a></div>
-          <% } %>
-
-      </div>
-    </header>
-    <% } %>
-
+    <%- partial('components/header') %>
     <%- body %>
 
 
