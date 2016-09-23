@@ -31,6 +31,10 @@ module.exports = {
     users:{
       collection: 'user',
       via: 'groups'
+    },
+    anuncios:{
+      collection: 'anuncio',
+      via: 'group'
     }
   }
 };

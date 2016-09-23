@@ -12,7 +12,7 @@ module.exports = {
 	},
 
 	show: function(req, res, next){
-		Anuncios.find(function foundAnuncios(err, anuncios){
+		Anuncio.find(function foundAnuncios(err, anuncios){
 			if(err) return next();
 			res.view({
 				anuncios: anuncios
@@ -21,22 +21,26 @@ module.exports = {
 		});
 	},
 	create: function(req, res){
-		User.findOne(req.session.User.id, function (err, user) {
+		var anuncioObj={
+			text: req.param('text'),
+			autor: req.session.User.id,
+			group: req.session.User.id_group
+		}
+		console.log(anuncioObj);
+		Anuncio.create(anuncioObj,function (err, anuncio) {
+
 			if(err){
-
-			}
-			user.anuncios.add(
-				{
-					text: req.param('text'),
-					//estado: req.param('description'),
-					autor: user.id,
-					id_group: user.id_group
+				req.session.flash={
+					err:err
 				}
-			);
-			 user.save(function(err) {});
-		});
-		return res.redirect('anuncios')
-	}
-	
-};
+				return res.redirect('anuncios/new');
+			}
+			console.log("se creo bien el anuncio");
 
+
+			res.redirect('anuncios/new/');
+
+		});
+	}
+
+};

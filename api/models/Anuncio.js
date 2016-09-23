@@ -14,11 +14,10 @@ module.exports = {
   		required: true
   	},
   	estado:{
-  		type:'string',
-  		required: true
-  	},
-  	id_group:{
   		type:'string'
+  	},
+  	group:{
+  		model: 'group'
   	},
     autor:{
       model: 'user'

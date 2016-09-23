@@ -50,7 +50,7 @@ module.exports = {
 			type: 'string'
 		},
 		anuncios:{
-			collection: 'Anuncios',
+			collection: 'anuncio',
 			via: 'autor',
 		},
 		groups:{
