@@ -15,6 +15,7 @@ module.exports = {
 	},
 
 	show: function(req, res, next){
+		
 		User.find(function foundUsers(err, users){
 			if(err) return next();
 			res.view({
@@ -22,6 +23,7 @@ module.exports = {
 			});
 
 		});
+
 	},
 	create: function(req, res){
 		User.findOne(req.session.User.id, function (err, user) {
@@ -36,17 +38,17 @@ module.exports = {
 					id_group_parent: user.id_group
 				}
 			);
-			 user.save(function(err) {});
+			user.save(function(err) {});
 		});
-		return res.redirect('group/new')
+		return res.redirect('group/index')
 	},
 	index: function(req, res, next){
-		Group.find(function foundGroups(err, groups){
-			if(err) return next();
-			res.view({
-				groups: groups
-			});
 
+		User.findOne(req.session.User.id).populateAll().exec(function(err, user){
+			if(err) return next(err);
+			res.view({
+				user: user
+			});
 		});
 	},
 	update: function(req, res, next){
