@@ -18,8 +18,8 @@
             </thead>
             <tbody>
 
-              <% _.each(users, function(user){ %> 
-  
+              <% _.each(user, function(user){ %> 
+                
               <tr>
                 <td><%= user.name + ' ' + user.lastname %></td>
                 <td><%= user.email %></td>
@@ -38,7 +38,6 @@
                   <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
                 </form></td>
               </tr>
-
               <% }) %>
             </tbody>
           </table>
