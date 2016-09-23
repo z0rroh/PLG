@@ -41,6 +41,15 @@ module.exports = {
 			res.redirect('anuncios/new/');
 
 		});
+	},
+	index: function(req, res, next){
+
+		User.findOne(req.session.User.id).populate("anuncios").exec(function(err, user){
+			if(err) return next(err);
+			res.view({
+				user: user
+			});
+		});
 	}
 
 };

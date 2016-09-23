@@ -20,24 +20,24 @@
 
               <% _.each(group.users, function(user){ %> 
                 
-              <tr>
-                <td><%= user.name + ' ' + user.lastname %></td>
-                <td><%= user.email %></td>
-                <td><%= user.phone %></td>
-                <td><%= user.adress %></td>
-                <td>
-                  <button class="btn bc-green">Coordinadores</button>
-                </td>
-                <td>
-                  <input>
-                </td>
-                <td> <button class="btn btn-floating bc-green"><a href="/user/edit/<%= user.id %>" class="material-icons">Edit</a></button> </td>
-                <td><form action="/user/destroy/<%= user.id %>" method="POST" accept-charset="utf-8">
-                  <input type="hidden" name="_method" value="Clear"/>
-                  <input type="submit" class="btn btn-floating bc-green" value="Clear"></input>
-                  <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
-                </form></td>
-              </tr>
+                <tr>
+                  <td><%= user.name + ' ' + user.lastname %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.phone %></td>
+                  <td><%= user.adress %></td>
+                  <td>
+                    <button class="btn bc-green">Coordinadores</button>
+                  </td>
+                  <td>
+                    <input>
+                  </td>
+                  <td> <button class="btn btn-floating bc-green"><a href="/user/edit/<%= user.id %>" class="material-icons">Edit</a></button> </td>
+                  <td><form action="/user/destroy/<%= user.id %>" method="POST" accept-charset="utf-8">
+                    <input type="hidden" name="_method" value="Clear"/>
+                    <input type="submit" class="btn btn-floating bc-green" value="Clear"></input>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                  </form></td>
+                </tr>
               <% }) %>
             </tbody>
           </table>

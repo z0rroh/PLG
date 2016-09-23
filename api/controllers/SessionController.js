@@ -50,7 +50,7 @@ module.exports = {
                   req.session.User = user;
 
                   //redirect the user to the profile page
-                  res.redirect('user/show/'+ user.id);
+                  res.redirect('anuncios/index');
 
                 }); //end bcrypt.compare
               });//end findOneByEmail

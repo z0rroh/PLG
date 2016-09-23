@@ -50,7 +50,7 @@ module.exports = {
 		});
 	},
 	update: function(req, res, next){
-		Group.update(req.param('id'), req.params.all(), function userUpdate(err){
+		Group.update(req.param('id'), req.params.all(), function groupUpdate(err){
 			if(err) {
 				return res.redirect('group/show/' + req.param('id'));
 			}
