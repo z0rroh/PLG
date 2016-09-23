@@ -15,13 +15,11 @@ module.exports = {
 	},
 
 	show: function(req, res, next){
-		
-		User.find(function foundUsers(err, users){
-			if(err) return next();
+		Group.findOne(req.param('id')).populateAll().exec(function(err, group){
+			if(err) return next(err);
 			res.view({
-				users: users
+				group: group
 			});
-
 		});
 
 	},
@@ -40,7 +38,7 @@ module.exports = {
 			);
 			user.save(function(err) {});
 		});
-		return res.redirect('group/index')
+		res.redirect('group/index');
 	},
 	index: function(req, res, next){
 
@@ -57,6 +55,14 @@ module.exports = {
 				return res.redirect('group/show/' + req.param('id'));
 			}
 			res.redirect('group/show');
+		});
+	},
+	destroy: function(req, res, next){
+		Group.destroy(req.param('id'), function groupDestroy(err){
+			if(err){
+				return next(err);
+			}
+			res.redirect('group/index');
 		});
 	}
 
