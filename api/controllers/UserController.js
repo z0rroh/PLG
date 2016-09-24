@@ -107,17 +107,6 @@ module.exports = {
         });
       });
     },
-  joingroup: function(req,res){
-    if(req.session.User){
-      return res.view('user/group')
-    }
-    var NoSession =[{message: 'Debes ingresar para ver esta pagina'}]
-    req.session.flash={
-      err: NoSession
-    }
-    return res.redirect('session/new');
-
-  },
   addGroup: function(req,res,next){
     Group.findGroupByKey(req.param('key'),function(err,group){
       if(err){

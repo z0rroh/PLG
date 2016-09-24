@@ -48,7 +48,9 @@ module.exports = {
                   //if the password is valid we get here and log the user in
                   req.session.authenticated = true;
                   req.session.User = user;
-									
+									if(user.id_group == null){
+											return res.view('user/group')
+									}
                   //redirect the user to the profile page
                   res.redirect('anuncios/index');
 
