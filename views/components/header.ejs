@@ -1,4 +1,4 @@
-<% if(session.authenticated) { %>
+<% if(session.authenticated && session.User.id_group) { %>
   <header class="row between-lg">
     <div class="Header col-lg-12">
       <div class="box">

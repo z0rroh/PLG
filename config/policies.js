@@ -36,6 +36,8 @@ module.exports.policies = {
     update : 'userCanSeeProfile',
     destroy: 'userCanSeeProfile',
     index: 'userCanSeeProfile',
+    joingroup: 'flash',
+    addGroup: 'flash',
     '*': 'admin'
   },
   'group':{

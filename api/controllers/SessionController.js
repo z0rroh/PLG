@@ -35,7 +35,6 @@ module.exports = {
                 bcrypt.compare(req.param('password'), user.password, function (err, valid) {
 
                   if (err) return next(err);
-
                   if(!valid) {
                     var usernamePasswordMismatchError = [{ name: 'usernamePasswordMismatch', message: 'Conbinacion de email y contraseña invalida' }]
                     req.session.flash = {
@@ -45,10 +44,11 @@ module.exports = {
                     return;
                   }
 
+
                   //if the password is valid we get here and log the user in
                   req.session.authenticated = true;
                   req.session.User = user;
-
+									
                   //redirect the user to the profile page
                   res.redirect('anuncios/index');
 

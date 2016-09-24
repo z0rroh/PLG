@@ -16,37 +16,37 @@ module.exports = {
 
 	},
 
-	create: function(req, res){
+	create: function(req, res,next){
     User.Validate(req.param('email'),function(response){
       if(!response){
         var NoValidate =[{message: 'El email ya está registrado'}]
   			req.session.flash={
   				err: NoValidate
   			}
-        return res.redirect('user/new');
+        return res.redirect('user/new')
       }
+      var userObj={
+  			name : req.param('name'),
+  			email : req.param('email'),
+        password: req.param('password'),
+  		}
+  		User.create(userObj,function (err, user) {
+
+  			if(err){
+  				req.session.flash={
+  					err:err
+  				}
+  				return res.redirect('user/new');
+  			}
+
+  			req.session.authenticated = true;
+  			req.session.User = user;
+
+  			res.redirect('user/show/'+user.id);
+
+  		});
     });
 
-    var userObj={
-			name : req.param('name'),
-			email : req.param('email'),
-      password: req.param('password')
-		}
-		User.create(userObj,function (err, user) {
-
-			if(err){
-				req.session.flash={
-					err:err
-				}
-				return res.redirect('user/new');
-			}
-
-			req.session.authenticated = true;
-			req.session.User = user;
-
-			res.redirect('user/show/'+user.id);
-
-		});
 	},
 
 	show: function(req, res, next){
@@ -107,7 +107,28 @@ module.exports = {
         });
       });
     },
+  joingroup: function(req,res){
+    if(req.session.User){
+      return res.view('user/group')
+    }
+    var NoSession =[{message: 'Debes ingresar para ver esta pagina'}]
+    req.session.flash={
+      err: NoSession
+    }
+    return res.redirect('session/new');
 
+  },
+  addGroup: function(req,res,next){
+    Group.findGroupByKey(req.param('key'),function(err,group){
+      if(err){
+        req.session.flash={
+					err:err
+				}
+				return res.redirect('user/joingroup');
+			}
+			return res.redirect('user/joingroup');
+		})
+  }
 
 
 };
