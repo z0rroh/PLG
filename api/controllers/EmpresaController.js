@@ -32,11 +32,10 @@ module.exports = {
 				}
 				return res.redirect('empresa/new')
 			}
-			var hash = bcrypt.hashSync(req.param('pass'), 10);
 			var userObj={
 				name : req.param('user'),
 				email : req.param('email'),
-				password: hash,
+				password: req.param('pass'),
 				groups: group.id,
        	id_group: group.id,
         admin: true
