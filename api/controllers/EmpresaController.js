@@ -17,10 +17,12 @@ module.exports = {
    * `EmpresaController.create()`
    */
   create: function (req, res) {
+    var hashGroup = bcrypt.hashSync(req.param('name'), 5);
 		var groupObj={
 			name: req.param('name'),
 			description: req.param('description'),
-			ubication: req.param('ubication')
+			ubication: req.param('ubication'),
+      key: hashGroup
 		}
 
 		Group.create(groupObj, function(err, group){
@@ -33,7 +35,6 @@ module.exports = {
 			var hash = bcrypt.hashSync(req.param('pass'), 10);
 			var userObj={
 				name : req.param('user'),
-				lastname : req.param('nombre'),
 				email : req.param('email'),
 				password: hash,
 				groups: group.id,

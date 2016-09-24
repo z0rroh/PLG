@@ -28,6 +28,9 @@ module.exports = {
     group_parent:{
       type: 'string'
     },
+    key:{
+      type: 'string'
+    },
     users:{
       collection: 'user',
       via: 'groups'
