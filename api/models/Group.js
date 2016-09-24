@@ -43,7 +43,7 @@ module.exports = {
   findGroupByKey: function(value,cb){
     Group.findOne({key:value}).exec(function (err, group) {
       if (err) return cb(err,null);
-      if (!group) return cb(new Error('LLave no váldia.'),null);
+      if (!group) return cb(err,null);
       return cb(null,group);
     });
 

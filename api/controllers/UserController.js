@@ -107,17 +107,19 @@ module.exports = {
         });
       });
     },
-  addGroup: function(req,res,next){
+  addGroup: function(req,res){
     Group.findGroupByKey(req.param('key'),function(err,group){
-      if(err){
-        req.session.flash={
-					err:err
-				}
-				return res.redirect('user/joingroup');
-			}
-			return res.redirect('user/joingroup');
-		})
-  }
+      if(group==null){
+        var invalidKey = [{ message: 'key inválida' }]
+        req.session.flash = {
+          err: invalidKey
+        }
+        console.log(req.session.flash);
+        return res.view('user/group');
+      }
+			return res.view('user/group');
+    });
+	}
 
 
 };
