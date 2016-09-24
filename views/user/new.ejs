@@ -1,8 +1,9 @@
-
-	<div class="row">
-		<div style="margin:0% auto; max-width:300px;">
-			<div class="card-panel grey lighten-4 z-depth-4 center">
-				<form action="/user/create" method="POST" accept-charset="utf-8" class="form-new">
+<section class="background">
+	<div class="row center-xs middle-xs">
+		<div class="col-xs-4">
+			<div class="Login-Card card-panel grey lighten-4">
+				<div class="Login-Logo"><img class="circle responsive-img" src="/images/login.jpeg"></div>
+				<form action="/user/create" method="POST" class="row center-xs">
 					<% if(flash && flash.err) { %>
 						<ul class="alert alert-success">
 							<% Object.keys(flash.err).forEach(function(error){ %>
@@ -10,54 +11,29 @@
 						    <% }); %>
 						</ul>
 					<% } %>
-					<div class="row">
-						<h4 class="center">Registro</h4>
+					<div class="col-xs-12 input-field"><i class="material-icons prefix">face</i>
+						<input class="validate" id="Signup-Name" type="text" name="name">
+						<label for="Signup-Name">Nombre</label>
 					</div>
-					<div class="row margin">
-						<div class="input-field col s12">
-							<i class="mdi-social-person-outline prefix"></i>
-	            			<input name="name" id="name" type="text" class="validate" autofocus required>
-	            			<label for="name" class="center-align">Nombre</label>
-						</div>
+					<div class="col-xs-12 input-field"><i class="material-icons prefix">mail</i>
+						<input class="validate" id="Signin-Email" type="email" name="email">
+						<label for="Signin-Email">Email</label>
 					</div>
-					<div class="row margin">
-						<div class="input-field col s12">
-							<i class="mdi-social-person-outline prefix"></i>
-	            			<input name="lastname" id="lastname" type="text" class="validate" required>
-	            			<label for="lastname" class="center-align">Apellido</label>
-						</div>
+					<div class="col-xs-12 input-field"><i class="material-icons prefix">lock</i>
+						<input class="validate" id="Signin-Password" type="password" name="password">
+						<label for="Signin-Password">Password</label>
 					</div>
-					<div class="row margin">
-			        	<div class="input-field col s12">
-			            	<i class="mdi-communication-email prefix"></i>
-			            	<input name="email" id="email" type="email" class="validate" required>
-			            	<label for="email" data-error="error" data-success="bien!" class="center-align">Email</label>
-			          	</div>
-        			</div>
-					<div class="row margin">
-					    <div class="input-field col s12">
-					        <i class="mdi-action-lock-outline prefix"></i>
-					        <input name="password" id="password" type="password" class="validate" required>
-					        <label for="password">Password</label>
-					    </div>
-	        		</div>
-	        		<div class="row margin">
-					    <div class="input-field col s12">
-					        <i class="mdi-action-lock-outline prefix"></i>
-					        <input name="passwordc" id="passwordc" type="password" class="validate" required>
-					        <label for="passwordc">Repetir Password</label>
-					    </div>
-	        		</div>
-          			<div class="row">
-          				<div class="input-field col s12">
-          					<input type="submit" class="btn waves-effect waves-light col s12" value="Crear cuenta"/>
-          					<input type="hidden" name="_csrf" value="<%=_csrf %>"/>
-          				</div>
-          				<div class="input-field col s12">
-          					<p class="margin center medium-small sign-up">Ya tienes una cuenta? <a href="/">Ingresa</a></p>
-          				</div>
-          			</div>
+					<div class="Login-Button col-lg-12 input-field">
+						<input class="btn btn-large" type="submit" value="Registrar">
+						<input type="hidden" name="_csrf" value="<%=_csrf %>"/>
+					</div>
 				</form>
+				<div class="row center-lg">
+					<div class="SignUp col-lg-12">
+						<div class="divider"></div><a class="SignUp-Button btn-flat" href="/">Volver</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+</section>

@@ -5,26 +5,32 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
- var bcrypt=require('bcrypt');
 
 module.exports = {
 
     new:function (req, res){
 		//console.log("pagina de registro");
 		//res.locals.flash=._clone(req.session.flash);
-		res.view();
+		res.view('user/new');
 		//req.session.flas={};
 
 	},
 
 	create: function(req, res){
-    var hash = bcrypt.hashSync(req.param('password'), 10);
+    User.Validate(req.param('email'),function(response){
+      if(!response){
+        var NoValidate =[{message: 'El email ya está registrado'}]
+  			req.session.flash={
+  				err: NoValidate
+  			}
+        return res.redirect('user/new');
+      }
+    });
 
     var userObj={
 			name : req.param('name'),
-			lastname : req.param('lastname'),
 			email : req.param('email'),
-      password: hash
+      password: req.param('password')
 		}
 		User.create(userObj,function (err, user) {
 
@@ -34,18 +40,13 @@ module.exports = {
 				}
 				return res.redirect('user/new');
 			}
-			console.log("se creo bien el usuario");
 
 			req.session.authenticated = true;
 			req.session.User = user;
 
 			res.redirect('user/show/'+user.id);
 
-
-
 		});
-
-
 	},
 
 	show: function(req, res, next){

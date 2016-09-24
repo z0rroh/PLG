@@ -8,7 +8,7 @@ var bcrypt=require('bcrypt');
 
 module.exports = {
 	new: function(req,res){
-		res.view();
+		res.view('session/new');
 	},
 	create: function(req, res, next){
 
@@ -57,7 +57,7 @@ module.exports = {
 	},
   destroy: function(req, res, next){
     req.session.destroy();
-    res.redirect('session/new');
+    res.redirect('/');
   }
 
 

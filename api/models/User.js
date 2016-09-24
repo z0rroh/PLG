@@ -5,6 +5,8 @@
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
+var bcrypt = require('bcrypt');
+
 module.exports = {
 	attributes: {
 	  	name:{
@@ -12,10 +14,6 @@ module.exports = {
 	      required: true
 
 	  	},
-	    lastname:{
-	      type:'string',
-	      required: true
-	    },
 	  	password:{
 	  	  type:'string',
 	      required: true
@@ -23,7 +21,7 @@ module.exports = {
 	  	email:{
 	  		type:'email',
 	  		unique: true,
-	        required: true
+	      required: true
 
 	  	},
 	  	admin:{
@@ -66,23 +64,21 @@ module.exports = {
   		}
 
     },
-      beforeCreate: function (values, next) {
-
-	    /*if (!values.password || values.password != values.passwordc) {
-	    	var passwordError = [{
-	    		name: 'passwordError',
-	    		message: 'Las contraseñas ingresadas no coinciden'
-	    	}]
-	    	return next({ err: passwordError});
-
-	    }
-
-	    require('bcrypt').hash(values.password, 10, function passwordEncrypted(err, passworden) {
+		Validate: function(value,cb){
+			User.findOne({email:value}).exec(function (err, user) {
+      	if (err) return cb(err);
+      	if (user) {
+        	return cb(false);
+      	}
+				return cb(true)
+			});
+		},
+    beforeCreate: function (values, next) {
+	    bcrypt.hash(values.password, 10, function passwordEncrypted(err, hash) {
 	      if (err) return next(err);
-	      values.passworden = passworden;
+	      values.password = hash;
 	      next();
-	    }); */
-			next();
+	    });
 	  },
 
 	  usersFindByGroup: function (options, cb) {
