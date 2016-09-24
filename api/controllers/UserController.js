@@ -83,7 +83,7 @@ module.exports = {
 			if(err) {
 				return res.redirect('user/edit/' + req.param('id'));
 			}
-			res.redirect('group/index');
+			res.redirect('group/show');
 		});
 	},
 
@@ -93,9 +93,19 @@ module.exports = {
 				console.log(err);
 				return next(err);
 			}
-			res.redirect('group/show');
+			res.redirect('group/index');
 		});
-	}
+	},
+
+	associateGroup: function(req, res, next) {
+      Group.find(function foundGroups(err, Groups) {
+        if (err) return next(err);
+        res.view({
+          groups: groups,
+          user_id: req.param('id')
+        });
+      });
+    },
 
 
 

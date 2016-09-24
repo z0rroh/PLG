@@ -83,7 +83,30 @@ module.exports = {
 	      next();
 	    }); */
 			next();
-	  }
+	  },
+
+	  usersFindByGroup: function (options, cb) {
+		 User.find({id_group:options}).exec(function (err, users) {
+			 if (err) return cb(err);
+			 if (!users) return cb(new Error('Users not found.'));
+			 return cb(null,users);
+		 });
+	 },
+
+	findByGroup: function (options, cb) {
+				User.find({id_group: options})
+	 			 .then(function (data){
+	 				 var groupHijos = Group.find({ group_parent: options })
+	 							 .then(function(groupData) {
+									 		console.log(groupData);
+	 									 var new_data = groupData;
+	 									 delete new_data.createdAt;
+	 									 delete new_data.updatedAt;
+	 									 return new_data;
+	 							 });
+	 				 return cb(null,[data,groupHijos])
+	 			 });
+	},
 
 
 };

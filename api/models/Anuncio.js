@@ -23,5 +23,14 @@ module.exports = {
       model: 'user'
     }
 
-  }
+  },
+  anunciosFindByGroup: function (options, cb) {
+     Anuncio.find({group:options}).populate('autor').exec(function (err, anuncios) {
+       if (err) return cb(err);
+       if (!anuncios) return cb(new Error('Anuncios not found.'));
+       return cb(null,anuncios);
+     });
+   }
 };
+
+

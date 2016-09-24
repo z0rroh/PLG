@@ -15,10 +15,10 @@ module.exports = {
 	},
 
 	show: function(req, res, next){
-		Group.findOne(req.param('id')).populateAll().exec(function(err, group){
-			if(err) return next(err);
+		User.usersFindByGroup(req.session.User.id_group, function(err,users){
+			
 			res.view({
-				group: group
+				users: users
 			});
 		});
 
@@ -33,28 +33,32 @@ module.exports = {
 					name: req.param('name'),
 					description: req.param('description'),
 					ubication: req.param('ubication'),
-					id_group_parent: user.id_group
+					group_parent: user.id_group
 				}
 			);
 			user.save(function(err) {});
 		});
-		res.redirect('group/index');
+		res.redirect('group/show');
 	},
 	index: function(req, res, next){
 
-		User.findOne(req.session.User.id).populateAll().exec(function(err, user){
+		/*User.findOne(req.session.User.id).populateAll().exec(function(err, user){
 			if(err) return next(err);
 			res.view({
 				user: user
 			});
 		});
+*/
+		User.findByGroup(req.session.User.id_group, function(err, data){
+				console.log(data);
+			});
 	},
 	update: function(req, res, next){
 		Group.update(req.param('id'), req.params.all(), function groupUpdate(err){
 			if(err) {
 				return res.redirect('group/show/' + req.param('id'));
 			}
-			res.redirect('group/show');
+			res.redirect('group/show/' + req.param('id'));
 		});
 	},
 	destroy: function(req, res, next){
@@ -64,7 +68,8 @@ module.exports = {
 			}
 			res.redirect('group/index');
 		});
-	}
+	},
+
 
 
 };

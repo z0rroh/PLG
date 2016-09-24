@@ -10,15 +10,14 @@ module.exports = {
 	new: function(req,res){
 		res.view();
 	},
-
 	show: function(req, res, next){
-		Anuncio.find(function foundAnuncios(err, anuncios){
-			if(err) return next();
+		User.findByGroup(req.session.User.id_group, function(err,users){
+			
 			res.view({
-				anuncios: anuncios
+				users: users
 			});
-
 		});
+
 	},
 	create: function(req, res){
 		var anuncioObj={
@@ -44,12 +43,13 @@ module.exports = {
 	},
 	index: function(req, res, next){
 
-		User.findOne(req.session.User.id).populate("anuncios").exec(function(err, user){
-			if(err) return next(err);
+		Anuncio.anunciosFindByGroup(req.session.User.id_group, function(err, anuncios){
+			console.log(anuncios);
 			res.view({
-				user: user
+				anuncios: anuncios
 			});
 		});
+
 	}
 
 };

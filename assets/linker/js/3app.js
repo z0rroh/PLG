@@ -5,5 +5,5 @@ $(document).ready(function(){
     belowOrigin: false,
     constrain_width: false,
   });
-}
-
+  $('select').material_select();
+});

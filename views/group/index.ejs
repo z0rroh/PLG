@@ -24,16 +24,14 @@
                 <td>
                   <button class="btn bc-green">Coordinadores</button>
                 </td>
-                <td>
-                  <input>
-                </td>
                 <td> <button class="btn btn-floating bc-green"><a href="" class="material-icons">Edit</a></button> </td>
-                <td><form action="/group/destroy/<%= group.id %>"  method="POST" accept-charset="utf-8">
-                  <input type="hidden" name="_method" value="Clear"/>
-                  <input type="submit" class="btn btn-floating bc-green" value="Clear"></input>
-                  <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
-                </form></td>
-              </tr>
+                <td>
+                  <form action="/group/destroy/<%= group.id %>"  method="POST" accept-charset="utf-8">
+                    <input type="hidden" name="_method" value="Clear"/>
+                    <input type="submit" class="btn btn-floating bc-green" value="Clear"></input>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                  </form></td>
+                </tr>
 
               <% }) %>
             </tbody>
