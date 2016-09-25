@@ -115,7 +115,25 @@ module.exports = {
         }
         return res.view('user/group');
       }
-			return res.view('user/group');
+      User.findOne({id:req.session.User.id})
+        .then(function(result){
+          var user = result;
+          user.id_group = group.id;
+          user.groups.add(group.id);
+          console.log(user);
+          user.save(
+            function(err){
+              console.log('User with ID '+user.id+' now has groud '+user.id_group);
+            });
+            return res.view('anuncio/index')
+        })
+        .fail(function(err){
+          console.log(err);
+          req.session.flash={
+            err:err
+          }
+          return res.view('user/group');
+        });
     });
 	}
 

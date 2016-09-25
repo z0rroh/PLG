@@ -17,7 +17,7 @@ module.exports = {
 			req.session.flash={
 				err: NoEmailOrPassword
 			}
-			return res.redirect('session/new');
+			return res.redirect('/session/new');
 		}
 
 		User.findOneByEmail(req.param('email'), function foundUser (err, user) {
@@ -28,7 +28,7 @@ module.exports = {
                   req.session.flash = {
                     err: noAccountError
                   }
-                  res.redirect('session/new');
+                  res.redirect('/session/new');
                   return;
                 }
 
@@ -40,7 +40,7 @@ module.exports = {
                     req.session.flash = {
                       err: usernamePasswordMismatchError
                     }
-                    res.redirect('session/new');
+                    res.redirect('/session/new');
                     return;
                   }
 
