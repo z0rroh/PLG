@@ -1,0 +1,37 @@
+include ../Header/template.pug
+section.Layout-Content.row.center-lg
+  section.col-lg-10.col-xlg-8.card
+    .Empleados
+      .row.start-lg
+        .Empleados-Filter.col-lg-12
+          form.Filter
+            .row.start-lg
+              .col-lg-2
+                a.Filter-Group.btn.btn-large(type="button", name="button") Todos
+                  i.material-icons.right arrow_drop_down
+              .Filter-Search.input-field.col-lg-10
+                .box
+                  i.material-icons.prefix search
+                  input#Empleados-input(type="text", name="search")
+                  label(for="Empleados-input") Buscar
+        .Empleados-Content.col-lg-12
+          table.bordered#datatables
+            thead: tr
+                each val in [' ','Nombre','Email','Teléfono','Grupos','Tokens','Acciones']
+                  th= val
+            tbody
+              tr.Empleados-Item
+                th
+                  img.circle(src="images/65x65.jpeg")
+                each val in ['Felipe Rubio','felipe.andrez@live.cl','+569 83413625']
+                  th= val
+                th
+                  select(multiple='')
+                    option(value="1") Option 1
+                    option(value="2") Option 2
+                    option(value="3") Option 3
+                th
+                  p 3
+                th
+                  a.btn-floating
+                  a.btn-floating
