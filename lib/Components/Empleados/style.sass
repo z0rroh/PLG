@@ -1,39 +1,165 @@
-.Empleados-Filter
-  padding: 1em
-  .Filter-Group
-    width: 11em
-    height: 3rem
-    line-height: 3rem
-    padding-left: 3rem
-    padding-right: 2rem
-    background-color: $verdeclaro
-    i
-      margin-left: 0
-  .Filter-Search
-    margin-top: .7rem
-    .box
-      margin-left: 1em
-    i
-      color: $grisclaro
-      font-size: 2.5em
-      line-height: .6
-    input[type="text"]
-      width: 50%
-      height: 2em
-    label
-      width: initial !important
-      left: 2.5%
-      font-size: 1em
-      top: 0.5rem
-  .input-field input[type=text]:focus + label
-    color: $verdeclaro
-  .input-field input[type=text]:focus
-    border-bottom: 1px solid $verdeclaro
-    box-shadow: 0 1px 0 0 $verdeclaro
-  .input-field .prefix.active
-    color: $verdeclaro
-  .box .label.active
-    transform: translateY(-100%)
-
-.Empleados-Content
+div.material-table
   padding: 0
+  .hiddensearch
+    padding: 0 14px 0 24px
+    border-bottom: solid 1px #DDDDDD
+    display: none
+    input
+      margin: 0
+      border: transparent 0 !important
+      height: 48px
+      color: rgba(0, 0, 0, 0.84)
+      +placeholder
+        color: #424242
+      &:active
+        border: transparent 0 !important
+      &:focus
+        box-shadow: 0 1px 0 0 $verdeclaro
+  table
+    table-layout: fixed
+  .table-header
+    height: 64px
+    padding-left: 24px
+    padding-right: 14px
+    -webkit-align-items: center
+    -ms-flex-align: center
+    align-items: center
+    display: flex
+    -webkit-display: flex
+    border-bottom: solid 1px #DDDDDD
+    .actions
+      display: -webkit-flex
+      margin-left: auto
+    .btn-flat
+      min-width: 36px
+      padding: 0 8px
+    input
+      margin: 0
+      height: auto
+    i
+      color: rgba(0, 0, 0, 0.54)
+      font-size: 24px
+  .table-footer
+    height: 56px
+    padding-left: 24px
+    padding-right: 14px
+    display: -webkit-flex
+    display: flex
+    -webkit-flex-direction: row
+    flex-direction: row
+    -webkit-justify-content: flex-end
+    justify-content: flex-end
+    -webkit-align-items: center
+    align-items: center
+    font-size: 12px !important
+    color: rgba(0, 0, 0, 0.54)
+    .dataTables_length
+      display: -webkit-flex
+      display: flex
+    label
+      font-size: 12px
+      color: rgba(0, 0, 0, 0.54)
+      display: -webkit-flex
+      display: flex
+      -webkit-flex-direction: row
+      flex-direction: row
+      -webkit-align-items: center
+      align-items: center
+      -webkit-justify-content: center
+      justify-content: center
+    .select-wrapper
+      display: -webkit-flex
+      display: flex
+      -webkit-flex-direction: row
+      flex-direction: row
+      -webkit-align-items: center
+      align-items: center
+      -webkit-justify-content: center
+      justify-content: center
+    .dataTables_info, .dataTables_length
+      margin-right: 32px
+    .material-pagination
+      display: flex
+      -webkit-display: flex
+      margin: 0
+      li
+        &:first-child
+          margin-right: 24px
+        a
+          color: rgba(0, 0, 0, 0.54)
+    .select-wrapper input.select-dropdown
+      margin: 0
+      border-bottom: none
+      height: auto
+      line-height: normal
+      font-size: 12px
+      width: 40px
+      text-align: right
+    select
+      background-color: transparent
+      width: auto
+      padding: 0
+      border: 0
+      border-radius: 0
+      height: auto
+      margin-left: 20px
+  .table-title
+    font-size: 20px
+    color: #424242
+  table
+    tr
+      td
+        padding: 0 0 0 56px
+        height: 48px
+        font-size: 16px
+        color: rgba(0, 0, 0, 0.87)
+        border-bottom: solid 1px #DDDDDD
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
+        a
+          color: inherit
+          i
+            font-size: 18px
+            color: rgba(0, 0, 0, 0.54)
+      font-size: 16px
+    th
+      font-size: 16px
+      font-weight: 500
+      color: #757575
+      cursor: pointer
+      white-space: nowrap
+      padding: 0
+      height: 56px
+      padding-left: 56px
+      vertical-align: middle
+      outline: none !important
+      &.sorting_asc, &.sorting_desc
+        color: rgba(0, 0, 0, 0.87)
+      &.sorting:after, &.sorting_asc:after, &.sorting_desc:after
+        font-family: 'Material Icons'
+        font-weight: normal
+        font-style: normal
+        font-size: 16px
+        line-height: 1
+        letter-spacing: normal
+        text-transform: none
+        display: inline-block
+        word-wrap: normal
+        -webkit-font-feature-settings: 'liga'
+        -webkit-font-smoothing: antialiased
+        content: "arrow_back"
+        -webkit-transform: rotate(90deg)
+        display: none
+        vertical-align: middle
+      &.sorting:hover:after, &.sorting_asc:after
+        display: inline-block
+      &.sorting_desc:after
+        display: inline-block
+        content: "arrow_forward"
+    tbody tr:hover
+      background-color: #EEE
+    th:first-child, td:first-child
+      padding: 0 0 0 24px
+    th:last-child, td:last-child
+      padding: 0 14px 0 0
