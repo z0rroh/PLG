@@ -49,10 +49,10 @@ module.exports = {
                   req.session.authenticated = true;
                   req.session.User = user;
 									if(user.id_group == null){
-											return res.view('user/group')
+											return res.redirect('/user/group')
 									}
                   //redirect the user to the profile page
-                  res.redirect('anuncios/index');
+                  res.redirect('/anuncios/index');
 
                 }); //end bcrypt.compare
               });//end findOneByEmail

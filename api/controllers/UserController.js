@@ -109,12 +109,10 @@ module.exports = {
     },
   addGroup: function(req,res){
     Group.findGroupByKey(req.param('key'),function(err,group){
-      if(group==null){
-        var invalidKey = [{ message: 'key inválida' }]
-        req.session.flash = {
-          err: invalidKey
+      if(err){
+        req.session.flash={
+          err:err
         }
-        console.log(req.session.flash);
         return res.view('user/group');
       }
 			return res.view('user/group');
