@@ -91,7 +91,6 @@ module.exports = {
 	destroy: function(req, res, next){
 		User.destroy(req.param('id'), function userDestroy(err){
 			if(err){
-				console.log(err);
 				return next(err);
 			}
 			res.redirect('group/index');
@@ -120,15 +119,16 @@ module.exports = {
           var user = result;
           user.id_group = group.id;
           user.groups.add(group.id);
-          console.log(user);
           user.save(
             function(err){
-              console.log('User with ID '+user.id+' now has groud '+user.id_group);
+              req.session.flash={
+                err:err
+              }
             });
-            return res.view('anuncio/index')
+            req.session.User.id_group = user.id_group;
+            return res.redirect('/anuncios/index')
         })
         .fail(function(err){
-          console.log(err);
           req.session.flash={
             err:err
           }

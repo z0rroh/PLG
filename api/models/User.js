@@ -94,7 +94,6 @@ module.exports = {
 	 			 .then(function (data){
 	 				 var groupHijos = Group.find({ group_parent: options })
 	 							 .then(function(groupData) {
-									 		console.log(groupData);
 	 									 var new_data = groupData;
 	 									 delete new_data.createdAt;
 	 									 delete new_data.updatedAt;

@@ -7,7 +7,7 @@
             <div class="box">
               <div class="row">
                 <div class="User-image col-lg-2"><img class="circle" src="/images/65x65.jpeg"></div>
-                <div class="col-lg"><a class="User-name dropdown-button" data-activates="User-dropdown"><%= session.User.name +" "+ session.User.lastname %><i class="material-icons User-Icon">arrow_drop_down</i></a>
+                <div class="col-lg"><a class="User-name dropdown-button" data-activates="User-dropdown"><%= session.User.name  %><i class="material-icons User-Icon">arrow_drop_down</i></a>
                   <ul class="dropdown-content" id="User-dropdown">
                     <li><a href="/user/show/<%= session.User.id %>">Editar Perfil</a></li>
                     <li><a href="/session/destroy">Cerrar Sesión</a></li>

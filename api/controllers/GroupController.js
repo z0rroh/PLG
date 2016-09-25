@@ -16,7 +16,7 @@ module.exports = {
 
 	show: function(req, res, next){
 		User.usersFindByGroup(req.session.User.id_group, function(err,users){
-			
+
 			res.view({
 				users: users
 			});
@@ -50,7 +50,6 @@ module.exports = {
 		});
 */
 		User.findByGroup(req.session.User.id_group, function(err, data){
-				console.log(data);
 			});
 	},
 	update: function(req, res, next){
