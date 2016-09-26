@@ -24,6 +24,8 @@ section.Layout-Content.row.center-lg
           th
             p 3
           th
-            a.btn-flat: i.material-icons edit
+            a.Empleado-Edit.btn-flat(href="#Empleado-Modal"): i.material-icons edit
             form.Destroy-Button
               input.btn-flat.material-icons(value="close",type="submit")
+
+include ../Empleado-Modal/template.pug
