@@ -52,7 +52,14 @@ module.exports = {
 											return res.redirect('/user/group')
 									}
                   //redirect the user to the profile page
-                  res.redirect('/anuncios/index');
+                  
+                  Group.findOne(req.session.User.id_group, function foundGroup(err, group){
+                    if (err) return next(err);
+                    req.session.Group = group;
+                    res.redirect('/anuncios/index');
+                  });
+
+
 
                 }); //end bcrypt.compare
               });//end findOneByEmail

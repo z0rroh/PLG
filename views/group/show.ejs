@@ -1,56 +1,50 @@
-    <section class="Main">
-      <section class="Group">
-        <div class="Filter row center-xs">
-          <button class="btn">Todos</button>
-          <input type="text" placeholder="Buscar...">
+<section class="Layout-Content row center-lg">
+      <div class="card material-table col-lg-10 col-xlg-8">
+        <div class="table-header"><span class="table-title">Lista de Empleados</span>
+          <div class="actions"><a class="search-toggle waves-effect btn-flat nopadding" href="#"><i class="material-icons">search</i></a></div>
         </div>
-        <div class="Group-Items row center-xs">
-          <table class="col-xs-11 bordered">
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Telefono</th>
-                <th>Direccion</th>
-                <th>Grupos</th>
-                <th>Tokens</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              <% _.each(users, function(user){ %> 
-                
-                <tr>
-                  <td><%= user.name + ' ' + user.lastname %></td>
-                  <td><%= user.email %></td>
-                  <td><%= user.phone %></td>
-                  <td><%= user.adress %></td>
-                  <td>
-                    <div class="input-field">
-                     <select multiple>
-                       <option value="" disabled selected>Choose your option</option>
-                       <option value="1">Option 1</option>
-                       <option value="2">Option 2</option>
-                       <option value="3">Option 3</option>
-                     </select>
-                     <label>Materialize Multiple Select</label>
-                   </div>
-                  </td>
-                  <td>
-                    <input>
-                  </td>
-                  <td> <button class="btn btn-floating bc-green"><a href="/user/edit/<%= user.id %>" class="material-icons">Edit</a></button> </td>
-                  <td>
-                    <form action="/user/destroy/<%= user.id %>" method="POST" accept-charset="utf-8">
-                      <input type="hidden" name="_method" value="Clear"/>
-                      <input type="submit" class="btn btn-floating bc-green" value="Clear"></input>
-                      <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
-                    </form>
-                  </td>
-                </tr>
-              <% }) %>
-            </tbody>
-          </table>
-        </div>
-      </section>
+        <table id="datatable">
+          <thead>
+            <tr>
+              <th> </th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Teléfono</th>
+              <th>Grupos</th>
+              <th>Tokens</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% _.each(users, function(user){ %>
+            <tr class="Empleados-Item">
+              <th><img class="circle" src="images/50x50.jpeg"></th>
+              <th><%= user.name %></th>
+              <th><%= user.email %></th>
+              <th><%= user.phone %></th>
+              <th>
+                <select multiple="">
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </th>
+              <th>
+                <p>3</p>
+              </th>
+              
+              <th>
+                <a class="btn-flat" href="/user/edit/<%= user.id %>"><i class="material-icons">edit</i></a>
+                <form action="/user/destroy/<%= user.id %>" method="POST" accept-charset="utf-8">
+                  <input type="hidden" name="_method" value="Clear"/>
+                  <input type="submit" class="btn-flat" ></input>
+                  <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                </form>
+              </th>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
     </section>
+  </section>

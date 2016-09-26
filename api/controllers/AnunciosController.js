@@ -26,7 +26,7 @@ module.exports = {
 			autor: req.session.User.id,
 			group: req.session.User.id_group
 		}
-		console.log(anuncioObj);
+		//console.log(anuncioObj);
 		Anuncio.create(anuncioObj,function (err, anuncio) {
 
 			if(err){
@@ -35,7 +35,7 @@ module.exports = {
 				}
 				return res.redirect('anuncios/new');
 			}
-			console.log("se creo bien el anuncio");
+			//console.log("se creo bien el anuncio");
 
 
 			res.redirect('anuncios/index');
@@ -44,8 +44,7 @@ module.exports = {
 	},
 	index: function(req, res, next){
 		
-		Anuncio.anunciosFindByGroup(req.session.User.id_group, function(err, anuncios){
-			console.log(anuncios)		
+		Anuncio.anunciosFindByGroup(req.session.User.id_group, function(err, anuncios){		
 			res.view({
 				anuncios: anuncios
 			});

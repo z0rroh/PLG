@@ -42,7 +42,7 @@ module.exports = {
   			req.session.authenticated = true;
   			req.session.User = user;
 
-  			res.redirect('user/show/'+user.id);
+  			res.redirect('user/group');
 
   		});
     });
@@ -93,7 +93,7 @@ module.exports = {
 			if(err){
 				return next(err);
 			}
-			res.redirect('group/index');
+			res.redirect('/group/show');
 		});
 	},
 
@@ -126,7 +126,12 @@ module.exports = {
               }
             });
             req.session.User.id_group = user.id_group;
-            return res.redirect('/anuncios/index')
+            Group.findOne(req.session.User.id_group, function foundGroup(err, group){
+              if (err) return next(err);
+              req.session.Group = group;
+              res.redirect('/anuncios/index');
+            });
+            
         })
         .fail(function(err){
           req.session.flash={

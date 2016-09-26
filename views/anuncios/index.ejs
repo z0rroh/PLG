@@ -1,4 +1,5 @@
 <section class="Layout-Content row center-lg">
+<% if(session.User.admin) { %>
   <section class="col-lg-8 card">
     <div class="AnuncioNuevo">
       <div class="row start-lg">
@@ -19,6 +20,7 @@
       </div>
     </div>
   </section>
+  <% } %>
   
   <% _.each(anuncios, function(anuncio){ %> 
   <section class="col-lg-8 card">
