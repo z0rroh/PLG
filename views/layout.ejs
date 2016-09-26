@@ -68,7 +68,7 @@
     -->
 
     <!--TEMPLATES-->
-    
+
     <!--TEMPLATES END-->
 
 
@@ -95,12 +95,37 @@
 
     -->
 
+
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
     <script src="/linker/js/1jquery.min.js"></script>
     <script src="/linker/js/2materialize.js"></script>
     <script src="/linker/js/3jquery.dataTables.js"></script>
     <script src="/linker/js/9app.js"></script>
+
+    <script type="text/javascript">
+
+    $(document).ready(function (){
+
+      $(".Empleado-Modal").click(function(){
+        if($(this).data("link") == "ajax"){
+          var user = $(this).attr('value');
+          var ajaxURL = '/user/show/' + user
+          ajaxPage(ajaxURL);
+
+          return false;
+        }
+      });
+
+      function ajaxPage(url){
+        $.get({
+          url: url
+        }).done(function(data){
+          console.log(data);
+        });
+      }
+
+ }); </script>
     <!--SCRIPTS END-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </body>

@@ -53,9 +53,7 @@ module.exports = {
 		User.findOne(req.param('id'), function userFounded(err, user){
 			if(err) return next(err);
 			if(!user) return next(err);
-			res.view({
-				user: user
-			});
+			res.json(user);
 		});
 	},
 
@@ -131,7 +129,7 @@ module.exports = {
               req.session.Group = group;
               res.redirect('/anuncios/index');
             });
-            
+
         })
         .fail(function(err){
           req.session.flash={
