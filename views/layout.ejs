@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%=typeof title == 'LG' ? 'Proyecto Live Group' : title%></title>
+    <title>LG - LiveGroup</title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta charset="UTF-8">
@@ -102,12 +102,13 @@
     <script src="/linker/js/2materialize.js"></script>
     <script src="/linker/js/3jquery.dataTables.js"></script>
     <script src="/linker/js/9app.js"></script>
+    <!--SCRIPTS END-->
 
     <script type="text/javascript">
 
     $(document).ready(function (){
 
-      $(".Empleado-Modal").click(function(){
+      $(".Empleado-Edit").click(function(){
         if($(this).data("link") == "ajax"){
           var user = $(this).attr('value');
           var ajaxURL = '/user/show/' + user
@@ -122,11 +123,17 @@
           url: url
         }).done(function(data){
           console.log(data);
+          $("#Empleado-Name").val(data.name);
+          $("#Empleado-Email").val(data.email);
+          $("#Empleado-Phone").val(data.phone);
+          $("#Empleado-Tokens").val(data.tokens);
+          $('#Empleado-Modal').openModal();
+          $("#Empleado-Send").attr("action",'/user/update/'+data.id);
         });
       }
 
- }); </script>
-    <!--SCRIPTS END-->
+    });
+    </script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </body>
 </html>

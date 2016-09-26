@@ -36,6 +36,7 @@ module.exports.policies = {
     update : 'userCanSeeProfile',
     destroy: 'userCanSeeProfile',
     index: 'userCanSeeProfile',
+    modal: 'userCanSeeProfile',
     addGroup: 'flash',
     '*': 'admin'
   },
