@@ -11,12 +11,13 @@ module.exports = {
 		res.view();
 	},
 	show: function(req, res, next){
+		/*
 		User.findByGroup(req.session.User.id_group, function(err,users){
-			
 			res.view({
 				users: users
 			});
 		});
+*/
 
 	},
 	create: function(req, res){
@@ -37,14 +38,14 @@ module.exports = {
 			console.log("se creo bien el anuncio");
 
 
-			res.redirect('anuncios/new/');
+			res.redirect('anuncios/index');
 
 		});
 	},
 	index: function(req, res, next){
-
+		
 		Anuncio.anunciosFindByGroup(req.session.User.id_group, function(err, anuncios){
-			console.log(anuncios);
+			console.log(anuncios)		
 			res.view({
 				anuncios: anuncios
 			});

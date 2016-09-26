@@ -13,9 +13,6 @@ module.exports = {
   		type:'mediumtext',
   		required: true
   	},
-  	estado:{
-  		type:'string'
-  	},
   	group:{
   		model: 'group'
   	},
@@ -25,12 +22,13 @@ module.exports = {
 
   },
   anunciosFindByGroup: function (options, cb) {
-     Anuncio.find({group:options}).populate('autor').exec(function (err, anuncios) {
+     Anuncio.find({group:options}).populate('autor').sort({ createdAt: 'desc' }).exec(function (err, anuncios) {
        if (err) return cb(err);
        if (!anuncios) return cb(new Error('Anuncios not found.'));
        return cb(null,anuncios);
      });
    }
+   
 };
 
 

@@ -42,6 +42,10 @@ module.exports.policies = {
   'group':{
     show: 'userCanSeeProfile',
     new: 'flash'
+  },
+  'anuncio':{
+    new: 'flash',
+    index: 'userCanSeeProfile'
   }
 
 

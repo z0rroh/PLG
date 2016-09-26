@@ -4,13 +4,14 @@
       <div class="row start-lg">
         <div class="AnuncioNuevo-Image col-lg-1"><img class="circle" src="/images/75x75.png"></div>
         <div class="AnuncioNuevo-Form col-lg-10">
-          <form class="box" action="index.html" method="post">
+          <form action="/anuncios/create" class="box" method="POST" accept-charset="utf-8">
             <div class="row start-lg">
               <div class="col-lg-12">
-                <textarea class="AnuncioNuevo-Text" placeholder="Escribe un comentario..."></textarea>
+                <textarea name="text" id="text" class="AnuncioNuevo-Text" placeholder="Escribe un comentario..."></textarea>
               </div>
               <div class="col-lg-12">
-                <button class="AnuncioNuevo-Btn btn" type="submit">Enviar</button>
+                <input type="submit" class="AnuncioNuevo-Btn btn" value="Enviar"/>
+                <input type="hidden" name="_csrf" value="<%=_csrf %>"/>
               </div>
             </div>
           </form>
@@ -18,6 +19,8 @@
       </div>
     </div>
   </section>
+  
+  <% _.each(anuncios, function(anuncio){ %> 
   <section class="col-lg-8 card">
     <div class="Anuncio">
       <div class="row start-lg">
@@ -26,13 +29,13 @@
           <div class="box">
             <div class="row start-lg">
               <div class="col-lg-12">
-                <h5 class="Anuncio-User">Felipe Rubio</h5>
+                <h5 class="Anuncio-User"><%= anuncio.autor.name %></h5>
               </div>
               <div class="col-lg-12">
-                <h6 class="Anuncio-Time">Hace 2 horas</h6>
+                <h6 class="Anuncio-Time"><%= anuncio.createdAt %></h6>
               </div>
               <div class="col-lg-12">
-                <p class="Anuncio-Text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p class="Anuncio-Text"><%= anuncio.text %></p>
               </div>
             </div>
           </div>
@@ -40,48 +43,5 @@
       </div>
     </div>
   </section>
-  <section class="col-lg-8 card">
-    <div class="Anuncio">
-      <div class="row start-lg">
-        <div class="Anuncio-Image col-lg-1"><img class="circle" src="/images/75x75.png"></div>
-        <div class="Anuncio-Info col-lg-10">
-          <div class="box">
-            <div class="row start-lg">
-              <div class="col-lg-12">
-                <h5 class="Anuncio-User">Felipe Rubio</h5>
-              </div>
-              <div class="col-lg-12">
-                <h6 class="Anuncio-Time">Hace 2 horas</h6>
-              </div>
-              <div class="col-lg-12">
-                <p class="Anuncio-Text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="col-lg-8 card">
-    <div class="Anuncio">
-      <div class="row start-lg">
-        <div class="Anuncio-Image col-lg-1"><img class="circle" src="/images/75x75.png"></div>
-        <div class="Anuncio-Info col-lg-10">
-          <div class="box">
-            <div class="row start-lg">
-              <div class="col-lg-12">
-                <h5 class="Anuncio-User">Felipe Rubio</h5>
-              </div>
-              <div class="col-lg-12">
-                <h6 class="Anuncio-Time">Hace 2 horas</h6>
-              </div>
-              <div class="col-lg-12">
-                <p class="Anuncio-Text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <% }) %>
 </section>
