@@ -25,34 +25,5 @@ section.Layout-Content.row.center-lg
             p 3
           th
             a.btn-flat: i.material-icons edit
-            a.btn-flat: i.material-icons close
-        tr.Empleados-Item
-          th
-            img.circle(src="images/50x50.jpeg")
-          each val in ['Felipe Rubio','felipe.andrez@live.cl','+569 83413625']
-            th= val
-          th
-            select(multiple='')
-              option(value="1") Option 1
-              option(value="2") Option 2
-              option(value="3") Option 3
-          th
-            p 3
-          th
-            a.btn-flat: i.material-icons edit
-            a.btn-flat: i.material-icons close
-        tr.Empleados-Item
-          th
-            img.circle(src="images/50x50.jpeg")
-          each val in ['Felipe Rubio','felipe.andrez@live.cl','+569 83413625']
-            th= val
-          th
-            select(multiple='')
-              option(value="1") Option 1
-              option(value="2") Option 2
-              option(value="3") Option 3
-          th
-            p 3
-          th
-            a.btn-flat: i.material-icons edit
-            a.btn-flat: i.material-icons close
+            form.Destroy-Button
+              input.btn-flat.material-icons(value="close",type="submit")
