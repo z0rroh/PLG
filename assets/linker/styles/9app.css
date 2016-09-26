@@ -1307,11 +1307,11 @@ div.material-table {
     div.material-table .table-footer .select-wrapper input.select-dropdown {
       margin: 0;
       border-bottom: none;
-      height: auto;
+      height: 1;
       line-height: normal;
       font-size: 12px;
       width: 40px;
-      text-align: right; }
+      text-align: center; }
     div.material-table .table-footer select {
       background-color: transparent;
       width: auto;
@@ -1342,7 +1342,7 @@ div.material-table {
   div.material-table table th {
     font-size: 16px;
     font-weight: 500;
-    color: #757575;
+    color: #424242;
     cursor: pointer;
     white-space: nowrap;
     padding: 0;
@@ -1350,6 +1350,15 @@ div.material-table {
     padding-left: 56px;
     vertical-align: middle;
     outline: none !important; }
+    div.material-table table th .select-dropdown {
+      margin-bottom: .2em; }
+    div.material-table table th img {
+      padding-top: .5rem; }
+    div.material-table table th a {
+      padding: 0 .5em;
+      color: #424242; }
+      div.material-table table th a i {
+        font-size: 1.5em; }
     div.material-table table th.sorting_asc, div.material-table table th.sorting_desc {
       color: rgba(0, 0, 0, 0.87); }
     div.material-table table th.sorting:after, div.material-table table th.sorting_asc:after, div.material-table table th.sorting_desc:after {
@@ -1376,6 +1385,6 @@ div.material-table {
   div.material-table table tbody tr:hover {
     background-color: #EEE; }
   div.material-table table th:first-child, div.material-table table td:first-child {
-    padding: 0 0 0 24px; }
+    padding: 0 0 0 1em; }
   div.material-table table th:last-child, div.material-table table td:last-child {
     padding: 0 14px 0 0; }

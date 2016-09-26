@@ -90,11 +90,11 @@ div.material-table
     .select-wrapper input.select-dropdown
       margin: 0
       border-bottom: none
-      height: auto
+      height: 1
       line-height: normal
       font-size: 12px
       width: 40px
-      text-align: right
+      text-align: center
     select
       background-color: transparent
       width: auto
@@ -126,7 +126,7 @@ div.material-table
     th
       font-size: 16px
       font-weight: 500
-      color: #757575
+      color: #424242
       cursor: pointer
       white-space: nowrap
       padding: 0
@@ -134,6 +134,15 @@ div.material-table
       padding-left: 56px
       vertical-align: middle
       outline: none !important
+      .select-dropdown
+        margin-bottom: .2em
+      img
+        padding-top: .5rem
+      a
+        padding: 0 .5em
+        color: #424242
+        i
+          font-size: 1.5em
       &.sorting_asc, &.sorting_desc
         color: rgba(0, 0, 0, 0.87)
       &.sorting:after, &.sorting_asc:after, &.sorting_desc:after
@@ -160,6 +169,6 @@ div.material-table
     tbody tr:hover
       background-color: #EEE
     th:first-child, td:first-child
-      padding: 0 0 0 24px
+      padding: 0 0 0 1em
     th:last-child, td:last-child
       padding: 0 14px 0 0
