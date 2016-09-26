@@ -1019,7 +1019,7 @@ body {
 
 .background {
   background-color: #8bc34a;
-  height: 100vh; }
+  min-height: 100vh; }
 
 .Login-Card {
   margin-top: 10em; }
@@ -1359,6 +1359,18 @@ div.material-table {
       color: #424242; }
       div.material-table table th a i {
         font-size: 1.5em; }
+    div.material-table table th .Destroy-Button {
+      display: inline-block;
+      padding: 0 .5em;
+      height: 36px;
+      line-height: 36px; }
+      div.material-table table th .Destroy-Button input {
+        color: #424242;
+        font-size: 1.5em;
+        height: 36px;
+        line-height: 36px;
+        padding: 0 .5rem;
+        width: 100%; }
     div.material-table table th.sorting_asc, div.material-table table th.sorting_desc {
       color: rgba(0, 0, 0, 0.87); }
     div.material-table table th.sorting:after, div.material-table table th.sorting_asc:after, div.material-table table th.sorting_desc:after {
