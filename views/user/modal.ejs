@@ -3,23 +3,23 @@
     <h4>Edicion de Usuario</h4>
     <form id="Empleado-Send" action="" method="PUT" class="row center-xs">
       <div class="col-xs-12 input-field">
-        <input id="Empleado-Name" name="name" class="validate" id="Signin-Name" type="text">
-        <label for="Signin-Name">Nombre</label>
+        <input id="Empleado-Name" name="name" class="validate" type="text" placeholder="Nombre">
+        <label for="Empleado-Name">Nombre</label>
       </div>
       <div class="col-xs-12 input-field">
-        <input id="Empleado-Email" name="email" class="validate" id="Signin-Email" type="Email">
-        <label for="Signin-Email">Email</label>
+        <input id="Empleado-Email" name="email" class="validate" type="email" placeholder="Email">
+        <label for="Empleado-Email">Email</label>
       </div>
       <div class="col-xs-12 input-field">
-        <input id="Empleado-Phone" name="phone" class="validate" id="Signin-Phone" type="text">
-        <label for="Signin-Phone">Telefono</label>
+        <input id="Empleado-Phone" name="phone" class="validate" type="text" placeholder="Teléfono">
+        <label for="Empleado-Phone">Telefono</label>
       </div>
       <div class="col-xs-12 input-field">
-        <input id="Empleado-Tokens" name="tokens" class="validate" id="Signin-Tokens" type="text">
-        <label for="Signin-Tokens">Tokens</label>
+        <input id="Empleado-Tokens" name="tokens" class="validate" type="text" placeholder="Tokens">
+        <label for="Empleado-Tokens">Tokens</label>
       </div>
       <div class="Login-Button col-lg-12 input-field">
-        <input class="btn btn-large" type="submit" value="Terminar"></input>
+        <input class="btn btn-large" type="submit" value="Enviar"></input>
         <input type="hidden" name="_csrf" value="&lt;%=_csrf %&gt;">
       </div>
     </form>

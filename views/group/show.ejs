@@ -18,7 +18,7 @@
           <tbody>
             <% _.each(users, function(user){ %>
             <tr class="Empleados-Item">
-              <th><img class="circle" src="images/50x50.jpeg"></th>
+              <th><img class="circle" src="/images/50x50.jpeg"></th>
               <th><%= user.name %></th>
               <th><%= user.email %></th>
               <th><%= user.phone %></th>
@@ -35,7 +35,7 @@
 
               <th>
                 <a class="btn-flat Empleado-Edit" href="#Empleado-Modal" value="<%= user.id %>" data-link="ajax"><i class="material-icons">edit</i></a>
-                <% if(!session.User.admin){ %>
+                <% if(user.admin==false){ %>
                 <form class="Destroy-Button" action="/user/destroy/<%= user.id %>" method="POST" accept-charset="utf-8">
                   <input type="hidden" name="_method" value="Clear"/>
                   <input class="btn-flat material-icons" value="close" type="submit">
