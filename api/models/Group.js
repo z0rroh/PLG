@@ -38,7 +38,11 @@ module.exports = {
     anuncios:{
       collection: 'anuncio',
       via: 'group'
-    }
+    },
+    turnos: {
+      collection: 'turno',
+      via: 'group'
+    },
   },
   findGroupByKey: function(value,cb){
     Group.findOne({key:value}).exec(function (err, group) {
