@@ -84,7 +84,7 @@ module.exports = {
 			res.redirect('/admin');
 		});
 	},
-<<<<<<< HEAD
+
 
 	showGroups: function(req,res,next){
 
@@ -96,8 +96,7 @@ module.exports = {
 				});
 	}
 
-=======
->>>>>>> f30714470068782c26e76841e69c8d07e767af46
+
 
 
 };
