@@ -37,7 +37,8 @@ module.exports.routes = {
   'GET /user/todos': {blueprint: 'find'},
   'GET /user/group': 'UserController.addGroup',
   'GET /turnos/index': 'TurnosController.index',
-  'GET /salir': 'SessionController.destroy'
+  'GET /salir': 'SessionController.destroy',
+  'GET /admin': 'TurnosController.index'
   //'delete /userDelete/:id?': 'UserController.destroy'
 
 

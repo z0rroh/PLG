@@ -13,6 +13,10 @@ module.exports = {
   		required: true
 
   	},
+    estado:{
+      type: 'bool';
+      default: false;
+    }
   	description:{
   		type: 'text',
   		required: true

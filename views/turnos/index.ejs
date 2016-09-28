@@ -1,3 +1,293 @@
-<p> hello </p>
+<section class="Layout-Content row center-lg">
+  <section class="Semana col-lg-10">
 
-<%- partial('../turnos/modal') %>
+    <div class="Dia">
+      <div class="row start-lg">
+        <div class="Dia-Title col-lg-12">
+          <p>Lunes</p>
+          <div class="divider"></div>
+        </div>
+        <div class="Dia-Content col-lg-12">
+            <div class="Turnos">
+              <div class="row center-lg">
+                <% if(ln){ %>
+                  <% _.each(ln, function(turno){ %>
+                <section class="Turno col-lg-5 card">
+                  <div class="Turno-Content">
+                    <div class="row start-lg">
+                      <div class="Turno-Info col-lg-4">
+                        <h5><%= turno.name %></h5>
+                        <p><%= turno.start + ' - '+turno.end %></p>
+                      </div>
+                      <div class="Turno-Log col-lg-4">
+                        <h4><%= turno.cupos %></h4>
+                      </div>
+                      <div class="Turno-Button col-lg-4">
+                        <form class="Destroy-Button" action="/turnos/destroy/<%= turno.id %>" method="POST" accept-charset="utf-8">
+                          <input type="hidden" name="_method" value="Clear"/>
+                          <input class="btn-flat material-icons" value="close" type="submit">
+                          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <% }); %>
+              <% } else{%>
+                <h3>No hay registros </h3>
+              <% } %>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="Dia">
+      <div class="row start-lg">
+        <div class="Dia-Title col-lg-12">
+          <p>Martes</p>
+          <div class="divider"></div>
+        </div>
+        <div class="Dia-Content col-lg-12">
+            <div class="Turnos">
+              <div class="row center-lg">
+                <% if(mr){ %>
+                  <% _.each(mr, function(turno){ %>
+                <section class="Turno col-lg-5 card">
+                  <div class="Turno-Content">
+                    <div class="row start-lg">
+                      <div class="Turno-Info col-lg-4">
+                        <h5><%= turno.name %></h5>
+                        <p><%= turno.start + ' - '+turno.end %></p>
+                      </div>
+                      <div class="Turno-Log col-lg-4">
+                        <h4><%= turno.cupos %></h4>
+                      </div>
+                      <div class="Turno-Button col-lg-4">
+                        <form class="Destroy-Button" action="/turnos/destroy/<%= turno.id %>" method="POST" accept-charset="utf-8">
+                          <input type="hidden" name="_method" value="Clear"/>
+                          <input class="btn-flat material-icons" value="close" type="submit">
+                          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <% }); %>
+              <% } else{%>
+                <h3>No hay registros </h3>
+              <% } %>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="Dia">
+      <div class="row start-lg">
+        <div class="Dia-Title col-lg-12">
+          <p>Miercoles</p>
+          <div class="divider"></div>
+        </div>
+        <div class="Dia-Content col-lg-12">
+            <div class="Turnos">
+              <div class="row center-lg">
+                <% if(mier){ %>
+                  <% _.each(mier, function(turno){ %>
+                <section class="Turno col-lg-5 card">
+                  <div class="Turno-Content">
+                    <div class="row start-lg">
+                      <div class="Turno-Info col-lg-4">
+                        <h5><%= turno.name %></h5>
+                        <p><%= turno.start + ' - '+turno.end %></p>
+                      </div>
+                      <div class="Turno-Log col-lg-4">
+                        <h4><%= turno.cupos %></h4>
+                      </div>
+                      <div class="Turno-Button col-lg-4">
+                        <form class="Destroy-Button" action="/turnos/destroy/<%= turno.id %>" method="POST" accept-charset="utf-8">
+                          <input type="hidden" name="_method" value="Clear"/>
+                          <input class="btn-flat material-icons" value="close" type="submit">
+                          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <% }); %>
+              <% } else{%>
+                <h3>No hay registros </h3>
+              <% } %>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="Dia">
+      <div class="row start-lg">
+        <div class="Dia-Title col-lg-12">
+          <p>Jueves</p>
+          <div class="divider"></div>
+        </div>
+        <div class="Dia-Content col-lg-12">
+            <div class="Turnos">
+              <div class="row center-lg">
+                <% if(jv){ %>
+                  <% _.each(jv, function(turno){ %>
+                <section class="Turno col-lg-5 card">
+                  <div class="Turno-Content">
+                    <div class="row start-lg">
+                      <div class="Turno-Info col-lg-4">
+                        <h5><%= turno.name %></h5>
+                        <p><%= turno.start + ' - '+turno.end %></p>
+                      </div>
+                      <div class="Turno-Log col-lg-4">
+                        <h4><%= turno.cupos %></h4>
+                      </div>
+                      <div class="Turno-Button col-lg-4">
+                        <form class="Destroy-Button" action="/turnos/destroy/<%= turno.id %>" method="POST" accept-charset="utf-8">
+                          <input type="hidden" name="_method" value="Clear"/>
+                          <input class="btn-flat material-icons" value="close" type="submit">
+                          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <% }); %>
+              <% } else{%>
+                <h3>No hay registros </h3>
+              <% } %>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="Dia">
+      <div class="row start-lg">
+        <div class="Dia-Title col-lg-12">
+          <p>Viernes</p>
+          <div class="divider"></div>
+        </div>
+        <div class="Dia-Content col-lg-12">
+            <div class="Turnos">
+              <div class="row center-lg">
+                <% if(vr){ %>
+                  <% _.each(vr, function(turno){ %>
+                <section class="Turno col-lg-5 card">
+                  <div class="Turno-Content">
+                    <div class="row start-lg">
+                      <div class="Turno-Info col-lg-4">
+                        <h5><%= turno.name %></h5>
+                        <p><%= turno.start + ' - '+turno.end %></p>
+                      </div>
+                      <div class="Turno-Log col-lg-4">
+                        <h4><%= turno.cupos %></h4>
+                      </div>
+                      <div class="Turno-Button col-lg-4">
+                        <form class="Destroy-Button" action="/turnos/destroy/<%= turno.id %>" method="POST" accept-charset="utf-8">
+                          <input type="hidden" name="_method" value="Clear"/>
+                          <input class="btn-flat material-icons" value="close" type="submit">
+                          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <% }); %>
+              <% } else{%>
+                <h3>No hay registros </h3>
+              <% } %>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="Dia">
+      <div class="row start-lg">
+        <div class="Dia-Title col-lg-12">
+          <p>Sabado</p>
+          <div class="divider"></div>
+        </div>
+        <div class="Dia-Content col-lg-12">
+            <div class="Turnos">
+              <div class="row center-lg">
+                <% if(sb){ %>
+                  <% _.each(sb, function(turno){ %>
+                <section class="Turno col-lg-5 card">
+                  <div class="Turno-Content">
+                    <div class="row start-lg">
+                      <div class="Turno-Info col-lg-4">
+                        <h5><%= turno.name %></h5>
+                        <p><%= turno.start + ' - '+turno.end %></p>
+                      </div>
+                      <div class="Turno-Log col-lg-4">
+                        <h4><%= turno.cupos %></h4>
+                      </div>
+                      <div class="Turno-Button col-lg-4">
+                        <form class="Destroy-Button" action="/turnos/destroy/<%= turno.id %>" method="POST" accept-charset="utf-8">
+                          <input type="hidden" name="_method" value="Clear"/>
+                          <input class="btn-flat material-icons" value="close" type="submit">
+                          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <% }); %>
+              <% } else{%>
+                <h3>No hay registros </h3>
+              <% } %>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="Dia">
+      <div class="row start-lg">
+        <div class="Dia-Title col-lg-12">
+          <p>Domingo</p>
+          <div class="divider"></div>
+        </div>
+        <div class="Dia-Content col-lg-12">
+            <div class="Turnos">
+              <div class="row center-lg">
+                <% if(dg){ %>
+                  <% _.each(dg, function(turno){ %>
+                <section class="Turno col-lg-5 card">
+                  <div class="Turno-Content">
+                    <div class="row start-lg">
+                      <div class="Turno-Info col-lg-4">
+                        <h5><%= turno.name %></h5>
+                        <p><%= turno.start + ' - '+turno.end %></p>
+                      </div>
+                      <div class="Turno-Log col-lg-4">
+                        <h4><%= turno.cupos %></h4>
+                      </div>
+                      <div class="Turno-Button col-lg-4">
+                        <form class="Destroy-Button" action="/turnos/destroy/<%= turno.id %>" method="POST" accept-charset="utf-8">
+                          <input type="hidden" name="_method" value="Clear"/>
+                          <input class="btn-flat material-icons" value="close" type="submit">
+                          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <% }); %>
+              <% } else{%>
+                <h3>No hay registros </h3>
+              <% } %>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<%- partial('./modal') %>

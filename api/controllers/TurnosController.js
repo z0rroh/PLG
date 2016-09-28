@@ -53,8 +53,37 @@ module.exports = {
 	index: function(req, res, next){
 		Turno.find(req.param(req.session.User.id_group),function foundUsers(err, turnos){
 			if(err) return next();
-			res.view({
-				turnos: turnos
+			var ln = [];
+			var mr = [];
+			var mier = [];
+			var jv = [];
+			var vr = [];
+			var sb = [];
+			var dg = [];
+			turnos.map(function(turno){
+				if(turno.day === 'ln')
+					ln.push(turno)
+				if(turno.day === 'mr')
+					mr.push(turno)
+				if(turno.day === 'mier')
+					mier.push(turno)
+				if(turno.day === 'jv')
+					jv.push(turno)
+				if(turno.day === 'vr')
+					vr.push(turno)
+				if(turno.day === 'sb')
+					sb.push(turno)
+				if(turno.day === 'dg')
+					dg.push(turno)
+			})
+			res.view('turnos/index',{
+				ln: ln,
+				mr: mr,
+				mier: mier,
+				jv: jv,
+				vr: vr,
+				sb: sb,
+				dg: dg
 			});
 
 		});
@@ -80,11 +109,11 @@ module.exports = {
 	},
 
 	destroy: function(req, res, next){
-		User.destroy(req.param('id'), function userDestroy(err){
+		Turno.destroy(req.param('id'), function userDestroy(err){
 			if(err){
 				return next(err);
 			}
-			res.redirect('/group/show');
+			res.redirect('/turnos/index');
 		});
 	}
 };

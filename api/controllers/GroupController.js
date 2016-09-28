@@ -16,7 +16,7 @@ module.exports = {
 
 	show: function(req, res, next){
 		User.usersFindByGroup(req.session.User.id_group, function(err,users){
-			
+
 			res.view({
 				users: users
 			});
@@ -68,6 +68,22 @@ module.exports = {
 			res.redirect('group/index');
 		});
 	},
+	active: function(req,res,next){
+		Group.findOne(req.session.User.id_group,{estado: true},function groupSetEstado(err){
+			if(err){
+				return next(err);
+			}
+			res.redirect('/admin');
+		});
+	,
+	desactive: function(req,res,next){
+		Group.findOne(req.session.User.id_group,{estado: false},function groupSetEstado(err){
+			if(err){
+				return next(err);
+			}
+			res.redirect('/admin');
+		});
+	}
 
 
 
