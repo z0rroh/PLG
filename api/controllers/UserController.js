@@ -38,10 +38,13 @@ module.exports = {
   				}
   				return res.redirect('user/new');
   			}
-
   			req.session.authenticated = true;
   			req.session.User = user;
 
+        var sucess =[{message: 'Usuario creado correctamente'}]
+        req.session.flash={
+          err: sucess
+        }
   			res.redirect('user/group');
 
   		});
@@ -78,7 +81,7 @@ module.exports = {
 	},
 
 	update: function(req, res, next){
-    
+
 		User.update(req.param('id'), req.params.all(), function userUpdate(err){
 			if(err) {
 				return res.redirect('user/edit/' + req.param('id'));
