@@ -227,7 +227,6 @@ $(document).ready(function(){
     $('#Nav-Grupos').addClass('is-active');
   }
   if(pathArray[1] == 'turnos'){
-    $('#Nav-Button').append('<a class="Nav-Button btn-floating btn-large waves-effect waves-light" href="#Empleado-Modal"><i class="material-icons">add</i></a>')
     $('#Nav-Turnos').addClass('is-active');
   }
   if(pathArray[1] == 'anuncios'){
