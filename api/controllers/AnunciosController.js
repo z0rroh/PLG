@@ -30,7 +30,7 @@ module.exports = {
 		Anuncio.create(anuncioObj,function (err, anuncio) {
 
 			if(err){
-				var noAnuncio=[{message: 'Ingrese un anuncio'}]
+				var noAnuncio=[{message: 'No se creo el anuncio'}]
 				req.session.flash={
 						err: noAnuncio
 				}
@@ -38,7 +38,10 @@ module.exports = {
 			}
 			//console.log("se creo bien el anuncio");
 
-
+			var sucessAnuncio=[{message: 'Anuncio creado correctamente'}]
+			req.session.flash={
+					err: sucessAnuncio
+			}
 			res.redirect('anuncios/index');
 
 		});
