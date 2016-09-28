@@ -220,7 +220,7 @@ $(document).ready(function(){
   });
   var pathArray = window.location.pathname.split( '/' );
   var path = ''
-  if(pathArray[1] == 'turnos'){
+  if(pathArray[1] == 'admin'){
     $('#Nav-Button').append('<a class="Nav-Button btn-floating btn-large" href="#Turnos-Modal"><i class="material-icons">add</i></a>')
   }
   if(pathArray[1] == 'group'){
