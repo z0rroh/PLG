@@ -13,29 +13,25 @@ module.exports = {
 
 	},
 	create: function(req, res,next){
-		console.log(req.session.User);
-		var turnoObj={
-			name: req.param('name'),
-			start: req.param('start'),
-			end: req.param('end'),
-			day: req.param('day'),
-			group: req.session.User.id_group
-		}
-		//console.log(anuncioObj);
-		Turno.create(turnoObj,function (err, turno) {
-
-			if(err){
-				req.session.flash={
-					err:err
+		var params = req.params.all();
+		var turnosObj=[]
+		for( var property in params){
+  		if(params[property] === 'on'){
+				auxObj= {
+				  start : req.param('start'),
+				  end : req.param('end'),
+				  name: req.param('name'),
+				  cupos: req.param('cupos'),
+					day: property,
 				}
-				return res.redirect('turnos/new');
+				turnosObj.push(auxObj);
 			}
-			//console.log("se creo bien el anuncio");
-
-
-			res.redirect('turnos/new');
-
+		}
+		Turno.create(turnosObj).exec(function(err, created){
+			res.redirect('/turnos/index');
 		});
+
+		//console.log(anuncioObj);
 
 	},
 
@@ -48,10 +44,8 @@ module.exports = {
 	},
 
 	index: function(req, res, next){
-		console.log(req.session.User.id_group);
 		Turno.find(req.param(req.session.User.id_group),function foundUsers(err, turnos){
 			if(err) return next();
-			console.log(turnos);
 			res.view({
 				turnos: turnos
 			});
@@ -70,7 +64,6 @@ module.exports = {
 	},
 
 	update: function(req, res, next){
-		console.log(req.params.all());
 		User.update(req.param('id'), req.params.all(), function userUpdate(err){
 			if(err) {
 				return res.redirect('user/edit/' + req.param('id'));

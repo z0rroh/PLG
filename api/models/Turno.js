@@ -13,16 +13,19 @@ module.exports = {
       required: true
     },
     start:{
-      type:'int',
+      type:'string',
       required: true
     },
     end:{
-      type:'int',
+      type:'string',
       required: true
     },
     day:{
       type: 'string',
       required: true
+    },
+    cupos:{
+      type: 'int'
     },
     group: {
       model: 'group'
