@@ -10,7 +10,7 @@
               <th>Nombre</th>
               <th>Email</th>
               <th>Teléfono</th>
-              <th>Grupos</th>
+              <th>Grupo</th>
               <th>Tokens</th>
               <th>Acciones</th>
             </tr>
@@ -24,9 +24,7 @@
               <th><%= user.phone %></th>
               <th>
                 <select multiple="">
-                  <option value="1">Option 1</option>
-                  <option value="2">Option 2</option>
-                  <option value="3">Option 3</option>
+                  <option value="1"><%= session.Group.name  %></option>
                 </select>
               </th>
               <th>
