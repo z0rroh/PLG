@@ -134,6 +134,7 @@ module.exports = {
 				   end: turnos[i].end,
 				   day: turnos[i].day,
 				   cupoTotal: turnos[i].cupo,
+					 cupoActual: 0,
 				   estado: 'activo',
 				   group: req.session.User.id_group,
 				   id_turno: turnos[i].id,

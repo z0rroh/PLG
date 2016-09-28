@@ -85,7 +85,6 @@ module.exports = {
             sails.log("Error occurred in database operation");
           }
           else {
-            console.log(turnologs);
             res.send(turnologs);
           }
         });
