@@ -32,8 +32,13 @@ module.exports = {
       defaultsTo: '0'
     },
     estado:{
-      type: 'boolean'
+      type: 'boolean',
+      required: true
     },
+    expiracion:{
+      type: 'string',
+      required: true
+    }
     group: {
       type: 'string',
       required: true
