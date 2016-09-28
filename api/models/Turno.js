@@ -24,7 +24,7 @@ module.exports = {
       type: 'string',
       required: true
     },
-    cupos:{
+    cupo:{
       type: 'int'
     },
     group: {

@@ -18,10 +18,10 @@ module.exports = {
 		for( var property in params){
   		if(params[property] === 'on'){
 				auxObj= {
-				  start : req.param('start'),
+				  start: req.param('start'),
 				  end : req.param('end'),
 				  name: req.param('name'),
-				  cupos: req.param('cupos'),
+				  cupo: req.param('cupos'),
 					day: property,
 					group: req.session.User.id_group,
 				}
@@ -33,11 +33,11 @@ module.exports = {
 				req.session.flash={
 						err: noTurn
 				}
-				res.redirect('/turnos/index');
+				res.redirect('/admin');
 		}
 		else{
 				Turno.create(turnosObj).exec(function(err, created){
-				res.redirect('/turnos/index');
+				res.redirect('/admin');
 			});
 		}
 
@@ -128,14 +128,12 @@ module.exports = {
 			}
 			if(turnos){
 				for(var i in turnos){
-					console.log(turnos.length);
 					var turnologObj={
 				   name: turnos[i].name,
 				   start: turnos[i].start,
 				   end: turnos[i].end,
 				   day: turnos[i].day,
-				   cupoTotal: turnos[i].cupoTotal,
-				   cupoActual: turnos[i].cupoActual,
+				   cupoTotal: turnos[i].cupo,
 				   estado: 'activo',
 				   group: req.session.User.id_group,
 				   id_turno: turnos[i].id,
@@ -144,7 +142,7 @@ module.exports = {
 						if(err){
 
 						}
-						console.log('creado');
+
 					});
 				}
 				res.redirect('/admin');
