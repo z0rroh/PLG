@@ -84,6 +84,20 @@ module.exports = {
 			res.redirect('/admin');
 		});
 	},
+<<<<<<< HEAD
+
+	showGroups: function(req,res,next){
+
+				User.findOne(req.session.User.id).populateAll('groups').exec(function(err, user){
+					if(err) return next(err);
+					res.view({
+						user: user
+					});
+				});
+	}
+
+=======
+>>>>>>> f30714470068782c26e76841e69c8d07e767af46
 
 
 };
