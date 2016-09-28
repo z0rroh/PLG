@@ -5,11 +5,19 @@
         <div class="Login-Logo"><img class="circle responsive-img" src="/images/login.jpeg"></div>
         <form action="/session/create" method="post" class="row center-xs">
           <% if(flash && flash.err) { %>
-            <ul class="alert alert-success">
-              <% Object.keys(flash.err).forEach(function(error){ %>
-              <li> <%- JSON.stringify(flash.err[error]) %> </li>
-                <% }); %>
-            </ul>
+            <% Object.keys(flash.err).forEach(function(error){ %>
+              <% var error1 = flash.err[error] %>
+            <script>
+            var $toastContent = "<%= error1.message %>";
+            document.addEventListener("DOMContentLoaded", function(event) {
+              var displayCustomHTMLToast = function (content) {
+                Materialize.toast(content, 5000);
+              }
+              displayCustomHTMLToast($toastContent);
+            });
+            </script>
+            <% }); %>
+
           <% } %>
           <div class="col-xs-12 input-field"><i class="material-icons prefix">mail</i>
             <input class="validate" id="Signin-Email" type="email" name="email">

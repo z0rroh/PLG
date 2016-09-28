@@ -2,20 +2,35 @@
   <div class="modal-content">
     <h4>Nuevo turno</h4>
     <form action="/turnos/create" method="PUT" class="row center-xs">
+      <% if(flash && flash.err) { %>
+        <% Object.keys(flash.err).forEach(function(error){ %>
+          <% var error1 = flash.err[error] %>
+        <script>
+        var $toastContent = "<%= error1.message %>";
+        document.addEventListener("DOMContentLoaded", function(event) {
+          var displayCustomHTMLToast = function (content) {
+            Materialize.toast(content, 5000);
+          }
+          displayCustomHTMLToast($toastContent);
+        });
+        </script>
+        <% }); %>
+
+      <% } %>
       <div class="col-lg-6 input-field">
-        <input name="start" type="text" class="clockpicker form-control" value="09:30">
+        <input name="start" type="text" class="clockpicker form-control" value="09:30" required>
         <label for="Empleado-Email">Inicio</label>
       </div>
       <div class="col-lg-6 input-field">
-        <input name="end" type="text" class="clockpicker form-control" value="10:30">
+        <input name="end" type="text" class="clockpicker form-control" value="10:30" required>
         <label for="Empleado-Email">Termino</label>
       </div>
       <div class="col-xs-12 input-field">
-        <input id="Turno-Nombre" name="name" class="validate" type="text" >
+        <input id="Turno-Nombre" name="name" class="validate" type="text" required>
         <label for="Empleado-Email">Nombre</label>
       </div>
       <div class="col-xs-12 input-field">
-        <input id="Turno-Cupos" name="cupos" class="validate" type="text" >
+        <input id="Turno-Cupos" name="cupos" class="validate" type="text" required>
         <label for="Turno-Cupos">Cupos</label>
       </div>
       <div class="Turno-Day col-lg">

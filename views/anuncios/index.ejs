@@ -8,7 +8,7 @@
           <form action="/anuncios/create" class="box" method="POST" accept-charset="utf-8">
             <div class="row start-lg">
               <div class="col-lg-12">
-                <textarea name="text" id="text" class="AnuncioNuevo-Text" placeholder="Escribe un comentario..."></textarea>
+                <textarea name="text" id="text" class="AnuncioNuevo-Text" placeholder="Escribe un comentario..." required></textarea>
               </div>
               <div class="col-lg-12">
                 <input type="submit" class="AnuncioNuevo-Btn btn" value="Enviar"/>
@@ -21,8 +21,8 @@
     </div>
   </section>
   <% } %>
-  
-  <% _.each(anuncios, function(anuncio){ %> 
+
+  <% _.each(anuncios, function(anuncio){ %>
   <section class="col-lg-8 card">
     <div class="Anuncio">
       <div class="row start-lg">

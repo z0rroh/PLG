@@ -36,7 +36,7 @@ module.exports = {
 
                   if (err) return next(err);
                   if(!valid) {
-                    var usernamePasswordMismatchError = [{ name: 'usernamePasswordMismatch', message: 'Conbinacion de email y contraseña invalida' }]
+                    var usernamePasswordMismatchError = [{ name: 'usernamePasswordMismatch', message: 'Combinacion de email y contraseña invalida' }]
                     req.session.flash = {
                       err: usernamePasswordMismatchError
                     }
@@ -52,7 +52,7 @@ module.exports = {
 											return res.redirect('/user/group')
 									}
                   //redirect the user to the profile page
-                  
+
                   Group.findOne(req.session.User.id_group, function foundGroup(err, group){
                     if (err) return next(err);
                     req.session.Group = group;

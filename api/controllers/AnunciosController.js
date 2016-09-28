@@ -30,8 +30,9 @@ module.exports = {
 		Anuncio.create(anuncioObj,function (err, anuncio) {
 
 			if(err){
+				var noAnuncio=[{message: 'Ingrese un anuncio'}]
 				req.session.flash={
-					err:err
+						err: noAnuncio
 				}
 				return res.redirect('anuncios/new');
 			}
@@ -43,8 +44,8 @@ module.exports = {
 		});
 	},
 	index: function(req, res, next){
-		
-		Anuncio.anunciosFindByGroup(req.session.User.id_group, function(err, anuncios){		
+
+		Anuncio.anunciosFindByGroup(req.session.User.id_group, function(err, anuncios){
 			res.view({
 				anuncios: anuncios
 			});

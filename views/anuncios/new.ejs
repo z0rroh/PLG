@@ -3,11 +3,19 @@
 			<div class="card-panel grey lighten-4 z-depth-4 center">
 				<form action="/anuncios/create" method="POST" accept-charset="utf-8" class="form-new">
 					<% if(flash && flash.err) { %>
-						<ul class="alert alert-success">
-							<% Object.keys(flash.err).forEach(function(error){ %>
-							<li> <%- JSON.stringify(flash.err[error]) %> </li>
-						    <% }); %>
-						</ul>
+						<% Object.keys(flash.err).forEach(function(error){ %>
+							<% var error1 = flash.err[error] %>
+						<script>
+						var $toastContent = "<%= error1.message %>";
+						document.addEventListener("DOMContentLoaded", function(event) {
+							var displayCustomHTMLToast = function (content) {
+								Materialize.toast(content, 5000);
+							}
+							displayCustomHTMLToast($toastContent);
+						});
+						</script>
+						<% }); %>
+
 					<% } %>
 					<div class="row">
 						<h4 class="center">Nuevo anuncio</h4>

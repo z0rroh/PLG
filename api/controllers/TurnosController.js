@@ -27,11 +27,18 @@ module.exports = {
 				turnosObj.push(auxObj);
 			}
 		}
-		Turno.create(turnosObj).exec(function(err, created){
-			res.redirect('/turnos/index');
-		});
-
-		//console.log(anuncioObj);
+		if (turnosObj.length == 0){
+				var noTurn=[{message: 'Debes seleccionar almenos un dia para crear un turno'}]
+				req.session.flash={
+						err: noTurn
+				}
+				res.redirect('/turnos/index');
+		}
+		else{
+				Turno.create(turnosObj).exec(function(err, created){
+				res.redirect('/turnos/index');
+			});
+		}
 
 	},
 

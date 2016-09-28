@@ -47,6 +47,12 @@ module.exports.policies = {
   'anuncio':{
     new: 'flash',
     index: 'userCanSeeProfile'
+  },
+  'turno':{
+    create: 'flash'
+  },
+  'session':{
+    new: 'flash'
   }
 
 

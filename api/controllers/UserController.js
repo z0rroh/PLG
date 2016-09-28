@@ -78,7 +78,7 @@ module.exports = {
 	},
 
 	update: function(req, res, next){
-    console.log(req.params.all());
+    
 		User.update(req.param('id'), req.params.all(), function userUpdate(err){
 			if(err) {
 				return res.redirect('user/edit/' + req.param('id'));
@@ -108,9 +108,10 @@ module.exports = {
   addGroup: function(req,res){
     Group.findGroupByKey(req.param('key'),function(err,group){
       if(err){
-        req.session.flash={
-          err:err
-        }
+        var NoValidate =[{message: 'La clave de grupo ingresa no es valida'}]
+  			req.session.flash={
+  				err: NoValidate
+  			}
         return res.view('user/group');
       }
       User.findOne({id:req.session.User.id})
