@@ -38,7 +38,8 @@ module.exports.routes = {
   'GET /user/group': 'UserController.addGroup',
   'GET /turnos/index': 'TurnosController.index',
   'GET /salir': 'SessionController.destroy',
-  'GET /admin': 'TurnosController.index'
+  'GET /admin': 'TurnosController.index',
+  'GET /populateturnos': 'TurnosController.populateTurnolog'
   //'delete /userDelete/:id?': 'UserController.destroy'
 
 
