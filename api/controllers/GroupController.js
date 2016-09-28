@@ -75,7 +75,7 @@ module.exports = {
 			}
 			res.redirect('/admin');
 		});
-	,
+	},
 	desactive: function(req,res,next){
 		Group.findOne(req.session.User.id_group,{estado: false},function groupSetEstado(err){
 			if(err){

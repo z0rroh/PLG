@@ -14,9 +14,9 @@ module.exports = {
 
   	},
     estado:{
-      type: 'bool';
-      default: false;
-    }
+      type: 'boolean',
+      defaulsTo: false
+    },
   	description:{
   		type: 'text',
   		required: true
