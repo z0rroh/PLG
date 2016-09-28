@@ -48,7 +48,7 @@ module.exports = {
 					}
 					return res.redirect('empresa/new');
 				}
-				return res.redirect('empresa/new');
+				return res.redirect('session/new');
 			});
 		});
 
