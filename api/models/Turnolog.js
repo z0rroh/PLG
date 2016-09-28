@@ -24,8 +24,15 @@ module.exports = {
       type: 'string',
       required: true
     },
-    cupos:{
+    cupoTotal:{
       type: 'int'
+    },
+    cupoActual:{
+      type: 'int',
+      defaultsTo: '0'
+    },
+    estado:{
+      type: 'boolean'
     },
     group: {
       type: 'string',
