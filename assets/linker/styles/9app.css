@@ -1417,3 +1417,20 @@ div.material-table {
 
 .clockpicker-button {
   line-height: .5em; }
+
+.Turno {
+  margin: 1em 1em; }
+
+.Turno-Info {
+  padding-left: 1em; }
+
+.Turno-Log {
+  text-align: center; }
+
+.Turno-Button {
+  text-align: center;
+  margin: auto 0; }
+  .Turno-Button a {
+    line-height: 3em; }
+  .Turno-Button i {
+    font-size: 3em; }
