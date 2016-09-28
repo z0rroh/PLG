@@ -38,7 +38,7 @@ module.exports = {
     expiracion:{
       type: 'string',
       required: true
-    }
+    },
     group: {
       type: 'string',
       required: true
