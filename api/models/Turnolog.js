@@ -32,12 +32,11 @@ module.exports = {
       defaultsTo: '0'
     },
     estado:{
-      type: 'boolean',
+      type: 'string',
       required: true
     },
     expiracion:{
-      type: 'string',
-      required: true
+      type: 'string'
     },
     group: {
       type: 'string',
@@ -45,6 +44,10 @@ module.exports = {
     },
     users:{
       type:'array'
+    },
+    id_turno:{
+      type:'string',
+      required: true
     }
   }
 };

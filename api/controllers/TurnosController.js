@@ -18,11 +18,12 @@ module.exports = {
 		for( var property in params){
   		if(params[property] === 'on'){
 				auxObj= {
-				  start : req.param('start'),
+				  start: req.param('start'),
 				  end : req.param('end'),
 				  name: req.param('name'),
-				  cupos: req.param('cupos'),
+				  cupo: req.param('cupos'),
 					day: property,
+					group: req.session.User.id_group,
 				}
 				turnosObj.push(auxObj);
 			}
@@ -32,11 +33,11 @@ module.exports = {
 				req.session.flash={
 						err: noTurn
 				}
-				res.redirect('/turnos/index');
+				res.redirect('/admin');
 		}
 		else{
 				Turno.create(turnosObj).exec(function(err, created){
-				res.redirect('/turnos/index');
+				res.redirect('/admin');
 			});
 		}
 
@@ -51,7 +52,7 @@ module.exports = {
 	},
 
 	index: function(req, res, next){
-		Turno.find(req.param(req.session.User.id_group),function foundUsers(err, turnos){
+		Turno.find({group:req.session.User.id_group},function foundUsers(err, turnos){
 			if(err) return next();
 			var ln = [];
 			var mr = [];
@@ -115,5 +116,37 @@ module.exports = {
 			}
 			res.redirect('/turnos/index');
 		});
-	}
+	},
+	populateTurnolog: function(req,res,next){
+		Turno.find({group: req.session.User.id_group},function(err,turnos){
+			if(err){
+				var noTurn=[{message: 'no hay turnos registrados'}]
+				req.session.flash={
+						err: noTurn
+				}
+				res.redirect('/admin');
+			}
+			if(turnos){
+				for(var i in turnos){
+					var turnologObj={
+				   name: turnos[i].name,
+				   start: turnos[i].start,
+				   end: turnos[i].end,
+				   day: turnos[i].day,
+				   cupoTotal: turnos[i].cupo,
+				   estado: 'activo',
+				   group: req.session.User.id_group,
+				   id_turno: turnos[i].id,
+				  }
+					Turnolog.findOrCreate({id_turno: turnos[i].id, estado: 'activo'},turnologObj,function (err,turnologs) {
+						if(err){
+
+						}
+
+					});
+				}
+				res.redirect('/admin');
+			}
+		});
+	},
 };
