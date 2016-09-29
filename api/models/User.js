@@ -29,7 +29,8 @@ module.exports = {
 	   		defaultsTo: false
 	  	},
 	  	image:{
-	   		type:'string'
+	   		type:'string',
+				defaultsTo : 'default_user'
 	  	},
 	  	phone:{
 	  		type: 'string',

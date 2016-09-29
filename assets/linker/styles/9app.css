@@ -1441,3 +1441,28 @@ div.material-table {
     line-height: 3em; }
   .Turno-Button i {
     font-size: 3em; }
+
+#User-anuncios-img {
+  height: 75px;
+  width: 75px;
+}
+
+#User-header-img {
+  height: 65px;
+  width: 65px;
+}
+
+#User-index-img {
+  height: 50px;
+  width: 50px;
+}
+
+#User-edit-img {
+  height: 85px;
+  width: 85px;
+}
+
+#Login-img {
+  height: 150px;
+  width: 150px;
+}
