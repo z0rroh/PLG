@@ -9,7 +9,7 @@ module.exports = {
 
   entrar:function (req,res) {
 
-      if(req.method === 'POST') {
+      if(req.isSocke && req.method === 'POST') {
         Turnolog.findOne(req.param('id'))
                 .then(function(result){
 
@@ -63,6 +63,10 @@ module.exports = {
                       });
                       req.session.User.tokens = req.session.User.tokens-1;
                     }
+                    Turnolog.publishCreate({name:turnolog.name,start:turnolog.start,end:turnolog.end,
+                    day:turnolog.day, cupoTotal: turnolog.cupoTotal, cupoActual: turnolog.cupoActual,
+                    estado: turnolog.estado,expiracion: turnolog.expiracion, group: turnolog.group,users:turnolog.users,
+                  id_turno: turnolog.id_turno});
         })
         .fail(function(err){
           req.session.flash={
@@ -70,7 +74,7 @@ module.exports = {
           }
 
         });
-        res.redirect('/anuncios/index');
+
       }
 
       else if(req.isSocket){

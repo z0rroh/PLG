@@ -146,6 +146,26 @@
       }
 
     });
+    $(document).ready(function(){
+      $('#turnolog').click(function() {
+              $.ajax({
+                  type: 'GET',
+                  url: 'http://localhost:1337/',
+                  dataType: 'json',
+                  success: function () {
+                      console.log("Success");
+                  },
+                  error: function (data) {
+                      console.log("Error.", data);
+                  }
+
+              });
+      });
+    });
+
+
+
+
     </script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </body>
