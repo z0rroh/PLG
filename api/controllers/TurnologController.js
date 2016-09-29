@@ -95,6 +95,9 @@ module.exports = {
       }
 
   },
+  vista: function(req,res){
+    res.view('/turnolog/vista');
+  }
 
 
 
