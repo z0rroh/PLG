@@ -49,7 +49,8 @@ module.exports.policies = {
     index: 'userCanSeeProfile'
   },
   'turno':{
-    create: 'flash'
+    create: 'flash',
+    show: 'userCanSeeProfile'
   },
   'session':{
     new: 'flash'

@@ -72,12 +72,12 @@ module.exports = {
         });
         res.redirect('/anuncios/index');
       }
-      /*
+
       else if(req.isSocket){
-        Chat.watch(req.socket);
+        Turnolog.watch(req.socket);
         sails.log( 'User subscribed to ' + req.socket.id );
       }
-*/
+
       if(req.method === 'GET') {
         Turnolog.find({group:req.session.User.id_group},function(err,turnologs){
           if(err) {
@@ -91,6 +91,9 @@ module.exports = {
       }
 
   },
+  vista: function(req,res){
+    res.view('/turnolog/vista');
+  }
 
 
 

@@ -44,11 +44,7 @@ module.exports = {
 	},
 
 	show: function(req, res, next){
-		Turno.findOne(req.param('id'), function userFounded(err, user){
-			if(err) return next(err);
-			if(!user) return next(err);
-			res.json(user);
-		});
+		res.view('/turnos/show');
 	},
 
 	index: function(req, res, next){
