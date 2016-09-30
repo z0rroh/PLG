@@ -2,7 +2,7 @@
 	<div class="row center-xs middle-xs">
 		<div class="col-xs-4">
 			<div class="Login-Card card-panel grey lighten-4">
-				<div class="Login-Logo"><img class="circle responsive-img" src="/images/login.jpeg"></div>
+				<div class="Login-Logo"><img id="Login-img" class="circle responsive-img" src="/images/login-img.png"></div>
 				<form action="/user/create" method="POST" class="row center-xs">
 					<% if(flash && flash.err) { %>
 						<% Object.keys(flash.err).forEach(function(error){ %>

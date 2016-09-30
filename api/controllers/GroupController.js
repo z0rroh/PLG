@@ -16,10 +16,10 @@ module.exports = {
 
 	show: function(req, res, next){
 		User.usersFindByGroup(req.session.User.id_group, function(err,users){
-
 			res.view({
 				users: users
 			});
+
 		});
 
 	},
@@ -88,7 +88,7 @@ module.exports = {
 
 	showGroups: function(req,res,next){
 
-				User.findOne(req.session.User.id).populateAll('groups').exec(function(err, user){
+				User.findOne(req.session.User.id).populate('groups').exec(function(err, user){
 					if(err) return next(err);
 					res.view({
 						user: user

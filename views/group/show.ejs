@@ -23,8 +23,10 @@
               <th><%= user.email %></th>
               <th><%= user.phone %></th>
               <th>
-                <select multiple="">
-                  <option value="1"><%= session.Group.name  %></option>
+                <select class="subGroups" id="subGroups" multiple="" data-link="ajax" >
+
+                  <option value=""></option>
+
                 </select>
               </th>
               <th>

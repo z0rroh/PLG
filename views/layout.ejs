@@ -162,6 +162,33 @@
               });
       });
     });
+    -----------
+/*
+    $(document).ready(function (){
+
+      $(".subGroups").click(function(){
+        if($(this).data("link") == "ajax"){
+          var group = $(this).attr('value');
+          var ajaxURL = '/group/showGroups/' + group
+          ajaxPage(ajaxURL);
+
+          return false;
+        }
+      });
+
+      function ajaxPage(url){
+        $.get({
+          url: url
+        }).done(function(data){
+          console.log(data);
+          //$("#Empleado-Name").val(data.name);
+
+        });
+      }
+
+    });
+*/
+-------
 
 
 
