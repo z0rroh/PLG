@@ -57,6 +57,5 @@ module.exports = {
       }
       return cb(null,group);
     });
-
   }
 };

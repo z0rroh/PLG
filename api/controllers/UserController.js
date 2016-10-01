@@ -81,12 +81,18 @@ module.exports = {
 	},
 
 	update: function(req, res, next){
+    var userObj={
+      name : req.param('name'),
+      email : req.param('email'),
+      phone: req.param('phone'),
+    }
 
-		User.update(req.param('id'), req.params.all(), function userUpdate(err){
+		User.update(req.param('id'), userObj, function userUpdate(err){
 			if(err) {
 				return res.redirect('user/edit/' + req.param('id'));
 			}
-			res.redirect('/group/show');
+    	res.redirect('/group/show');
+
 		});
 	},
 

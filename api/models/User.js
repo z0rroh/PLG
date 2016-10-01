@@ -28,8 +28,8 @@ module.exports = {
 	   		type:'boolean',
 	   		defaultsTo: false
 	  	},
-	  	image:{
-	   		type:'string',
+	  	user_image:{
+	   		model: 'archivo',
 				defaultsTo : 'default_user'
 	  	},
 	  	phone:{
