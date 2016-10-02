@@ -6,7 +6,9 @@
  */
 
 module.exports = {
-
+  index: function(req,res){
+    res.view('turnolog/index');
+  },
   entrar:function (req,res) {
 
       if(req.isSocke && req.method === 'POST') {

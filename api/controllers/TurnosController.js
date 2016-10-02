@@ -44,7 +44,7 @@ module.exports = {
 	},
 
 	show: function(req, res, next){
-		res.view('/turnos/show');
+		
 	},
 
 	index: function(req, res, next){
