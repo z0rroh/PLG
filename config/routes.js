@@ -40,7 +40,7 @@ module.exports.routes = {
   'GET /salir': 'SessionController.destroy',
   'GET /admin': 'TurnosController.index',
   'GET /populateturnos': 'TurnosController.populateTurnolog',
-  'GET /tomaturno': 'TurnosController.show',
+  'GET /turnolog/index': 'TurnologController.index',
   //'delete /userDelete/:id?': 'UserController.destroy'
 
 
