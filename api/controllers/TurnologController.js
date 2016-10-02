@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-/*
+
   entrar:function (req,res) {
 
       if(req.isSocke && req.method === 'POST') {
@@ -99,6 +99,4 @@ module.exports = {
     res.view('/turnolog/vista');
   }
 
-
-*/
 };
