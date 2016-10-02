@@ -52,6 +52,9 @@ module.exports.policies = {
     create: 'flash',
     show: 'userCanSeeProfile'
   },
+  'turnolog':{
+    index: 'userCanSeeProfile'
+   },
   'session':{
     new: 'flash'
   }
