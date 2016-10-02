@@ -1438,6 +1438,10 @@ div.material-table {
   text-align: center;
   margin: auto 0; }
   .Turno-Button a {
-    line-height: 3em; }
+    line-height: 2em;
+    box-shadow: none; }
   .Turno-Button i {
-    font-size: 3em; }
+    font-size: 2em; }
+
+.Turno-progress {
+  margin: 0; }
