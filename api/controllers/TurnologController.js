@@ -11,9 +11,9 @@ module.exports = {
     res.view('turnolog/index');
   },
   entrar:function (req,res) {
-      console.log("funciona ctm");
-      if(req.isSocket && req.method === 'POST') {
-        console.log("funciona ctmmmmmmmmmmmmmm");
+
+      if(req.method === 'POST') {
+        console.log('helloo');
         Turnolog.findOne(req.param('id'))
                 .then(function(result){
 
