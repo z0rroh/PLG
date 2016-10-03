@@ -12,7 +12,8 @@ module.exports = {
   },
   entrar:function (req,res) {
 
-      if(req.isSocke && req.method === 'POST') {
+      if(req.method === 'POST') {
+        console.log('helloo');
         Turnolog.findOne(req.param('id'))
                 .then(function(result){
 
@@ -26,7 +27,7 @@ module.exports = {
                   }
                   console.log(resul);
 
-                  if (resul===false && turnolog.estado===true && turnolog.cupoActual<turnolog.cupoTotal && req.session.User.tokens>0){
+                  if (resul===false && turnolog.estado==='activo' && turnolog.cupoActual<turnolog.cupoTotal && req.session.User.tokens>0){
                         var userObj = {
                           id: req.session.User.id,
                           name: req.session.User.name
