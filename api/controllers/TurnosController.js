@@ -133,7 +133,7 @@ module.exports = {
 
 					});
 				}
-				res.redirect('/admin');
+				res.redirect('/turnolog/index');
 			}
 		});
 	},

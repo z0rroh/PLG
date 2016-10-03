@@ -21,6 +21,10 @@ module.exports = {
                       for(var i in turnolog.users){
                         if(turnolog.users[i].id == req.session.User.id){
                           resul=true;
+                          var failTurno=[{message: 'Ya has tomado este turno'}]
+                          req.session.flash={
+                              err: failTurno
+                          }
                         }
                       }
                       console.log(resul);
@@ -34,32 +38,31 @@ module.exports = {
                           var parsed = parseInt(actual, 10);
                           parsed = parsed + 1;
                           turnolog.cupoActual = parsed;
-                          console.log(req.session.User.tokens);
+
                           turnolog.users.push(userObj);
                           turnolog.save(function(err){
-                              req.session.flash={
-                                err:err
-                              }
+                            var sucessTurno=[{message: 'Se tomo correctamente el turno'}]
+                            req.session.flash={
+                                err: sucessTurno
+                            }
                           });
 
 
                           var tk = req.session.User.tokens;
-                          console.log(tk);
+
                           tk = tk-1;
-                          console.log(tk);
-                          console.log(req.session.User.tokens);
                           req.session.User.tokens = tk;
                           req.session.save();
                           User.update({id:req.session.User.id},{tokens:tk},function(err, user) {
                             if (err){
                             }
+                            res.send(turnolog)
                           });
 
                       }
                     }
                     else{
                       if(turnolog.estado==='activo' && turnolog.cupoActual<turnolog.cupoTotal && req.session.User.tokens>0){
-                        console.log('hello');
                         var userObj = {
                           id: req.session.User.id,
                           name: req.session.User.name
@@ -71,27 +74,29 @@ module.exports = {
                         turnolog.users = [];
                         turnolog.users.push(userObj);
                         turnolog.save(function(err){
-                            req.session.flash={
-                              err:err
-                            }
+                          var sucessTurno=[{message: 'Se tomo correctamente el turno'}]
+                          req.session.flash={
+                              err: sucessTurno
+                          }
                         });
                         var tk = req.session.User.tokens;
-                        console.log(tk);
+
                         tk = tk-1;
-                        console.log(tk);
                         req.session.User.tokens = tk;
                         req.session.save();
                         User.update({id:req.session.User.id},{tokens:tk},function(err, user) {
                           if (err){
                           }
-
+                          res.send(turnolog)
                         });
                       }
+
                     }
         })
         .fail(function(err){
+          var failTurno=[{message: 'No se pudo tomar el turno'}]
           req.session.flash={
-            err:err
+              err: failTurno
           }
 
         });

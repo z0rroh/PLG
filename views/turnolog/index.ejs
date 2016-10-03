@@ -1,3 +1,16 @@
 <section id="turnosapp" class="Layout-Content row center-lg">
+  <% if(flash && flash.err) { %>
+    <% Object.keys(flash.err).forEach(function(error){ %>
+      <% var error1 = flash.err[error] %>
+    <script>
+    var $toastContent = "<%= error1.message %>";
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var displayCustomHTMLToast = function (content) {
+        Materialize.toast(content, 5000);
+      }
+      displayCustomHTMLToast($toastContent);
+    });
+    </script>
+    <% }); %>
 
 </section>
