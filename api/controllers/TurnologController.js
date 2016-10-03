@@ -21,10 +21,7 @@ module.exports = {
                       for(var i in turnolog.users){
                         if(turnolog.users[i].id == req.session.User.id){
                           resul=true;
-                          var failTurno=[{message: 'Ya has tomado este turno'}]
-                          req.session.flash={
-                              err: failTurno
-                          }
+
                         }
                       }
                       console.log(resul);
@@ -58,6 +55,7 @@ module.exports = {
                             }
                             res.send(turnolog)
                           });
+                          Turnolog.publishUpdate(turnolog.id,turnolog);
 
                       }
                     }
@@ -98,6 +96,7 @@ module.exports = {
           req.session.flash={
               err: failTurno
           }
+          res.redirect('/turnolog/index');
 
         });
 
