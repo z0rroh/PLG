@@ -17,33 +17,33 @@ module.exports = {
                 .then(function(result){
                   var turnolog = result;
                   if(turnolog.users){
-                    var resul= false;
-                    for(var i in turnolog.users){
-                      if(turnolog.users[i].id == req.session.User.id){
-                        resul=true;
+                      var resul= false;
+                      for(var i in turnolog.users){
+                        if(turnolog.users[i].id == req.session.User.id){
+                          resul=true;
+                        }
                       }
-                    }
-                  }
-                  console.log(resul);
+                      console.log(resul);
 
-                  if (resul===false && turnolog.estado==='activo' && turnolog.cupoActual<turnolog.cupoTotal && req.session.User.tokens>0){
-                        var userObj = {
-                          id: req.session.User.id,
-                          name: req.session.User.name
-                        };
-                        var actual = turnolog.cupoActual;
-                        var parsed = parseInt(actual, 10);
-                        parsed = parsed + 1;
-                        turnolog.cupoActual = parsed;
-                        console.log(req.session.User.tokens);
-                        turnolog.users.push(userObj);
-                        turnolog.save(function(err){
-                            req.session.flash={
-                              err:err
-                            }
-                        });
-                        req.session.User.tokens = req.session.User.tokens-1;
-                        console.log(req.session.User.tokens);
+                      if (resul===false && turnolog.estado==='activo' && turnolog.cupoActual<turnolog.cupoTotal && req.session.User.tokens>0){
+                          var userObj = {
+                            id: req.session.User.id,
+                            name: req.session.User.name
+                          };
+                          var actual = turnolog.cupoActual;
+                          var parsed = parseInt(actual, 10);
+                          parsed = parsed + 1;
+                          turnolog.cupoActual = parsed;
+                          console.log(req.session.User.tokens);
+                          turnolog.users.push(userObj);
+                          turnolog.save(function(err){
+                              req.session.flash={
+                                err:err
+                              }
+                          });
+                          req.session.User.tokens = req.session.User.tokens-1;
+                          console.log(req.session.User.tokens);
+                      }
                     }
                     else{
                       console.log('hello');
