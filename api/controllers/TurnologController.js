@@ -41,28 +41,52 @@ module.exports = {
                                 err:err
                               }
                           });
-                          req.session.User.tokens = req.session.User.tokens-1;
+
+
+                          var tk = req.session.User.tokens;
+                          console.log(tk);
+                          tk = tk-1;
+                          console.log(tk);
                           console.log(req.session.User.tokens);
+                          req.session.User.tokens = tk;
+                          req.session.save();
+                          User.update({id:req.session.User.id},{tokens:tk},function(err, user) {
+                            if (err){
+                            }
+                          });
+
                       }
                     }
                     else{
-                      console.log('hello');
-                      var userObj = {
-                        id: req.session.User.id,
-                        name: req.session.User.name
-                      };
-                      var actual = turnolog.cupoActual;
-                      var parsed = parseInt(actual, 10);
-                      parsed = parsed + 1;
-                      turnolog.cupoActual = parsed;
-                      turnolog.users = [];
-                      turnolog.users.push(userObj);
-                      turnolog.save(function(err){
-                          req.session.flash={
-                            err:err
+                      if(turnolog.estado==='activo' && turnolog.cupoActual<turnolog.cupoTotal && req.session.User.tokens>0){
+                        console.log('hello');
+                        var userObj = {
+                          id: req.session.User.id,
+                          name: req.session.User.name
+                        };
+                        var actual = turnolog.cupoActual;
+                        var parsed = parseInt(actual, 10);
+                        parsed = parsed + 1;
+                        turnolog.cupoActual = parsed;
+                        turnolog.users = [];
+                        turnolog.users.push(userObj);
+                        turnolog.save(function(err){
+                            req.session.flash={
+                              err:err
+                            }
+                        });
+                        var tk = req.session.User.tokens;
+                        console.log(tk);
+                        tk = tk-1;
+                        console.log(tk);
+                        req.session.User.tokens = tk;
+                        req.session.save();
+                        User.update({id:req.session.User.id},{tokens:tk},function(err, user) {
+                          if (err){
                           }
-                      });
-                      req.session.User.tokens = req.session.User.tokens-1;
+
+                        });
+                      }
                     }
         })
         .fail(function(err){
