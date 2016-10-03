@@ -1,307 +1,43 @@
 <section class="Layout-Content row center-lg">
-  <section class="Semana col-lg-10">
+      <div class="card material-table col-lg-10 col-xlg-8">
+        <div class="table-header"><span class="table-title">Lista de Turnos</span>
+          <div class="actions"><a class="search-toggle waves-effect btn-flat nopadding" href="#"><i class="material-icons">search</i></a></div>
+        </div>
+        <table id="datatableTurnos">
+          <thead>
+            <tr>
+              <th>Dia</th>
+              <th>Nombre Turno</th>
+              <th>Hora Inico</th>
+              <th>Hora Fin</th>
+              <th>Cupos</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr class="Empleados-Item">
+              <th> lunes</th>
+              <th> turno de prueba</th>
+              <th> 5</th>
+              <th> 6</th>
+              <th>
+                <p> 10 </p>
+              </th>
 
-    <div class="Dia">
-      <div class="row start-lg">
-        <div class="Dia-Title col-lg-12">
-          <p>Lunes</p>
-          <div class="divider"></div>
-        </div>
-        <div class="Dia-Content col-lg-12">
-            <div class="Turnos">
-              <div class="row center-lg">
-                <% if(ln){ %>
-                  <% _.each(ln, function(turno){ %>
-                <section class="Turno col-lg-3 card">
-                  <div class="Turno-Content">
-                    <div class="row start-lg">
-                      <div class="Turno-Info col-lg-4">
-                        <h5><%= turno.name %></h5>
-                        <p><%= turno.start + ' - '+turno.end %></p>
-                      </div>
-                      <div class="Turno-Log col-lg-4">
-                        <h4><%= turno.cupo %></h4>
-                      </div>
-                      <div class="Turno-Button col-lg-4">
-                        <% if(session.User.admin) { %>
-                        <form class="Destroy-Button" action="/turnos/destroy/<%= turno.id %>" method="POST" accept-charset="utf-8">
-                          <input type="hidden" name="_method" value="Clear"/>
-                          <input class="btn-flat material-icons" value="close" type="submit">
-                          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
-                        </form>
-                        <% } %>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-                <% }); %>
-              <% } else{%>
-                <h3>No hay registros </h3>
-              <% } %>
-              </div>
-            </div>
-        </div>
-      </div>
-    </div>
+              <th>
+                <a class="btn-flat Empleado-Edit" href="#Empleado-Modal" value="" data-link="ajax"><i class="material-icons">edit</i></a>
+                <form class="Destroy-Button" action="/turnos/destroy/" method="POST" accept-charset="utf-8">
+                  <input type="hidden" name="_method" value="Clear"/>
+                  <input class="btn-flat material-icons" value="close" type="submit">
+                  <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                </form>
+              </th>
+            </tr>
 
-    <div class="Dia">
-      <div class="row start-lg">
-        <div class="Dia-Title col-lg-12">
-          <p>Martes</p>
-          <div class="divider"></div>
-        </div>
-        <div class="Dia-Content col-lg-12">
-            <div class="Turnos">
-              <div class="row center-lg">
-                <% if(mr){ %>
-                  <% _.each(mr, function(turno){ %>
-                <section class="Turno col-lg-3 card">
-                  <div class="Turno-Content">
-                    <div class="row start-lg">
-                      <div class="Turno-Info col-lg-4">
-                        <h5><%= turno.name %></h5>
-                        <p><%= turno.start + ' - '+turno.end %></p>
-                      </div>
-                      <div class="Turno-Log col-lg-4">
-                        <h4><%= turno.cupo %></h4>
-                      </div>
-                      <div class="Turno-Button col-lg-4">
-                        <% if(session.User.admin) { %>
-                        <form class="Destroy-Button" action="/turnos/destroy/<%= turno.id %>" method="POST" accept-charset="utf-8">
-                          <input type="hidden" name="_method" value="Clear"/>
-                          <input class="btn-flat material-icons" value="close" type="submit">
-                          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
-                        </form>
-                        <% } %>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-                <% }); %>
-              <% } else{%>
-                <h3>No hay registros </h3>
-              <% } %>
-              </div>
-            </div>
-        </div>
+          </tbody>
+        </table>
       </div>
-    </div>
 
-    <div class="Dia">
-      <div class="row start-lg">
-        <div class="Dia-Title col-lg-12">
-          <p>Miercoles</p>
-          <div class="divider"></div>
-        </div>
-        <div class="Dia-Content col-lg-12">
-            <div class="Turnos">
-              <div class="row center-lg">
-                <% if(mier){ %>
-                  <% _.each(mier, function(turno){ %>
-                <section class="Turno col-lg-3 card">
-                  <div class="Turno-Content">
-                    <div class="row start-lg">
-                      <div class="Turno-Info col-lg-4">
-                        <h5><%= turno.name %></h5>
-                        <p><%= turno.start + ' - '+turno.end %></p>
-                      </div>
-                      <div class="Turno-Log col-lg-4">
-                        <h4><%= turno.cupo %></h4>
-                      </div>
-                      <div class="Turno-Button col-lg-4">
-                        <% if(session.User.admin) { %>
-                        <form class="Destroy-Button" action="/turnos/destroy/<%= turno.id %>" method="POST" accept-charset="utf-8">
-                          <input type="hidden" name="_method" value="Clear"/>
-                          <input class="btn-flat material-icons" value="close" type="submit">
-                          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
-                        </form>
-                        <% } %>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-                <% }); %>
-              <% } else{%>
-                <h3>No hay registros </h3>
-              <% } %>
-              </div>
-            </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="Dia">
-      <div class="row start-lg">
-        <div class="Dia-Title col-lg-12">
-          <p>Jueves</p>
-          <div class="divider"></div>
-        </div>
-        <div class="Dia-Content col-lg-12">
-            <div class="Turnos">
-              <div class="row center-lg">
-                <% if(jv){ %>
-                  <% _.each(jv, function(turno){ %>
-                <section class="Turno col-lg-3 card">
-                  <div class="Turno-Content">
-                    <div class="row start-lg">
-                      <div class="Turno-Info col-lg-4">
-                        <h5><%= turno.name %></h5>
-                        <p><%= turno.start + ' - '+turno.end %></p>
-                      </div>
-                      <div class="Turno-Log col-lg-4">
-                        <h4><%= turno.cupo %></h4>
-                      </div>
-                      <div class="Turno-Button col-lg-4">
-                        <% if(session.User.admin) { %>
-                        <form class="Destroy-Button" action="/turnos/destroy/<%= turno.id %>" method="POST" accept-charset="utf-8">
-                          <input type="hidden" name="_method" value="Clear"/>
-                          <input class="btn-flat material-icons" value="close" type="submit">
-                          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
-                        </form>
-                        <% } %>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-                <% }); %>
-              <% } else{%>
-                <h3>No hay registros </h3>
-              <% } %>
-              </div>
-            </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="Dia">
-      <div class="row start-lg">
-        <div class="Dia-Title col-lg-12">
-          <p>Viernes</p>
-          <div class="divider"></div>
-        </div>
-        <div class="Dia-Content col-lg-12">
-            <div class="Turnos">
-              <div class="row center-lg">
-                <% if(vr){ %>
-                  <% _.each(vr, function(turno){ %>
-                <section class="Turno col-lg-3 card">
-                  <div class="Turno-Content">
-                    <div class="row start-lg">
-                      <div class="Turno-Info col-lg-4">
-                        <h5><%= turno.name %></h5>
-                        <p><%= turno.start + ' - '+turno.end %></p>
-                      </div>
-                      <div class="Turno-Log col-lg-4">
-                        <h4><%= turno.cupo %></h4>
-                      </div>
-                      <div class="Turno-Button col-lg-4">
-                        <% if(session.User.admin) { %>
-                        <form class="Destroy-Button" action="/turnos/destroy/<%= turno.id %>" method="POST" accept-charset="utf-8">
-                          <input type="hidden" name="_method" value="Clear"/>
-                          <input class="btn-flat material-icons" value="close" type="submit">
-                          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
-                        </form>
-                        <% } %>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-                <% }); %>
-              <% } else{%>
-                <h3>No hay registros </h3>
-              <% } %>
-              </div>
-            </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="Dia">
-      <div class="row start-lg">
-        <div class="Dia-Title col-lg-12">
-          <p>Sabado</p>
-          <div class="divider"></div>
-        </div>
-        <div class="Dia-Content col-lg-12">
-            <div class="Turnos">
-              <div class="row center-lg">
-                <% if(sb){ %>
-                  <% _.each(sb, function(turno){ %>
-                <section class="Turno col-lg-3 card">
-                  <div class="Turno-Content">
-                    <div class="row start-lg">
-                      <div class="Turno-Info col-lg-4">
-                        <h5><%= turno.name %></h5>
-                        <p><%= turno.start + ' - '+turno.end %></p>
-                      </div>
-                      <div class="Turno-Log col-lg-4">
-                        <h4><%= turno.cupo %></h4>
-                      </div>
-                      <div class="Turno-Button col-lg-4">
-                        <% if(session.User.admin) { %>
-                        <form class="Destroy-Button" action="/turnos/destroy/<%= turno.id %>" method="POST" accept-charset="utf-8">
-                          <input type="hidden" name="_method" value="Clear"/>
-                          <input class="btn-flat material-icons" value="close" type="submit">
-                          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
-                        </form>
-                        <% } %>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-                <% }); %>
-              <% } else{%>
-                <h3>No hay registros </h3>
-              <% } %>
-              </div>
-            </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="Dia">
-      <div class="row start-lg">
-        <div class="Dia-Title col-lg-12">
-          <p>Domingo</p>
-          <div class="divider"></div>
-        </div>
-        <div class="Dia-Content col-lg-12">
-            <div class="Turnos">
-              <div class="row center-lg">
-                <% if(dg){ %>
-                  <% _.each(dg, function(turno){ %>
-                <section class="Turno col-lg-3 card">
-                  <div class="Turno-Content">
-                    <div class="row start-lg">
-                      <div class="Turno-Info col-lg-4">
-                        <h5><%= turno.name %></h5>
-                        <p><%= turno.start + ' - '+turno.end %></p>
-                      </div>
-                      <div class="Turno-Log col-lg-4">
-                        <h4><%= turno.cupo %></h4>
-                      </div>
-                      <div class="Turno-Button col-lg-4">
-                        <% if(session.User.admin) { %>
-                        <form class="Destroy-Button" action="/turnos/destroy/<%= turno.id %>" method="POST" accept-charset="utf-8">
-                          <input type="hidden" name="_method" value="Clear"/>
-                          <input class="btn-flat material-icons" value="close" type="submit">
-                          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
-                        </form>
-                        <% } %>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-                <% }); %>
-              <% } else{%>
-                <h3>No hay registros </h3>
-              <% } %>
-              </div>
-            </div>
-        </div>
-      </div>
-    </div>
   </section>
-</section>
 
-<%- partial('./modal') %>
+  <%- partial('./modal') %>

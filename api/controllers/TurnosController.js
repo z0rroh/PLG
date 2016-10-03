@@ -48,40 +48,29 @@ module.exports = {
 
 	index: function(req, res, next){
 		Turno.find({group:req.session.User.id_group},function foundUsers(err, turnos){
-			if(err) return next();
-			var ln = [];
-			var mr = [];
-			var mier = [];
-			var jv = [];
-			var vr = [];
-			var sb = [];
-			var dg = [];
-			turnos.map(function(turno){
-				if(turno.day === '1')
-					ln.push(turno)
-				if(turno.day === '2')
-					mr.push(turno)
-				if(turno.day === '3')
-					mier.push(turno)
-				if(turno.day === '4')
-					jv.push(turno)
-				if(turno.day === '5')
-					vr.push(turno)
-				if(turno.day === '6')
-					sb.push(turno)
-				if(turno.day === '0')
-					dg.push(turno)
-			})
-			res.view('turnos/index',{
-				ln: ln,
-				mr: mr,
-				mier: mier,
-				jv: jv,
-				vr: vr,
-				sb: sb,
-				dg: dg
-			});
+			for(var i in turnos){
+				var diaSemana="";
 
+				if ( turnos[i].day === '0' )
+					diaSemana = "Domingo";
+				if ( turnos[i].day === '1' )
+					diaSemana = "Lunes";
+				if ( turnos[i].day === '2' )
+					diaSemana = "Martes";
+				if ( turnos[i].day === '3' )
+					diaSemana = "Miercoles";
+				if ( turnos[i].day === '4' )
+					diaSemana = "Jueves";
+				if ( turnos[i].day === '5' )
+					diaSemana = "Viernes";
+				if ( turnos[i].day === '6' )
+					diaSemana = "Sabado";
+				turnos[i].dia = diaSemana;
+				console.log(turnos[i].dia);
+			}
+			res.view({
+				turnos: turnos
+			});
 		});
 	},
 
@@ -124,7 +113,7 @@ module.exports = {
 			if(turnos){
 				for(var i in turnos){
 					var exp = Turnolog.expiracion(turnos[i].start,function(fecha){
-						
+
 					});
 					var turnologObj={
 				   name: turnos[i].name,

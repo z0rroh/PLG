@@ -4,6 +4,7 @@
  * @description :: Server-side logic for managing anuncios
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+var moment=require('moment');
 
 module.exports = {
 
@@ -49,6 +50,17 @@ module.exports = {
 	index: function(req, res, next){
 
 		Anuncio.anunciosFindByGroup(req.session.User.id_group, function(err, anuncios){
+			moment.locale('es');
+			for(var i in anuncios){
+				var dia = anuncios[i].createdAt.getDate();
+				var mes = anuncios[i].createdAt.getMonth();
+				var año = anuncios[i].createdAt.getFullYear();
+				var hora = anuncios[i].createdAt.getHours();
+				var min = anuncios[i].createdAt.getMinutes();
+				var seg = anuncios[i].createdAt.getSeconds();
+				var now = moment([año,mes,dia,hora,min,seg]).fromNow();
+				anuncios[i].fecha = now;
+			}
 			res.view({
 				anuncios: anuncios
 			});
