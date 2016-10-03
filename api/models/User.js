@@ -104,5 +104,10 @@ module.exports = {
 	 			 });
 	},
 
+	afterUpdate: function(tokens, next){
+		Sails.io.sockets.emit('Update tokens', tokens);
+		next();
+	}
+
 
 };

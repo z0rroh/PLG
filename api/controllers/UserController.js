@@ -85,6 +85,7 @@ module.exports = {
       name : req.param('name'),
       email : req.param('email'),
       phone: req.param('phone'),
+      tokens: req.param('tokens')
     }
 
 		User.update(req.param('id'), userObj, function userUpdate(err){

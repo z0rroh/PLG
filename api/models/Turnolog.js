@@ -36,7 +36,7 @@ module.exports = {
       required: true
     },
     expiracion:{
-      type: 'string'
+      type: 'date'
     },
     group: {
       type: 'string',
@@ -68,5 +68,14 @@ module.exports = {
       }
       return cb(salida.format());
     },
+    validarExpiracion: function(date,cb){
+
+
+    },
+
+    afterUpdate: function(turnolog, next){
+      Sails.io.sockets.emit('Update Turnolog', turnolog);
+      next();
+    }
 
 };

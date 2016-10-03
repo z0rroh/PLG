@@ -53,7 +53,8 @@ module.exports.policies = {
     show: 'userCanSeeProfile'
   },
   'turnolog':{
-    index: 'userCanSeeProfile'
+    index: 'userCanSeeProfile',
+    entrar: 'userCanSeeProfile'
    },
   'session':{
     new: 'flash'

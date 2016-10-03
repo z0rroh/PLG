@@ -11,8 +11,9 @@ module.exports = {
     res.view('turnolog/index');
   },
   entrar:function (req,res) {
-
-      if(req.isSocke && req.method === 'POST') {
+      console.log("funciona ctm");
+      if(req.isSocket && req.method === 'POST') {
+        console.log("funciona ctmmmmmmmmmmmmmm");
         Turnolog.findOne(req.param('id'))
                 .then(function(result){
 
@@ -26,7 +27,7 @@ module.exports = {
                   }
                   console.log(resul);
 
-                  if (resul===false && turnolog.estado===true && turnolog.cupoActual<turnolog.cupoTotal && req.session.User.tokens>0){
+                  if (resul===false && turnolog.estado==='activo' && turnolog.cupoActual<turnolog.cupoTotal && req.session.User.tokens>0){
                         var userObj = {
                           id: req.session.User.id,
                           name: req.session.User.name
@@ -81,12 +82,14 @@ module.exports = {
       }
 
       else if(req.isSocket){
+        console.log("funciona ctmmmmmmmmmmmmmm333333333");
         Turnolog.watch(req.socket);
         sails.log( 'User subscribed to ' + req.socket.id );
       }
 
       if(req.method === 'GET') {
-        Turnolog.find({group:req.session.User.id_group},function(err,turnologs){
+        console.log("funciona ctmmmmmmmmmmmmmm2222222222");
+        Turnolog.find({group:req.session.User.id_group,estado: 'activo'},function(err,turnologs){
           if(err) {
             sails.log(err);
             sails.log("Error occurred in database operation");
