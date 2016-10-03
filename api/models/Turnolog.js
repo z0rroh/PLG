@@ -4,7 +4,7 @@
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
-
+var moment = require('moment');
 module.exports = {
 
   attributes: {
@@ -51,8 +51,21 @@ module.exports = {
     }
   },
   expiracion: function(start,cb){
-    
-      return cb(salida)
+      var now = moment().format();
+      var monto = '';
+      var salida = '';
+      if(now.format('d') >= turno){
+        monto = now.format('d')-turno;
+        salida = now.subtract(monto,'d');
+        salida = salida.add(1,'week');
+        console.log(salida.format());
+      }
+      else{
+        monto = turno - now.format('d');
+        salida = now.add(monto,"d");
+        console.log(salida.format());
+      }
+      return cb();
     },
 
 };
