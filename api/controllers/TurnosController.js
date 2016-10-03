@@ -57,19 +57,19 @@ module.exports = {
 			var sb = [];
 			var dg = [];
 			turnos.map(function(turno){
-				if(turno.day === 'ln')
+				if(turno.day === '1')
 					ln.push(turno)
-				if(turno.day === 'mr')
+				if(turno.day === '2')
 					mr.push(turno)
-				if(turno.day === 'mier')
+				if(turno.day === '3')
 					mier.push(turno)
-				if(turno.day === 'jv')
+				if(turno.day === '4')
 					jv.push(turno)
-				if(turno.day === 'vr')
+				if(turno.day === '5')
 					vr.push(turno)
-				if(turno.day === 'sb')
+				if(turno.day === '6')
 					sb.push(turno)
-				if(turno.day === 'dg')
+				if(turno.day === '0')
 					dg.push(turno)
 			})
 			res.view('turnos/index',{
@@ -123,6 +123,9 @@ module.exports = {
 			}
 			if(turnos){
 				for(var i in turnos){
+					var exp = Turnolog.expiracion(turnos[i].start,function(fecha){
+
+					});
 					var turnologObj={
 				   name: turnos[i].name,
 				   start: turnos[i].start,
