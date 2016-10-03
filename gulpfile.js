@@ -1,5 +1,7 @@
 const gulp = require('gulp');
+const browserify = require('browserify');
 const babelify = require('babelify');
+const source = require('vinyl-source-stream');
 const browserSync = require('browser-sync').create();
 const reload = browserSync.reload;
 const concat = require('gulp-concat');
@@ -13,7 +15,7 @@ const copy = require('gulp-contrib-copy');
 const pugpage = "./lib/*.pug";
 
 //Vector de tareas a realizar
-gulp.task('default',['pug','sass','js','watch'],()=>{
+gulp.task('default',['pug','sass','js','react','watch'],()=>{
 
     //servidor
     //para que funcione debe existir etiqueta body
@@ -44,9 +46,22 @@ gulp.task('watch',()=>{
   gulp.watch("./lib/**/*.pug",['pug']);
   gulp.watch("./lib/**/*.sass",['sass']);
   gulp.watch("./lib/**/*.js",['js']);
+  gulp.watch("./lib/src/**/*.js",['react']);
   gulp.watch("./public/**/*.html").on('change',reload);
   gulp.watch("./assets/**/*.css").on('change',reload);
   gulp.watch("./assets/**/*.js").on('change',reload);
+});
+
+gulp.task('react',function(){
+    return browserify('lib/src/app.js',{
+        debug: true
+    })
+    .transform(babelify.configure({
+        presets: ['es2015','react']
+    }))
+    .bundle()
+    .pipe(source('build.js'))
+    .pipe(gulp.dest('./assets/linker/js/'));
 });
 
 gulp.task('flexbox',()=>{
