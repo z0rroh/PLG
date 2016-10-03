@@ -79,6 +79,21 @@ module.exports = {
 			});
 		});
 	},
+  	updateUser: function(req, res, next){
+      var userObj={
+        name : req.param('name'),
+        email : req.param('email'),
+        phone: req.param('phone')
+      }
+
+  		User.update(req.param('id'), userObj, function userUpdate(err){
+  			if(err) {
+  				return res.redirect('user/edit/' + req.param('id'));
+  			}
+      	res.redirect('user/edit/' + req.param('id'));
+
+  		});
+  	},
 
 	update: function(req, res, next){
     var userObj={

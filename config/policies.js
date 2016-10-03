@@ -38,7 +38,7 @@ module.exports.policies = {
     index: 'userCanSeeProfile',
     modal: 'userCanSeeProfile',
     addGroup: 'flash',
-    '*': 'admin'
+    updateUser: 'userCanSeeProfile'
   },
   'group':{
     show: 'userCanSeeProfile',
@@ -53,8 +53,8 @@ module.exports.policies = {
     show: 'userCanSeeProfile'
   },
   'turnolog':{
-    index: 'userCanSeeProfile',
-    entrar: 'userCanSeeProfile'
+    index: 'flash',
+    entrar: 'flash'
    },
   'session':{
     new: 'flash'
