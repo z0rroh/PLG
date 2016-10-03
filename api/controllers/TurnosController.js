@@ -109,7 +109,7 @@ module.exports = {
 			if(err){
 				return next(err);
 			}
-			res.redirect('/turnos/index');
+			res.redirect('/admin');
 		});
 	},
 	populateTurnolog: function(req,res,next){
