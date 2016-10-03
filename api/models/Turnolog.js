@@ -50,22 +50,23 @@ module.exports = {
       required: true
     }
   },
-  expiracion: function(start,cb){
-      var now = moment().format();
+  expiracion: function(day,start,cb){
+      var now = moment();
       var monto = '';
       var salida = '';
-      if(now.format('d') >= turno){
-        monto = now.format('d')-turno;
+      var array = start.split(':');
+      if(now.format('d') >= day){
+        monto = now.format('d')-day;
         salida = now.subtract(monto,'d');
         salida = salida.add(1,'week');
-        console.log(salida.format());
+        salida = salida.set({'hour':parseInt(array[0]) -1,'minute':parseInt(array[1])})
       }
       else{
-        monto = turno - now.format('d');
+        monto = day - now.format('d');
         salida = now.add(monto,"d");
-        console.log(salida.format());
+        salida = salida.set({'hour':parseInt(array[0]) -1,'minute':parseInt(array[1])})
       }
-      return cb();
+      return cb(salida.format());
     },
 
 };

@@ -123,9 +123,10 @@ module.exports = {
 			}
 			if(turnos){
 				for(var i in turnos){
-					var exp = Turnolog.expiracion(turnos[i].start,function(fecha){
-						
+					var exp = Turnolog.expiracion(turnos[i].day,turnos[i].start,function(fecha){
+						return fecha;
 					});
+					console.log(exp);
 					var turnologObj={
 				   name: turnos[i].name,
 				   start: turnos[i].start,
@@ -133,6 +134,7 @@ module.exports = {
 				   day: turnos[i].day,
 				   cupoTotal: turnos[i].cupo,
 					 cupoActual: 0,
+					 expiracion: exp,
 				   estado: 'activo',
 				   group: req.session.User.id_group,
 				   id_turno: turnos[i].id,
