@@ -263,6 +263,15 @@ $(document).ready(function(){
   $('.Nav-Button').leanModal();
 });
 
+
+io.socket.on('Turnolog', function(event){console.log(event)});
+io.socket.get('/turnolog/entrar',function(resData, jwres){
+
+  $.each(resData, function(i, item) {
+    console.log(item);
+  });
+});
+
 $(document).ready(function(){
   $('#datatableTurnos').dataTable({
     "language":{
@@ -289,19 +298,9 @@ $(document).ready(function(){
     ],
     "order": [[ 1, "desc" ]]
   });
-  $('#datatable_filter input').attr("placeholder", "Buscar Empleados...");
-  $('select').material_select();
+  $('#datatable_filter input').attr("placeholder", "Buscar Turno...");
 
 
-});
-
-
-io.socket.on('Turnolog', function(event){console.log(event)});
-io.socket.get('/turnolog/entrar',function(resData, jwres){
-
-  $.each(resData, function(i, item) {
-    console.log(item);
-  });
 });
 
 $(document).ready(function(){
