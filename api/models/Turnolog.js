@@ -73,9 +73,4 @@ module.exports = {
 
     },
 
-    afterUpdate: function(turnolog, next){
-      Sails.io.sockets.emit('Update Turnolog', turnolog);
-      next();
-    }
-
 };
