@@ -66,7 +66,6 @@ module.exports = {
 				if ( turnos[i].day === '6' )
 					diaSemana = "Sabado";
 				turnos[i].dia = diaSemana;
-				console.log(turnos[i].dia);
 			}
 			res.view({
 				turnos: turnos

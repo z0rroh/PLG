@@ -3,7 +3,7 @@
         <div class="table-header"><span class="table-title">Lista de Turnos</span>
           <div class="actions"><a class="search-toggle waves-effect btn-flat nopadding" href="#"><i class="material-icons">search</i></a></div>
         </div>
-        <table id="datatableTurnos">
+        <table id="datatable">
           <thead>
             <tr>
               <th>Dia</th>
@@ -14,26 +14,26 @@
             </tr>
           </thead>
           <tbody>
-            
+            <% _.each(turnos, function(turno){ %>
             <tr class="Empleados-Item">
-              <th> lunes</th>
-              <th> turno de prueba</th>
-              <th> 5</th>
-              <th> 6</th>
+              <th><%= turno.dia %></th>
+              <th><%= turno.name %></th>
+              <th><%= turno.start %></th>
+              <th><%= turno.end %></th>
               <th>
-                <p> 10 </p>
+                <p><%= turno.cupo %></p>
               </th>
 
               <th>
                 <a class="btn-flat Empleado-Edit" href="#Empleado-Modal" value="" data-link="ajax"><i class="material-icons">edit</i></a>
-                <form class="Destroy-Button" action="/turnos/destroy/" method="POST" accept-charset="utf-8">
+                <form class="Destroy-Button" action="/turnos/destroy/<%= turno.id %>" method="POST" accept-charset="utf-8">
                   <input type="hidden" name="_method" value="Clear"/>
                   <input class="btn-flat material-icons" value="close" type="submit">
                   <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
                 </form>
               </th>
             </tr>
-
+            <% }) %>
           </tbody>
         </table>
       </div>
