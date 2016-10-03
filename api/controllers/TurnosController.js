@@ -123,6 +123,9 @@ module.exports = {
 			}
 			if(turnos){
 				for(var i in turnos){
+					var exp = Turnolog.expiracion(turnos[i].start,function(fecha){
+
+					});
 					var turnologObj={
 				   name: turnos[i].name,
 				   start: turnos[i].start,

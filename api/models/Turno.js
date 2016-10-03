@@ -21,7 +21,7 @@ module.exports = {
       required: true
     },
     day:{
-      type: 'string',
+      type: 'int',
       required: true
     },
     cupo:{

@@ -49,5 +49,10 @@ module.exports = {
       type:'string',
       required: true
     }
-  }
+  },
+  expiracion: function(start,cb){
+    
+      return cb(salida)
+    },
+
 };
