@@ -92,8 +92,95 @@ module.exports = {
             sails.log("Error occurred in database operation");
           }
           else {
-            res.send(turnologs);
-          }
+            //res.send(turnologs);
+            var allDays = [];
+            var lunes = [];
+            var martes = [];
+            var miercoles = [];
+            var jueves = [];
+            var viernes = [];
+            var sabado = [];
+            var domingo = [];
+            for(var i in turnologs){
+              if ( turnologs[i].day === '0' )
+                  domingo.push(turnologs[i]);
+              if ( turnologs[i].day === '1' )
+                  lunes.push(turnologs[i]);
+              if ( turnologs[i].day === '2' )
+                  martes.push(turnologs[i]);
+              if ( turnologs[i].day === '3' )
+                  miercoles.push(turnologs[i]);
+              if ( turnologs[i].day === '4' )
+                  jueves.push(turnologs[i]);
+              if ( turnologs[i].day === '5' )
+                  viernes.push(turnologs[i]);
+              if ( turnologs[i].day === '6' )
+                  sabado.push(turnologs[i]);
+            }
+
+            for(var i=0; i<7; i++){
+              var aux;
+              if( i === 0){
+                aux = {
+                  name: "Domingo",
+                  id: i,
+                  data: domingo
+                }
+                allDays.push(aux);
+              }
+              if( i === 1){
+                aux = {
+                  name: "Lunes",
+                  id: i,
+                  data: lunes
+                }
+                allDays.push(aux);
+              }
+              if( i === 2){
+                aux = {
+                  name: "Martes",
+                  id: i,
+                  data: martes
+                }
+                allDays.push(aux);
+              }
+              if( i === 3){
+                aux = {
+                  name: "Miercoles",
+                  id: i,
+                  data: miercoles
+                }
+                allDays.push(aux);
+              }
+              if( i === 4){
+                aux = {
+                  name: "Jueves",
+                  id: i,
+                  data: jueves
+                }
+                allDays.push(aux);
+              }
+              if( i === 5){
+                aux = {
+                  name: "Viernes",
+                  id: i,
+                  data: viernes
+                }
+                allDays.push(aux);
+              }
+              if( i === 6){
+                aux = {
+                  name: "Sabado",
+                  id: i,
+                  data: sabado
+                }
+                allDays.push(aux);
+              }
+            }
+
+            //console.log(allDays);
+            res.send(allDays);
+            }
         });
       }
 
