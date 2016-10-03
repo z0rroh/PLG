@@ -17,10 +17,11 @@ module.exports = {
                 .then(function(result){
                   var turnolog = result;
                   if(turnolog.users){
-                  var resul= false;
-                  for(var i in turnolog.users){
-                    if(turnolog.users[i].id == req.session.User.id){
-                      resul=true;
+                    var resul= false;
+                    for(var i in turnolog.users){
+                      if(turnolog.users[i].id == req.session.User.id){
+                        resul=true;
+                      }
                     }
                   }
                   console.log(resul);
