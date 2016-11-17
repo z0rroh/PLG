@@ -266,6 +266,8 @@ $(document).ready(function(){
 });
 
 
+
+
 $(document).ready(function(){
 
   var Turnotable = $('#datatableTurno').DataTable({
@@ -293,8 +295,6 @@ $(document).ready(function(){
 
 
 });
-
-
 
 $(document).ready(function(){
   $('.clockpicker').clockpicker({
