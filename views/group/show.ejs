@@ -1,6 +1,6 @@
 <section class="Layout-Content row center-lg">
       <div class="card material-table col-lg-10 col-xlg-8">
-        <div class="table-header"><span class="table-title">Lista de Empleados</span>
+        <div class="table-header"><span class="table-title">Lista de Funcionarios</span>
           <div class="actions"><a class="search-toggle waves-effect btn-flat nopadding" href="#"><i class="material-icons">search</i></a></div>
         </div>
         <table id="datatable">
@@ -11,7 +11,7 @@
               <th>Email</th>
               <th>Teléfono</th>
               <th>Grupo</th>
-              <th>Tokens</th>
+              <th class="textCenter">Tokens</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -29,7 +29,7 @@
 
                 </select>
               </th>
-              <th>
+              <th class="textCenter">
                 <p><%= user.tokens %></p>
               </th>
 

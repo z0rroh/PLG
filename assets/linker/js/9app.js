@@ -209,7 +209,7 @@ $(document).ready(function(){
     "order": [[ 1, "desc" ]]
   });
 
-  $('#datatable_filter input').attr("placeholder", "Buscar Empleados...");
+  $('#datatable_filter input').attr("placeholder", "Buscar Funcionario...");
   $('select').material_select();
 
     $(".Empleado-Edit").click(function(){
@@ -284,16 +284,21 @@ $(document).ready(function(){
     },
     "bAutoWidth" : false,
     "aoColumnDefs": [
-      { "sWidth": "10%", "aTargets": [ 0 ] },
-      { "sWidth": "20%", "aTargets": [ 1,2,4,5 ] },
+      { "sWidth": "10%", "aTargets": [ 0,2,3,4,5,6 ] },
+      { "sWidth": "15%", "aTargets": [ 1] },
     ],
     "order": [[ 1, "desc" ]]
   });
-  $('#datatable_filter input').attr("placeholder", "Buscar Turno...");
+  $('#datatableTurno_filter input').attr("placeholder", "Buscar Turno...");
+
 
 
 });
 
+$(document).ready(function(){
+   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+   $('.modal-trigger').leanModal();
+ });
 
 
 $(document).ready(function(){
@@ -302,4 +307,3 @@ $(document).ready(function(){
     donetext: 'Cerrar'
   });
 });
-
