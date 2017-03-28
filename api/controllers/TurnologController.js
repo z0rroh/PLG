@@ -163,32 +163,25 @@
              var domingo = [];
              for(var i in turnologs){
                if ( turnologs[i].day === '0' )
-                   domingo.push(turnologs[i]);
-               if ( turnologs[i].day === '1' )
                    lunes.push(turnologs[i]);
-               if ( turnologs[i].day === '2' )
+               if ( turnologs[i].day === '1' )
                    martes.push(turnologs[i]);
-               if ( turnologs[i].day === '3' )
+               if ( turnologs[i].day === '2' )
                    miercoles.push(turnologs[i]);
-               if ( turnologs[i].day === '4' )
+               if ( turnologs[i].day === '3' )
                    jueves.push(turnologs[i]);
-               if ( turnologs[i].day === '5' )
+               if ( turnologs[i].day === '4' )
                    viernes.push(turnologs[i]);
-               if ( turnologs[i].day === '6' )
+               if ( turnologs[i].day === '5' )
                    sabado.push(turnologs[i]);
+               if ( turnologs[i].day === '6' )
+                   domingo.push(turnologs[i]);
              }
 
              for(var i=0; i<7; i++){
                var aux;
+
                if( i === 0){
-                 aux = {
-                   name: "Domingo",
-                   id: i,
-                   data: domingo
-                 }
-                 allDays.push(aux);
-               }
-               if( i === 1){
                  aux = {
                    name: "Lunes",
                    id: i,
@@ -196,7 +189,7 @@
                  }
                  allDays.push(aux);
                }
-               if( i === 2){
+               if( i === 1){
                  aux = {
                    name: "Martes",
                    id: i,
@@ -204,7 +197,7 @@
                  }
                  allDays.push(aux);
                }
-               if( i === 3){
+               if( i === 2){
                  aux = {
                    name: "Miercoles",
                    id: i,
@@ -212,7 +205,7 @@
                  }
                  allDays.push(aux);
                }
-               if( i === 4){
+               if( i === 3){
                  aux = {
                    name: "Jueves",
                    id: i,
@@ -220,7 +213,7 @@
                  }
                  allDays.push(aux);
                }
-               if( i === 5){
+               if( i === 4){
                  aux = {
                    name: "Viernes",
                    id: i,
@@ -228,11 +221,19 @@
                  }
                  allDays.push(aux);
                }
-               if( i === 6){
+               if( i === 5){
                  aux = {
                    name: "Sabado",
                    id: i,
                    data: sabado
+                 }
+                 allDays.push(aux);
+               }
+               if( i === 6){
+                 aux = {
+                   name: "Domingo",
+                   id: i,
+                   data: domingo
                  }
                  allDays.push(aux);
                }

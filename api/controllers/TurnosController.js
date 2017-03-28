@@ -51,20 +51,21 @@ module.exports = {
 			for(var i in turnos){
 				var diaSemana="";
 
+
 				if ( turnos[i].day === '0' )
-					diaSemana = "Domingo";
-				if ( turnos[i].day === '1' )
 					diaSemana = "Lunes";
-				if ( turnos[i].day === '2' )
+				if ( turnos[i].day === '1' )
 					diaSemana = "Martes";
-				if ( turnos[i].day === '3' )
+				if ( turnos[i].day === '2' )
 					diaSemana = "Miercoles";
-				if ( turnos[i].day === '4' )
+				if ( turnos[i].day === '3' )
 					diaSemana = "Jueves";
-				if ( turnos[i].day === '5' )
+				if ( turnos[i].day === '4' )
 					diaSemana = "Viernes";
-				if ( turnos[i].day === '6' )
+				if ( turnos[i].day === '5' )
 					diaSemana = "Sabado";
+				if ( turnos[i].day === '6' )
+					diaSemana = "Domingo";
 				turnos[i].dia = diaSemana;
 			}
 			res.view({
