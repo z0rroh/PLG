@@ -68,7 +68,7 @@
                            User.update({id:req.session.User.id},{tokens:tk},function(err, user) {
                              if (err){
                              }
-                             res.send(turnolog)
+                             res.send({tk: tk})
                            });
                        }
                      }
@@ -117,7 +117,7 @@
                          User.update({id:req.session.User.id},{tokens:tk},function(err, user) {
                            if (err){
                            }
-                           res.send(turnolog)
+                           res.send({tk: tk})
                          });
                        }
 
@@ -153,6 +153,7 @@
            else {
              //res.send(turnologs);
              var allDays = [];
+             var tokensUpdate;
              var lunes = [];
              var martes = [];
              var miercoles = [];
@@ -238,24 +239,18 @@
              }
 
              //console.log(allDays);
+
              res.send(allDays);
              }
          });
-
        }
 
-
    },
-   subscribe: function(req, res){
-       sails.sockets.join(req.socket, "susturnos");
-       return res.json({
-         message: 'Subscribed to a fun room called!'
-       });
-
-   },
-
-   vista: function(req,res){
-     res.view('/turnolog/vista');
+   tokens: function(req, res){
+      if(req.isSocket && req.method === 'GET') {
+       tokens = req.session.User.tokens;
+       res.send({tokens: tokens});
+      }
    }
 
  };
