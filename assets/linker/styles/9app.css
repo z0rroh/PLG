@@ -24,7 +24,8 @@ body {
 .Dia-Colour {
   background: #8bc34a;
   border: 1px solid #000000;
-  color: #ffffff; }
+  color: #ffffff;
+  font-family: 'Varela Rou'; }
 
 .Dia-Content {
   border: 1px solid #000000;
@@ -1222,6 +1223,7 @@ header {
     widows: 75px; }
 
 .AnuncioNuevo-Form .AnuncioNuevo-Text {
+  font-family: 'Varela Rou';
   font-size: 1.5em;
   opacity: 0.6;
   padding-top: 7px; }
@@ -1231,25 +1233,30 @@ header {
 
 .Anuncio-Info {
   padding: 0;
-  font-family: 'Varela Round'; }
+  font-family: 'Varela Rou'; }
   .Anuncio-Info .col-lg-12 {
     padding: 0; }
   .Anuncio-Info .Anuncio-User {
     color: #8bc34a;
     font-weight: 500;
     font-size: 1.9em;
-    margin: 0; }
+    margin: 0em; }
   .Anuncio-Info .Anuncio-Time {
     color: #9e9e9e;
     font-size: .8em;
     line-height: 27px;
-    font-weight: 300; }
+    font-weight: 300;
+    margin: 0em; }
   .Anuncio-Info .Anuncio-Text {
     font-size: 1.3em;
     color: #424242;
     letter-spacing: 0;
-    line-height: 30px;
-    margin: 0.6rem 0; }
+    word-wrap: break-word;
+    margin: 0em;
+    opacity: 0.8; }
+
+#text-anuncio {
+  height: auto; }
 
 #anuncios-card {
   margin-top: 0em; }
