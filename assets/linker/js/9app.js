@@ -209,7 +209,7 @@ $(document).ready(function(){
     "order": [[ 1, "desc" ]]
   });
 
-  $('#datatable_filter input').attr("placeholder", "Buscar Funcionario...");
+  $('#datatable_filter input').attr("placeholder", "Buscar Empleados...");
   $('select').material_select();
 
     $(".Empleado-Edit").click(function(){
@@ -266,6 +266,8 @@ $(document).ready(function(){
 });
 
 
+
+
 $(document).ready(function(){
 
   var Turnotable = $('#datatableTurno').DataTable({
@@ -296,14 +298,33 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-   $('.modal-trigger').leanModal();
- });
-
-
-$(document).ready(function(){
   $('.clockpicker').clockpicker({
     align: 'left',
     donetext: 'Cerrar'
   });
 });
+
+$(document).ready(function(){
+   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+   $('.modal-trigger').leanModal();
+ });
+
+
+ $(".modal-trigger").click(function(){
+   if($(this).data("link") == "ajax"){
+     var turno = $(this).attr('value');
+     var ajaxURL = '/turnolog/showEmpleados/' + turno
+     EmpleadoPage(ajaxURL);
+
+     return false;
+   }
+ });
+
+ function EmpleadoPage(url){
+   $.get({
+     url: url
+   }).done(function(data){
+
+   });
+ }
+

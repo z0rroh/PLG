@@ -25,7 +25,7 @@
               <th class="textCenter">
                 <p><%= turno.cupo %></p>
               </th>
-              <th class="textCenter"><a class="modal-trigger" href="#modal1">ver</a></th>
+              <th class="textCenter"><a class="modal-trigger" href="#modal1" value="<%= turno.id %>" data-link="ajax" >Ver lista</a></th>
               <th>
                 <a class="btn-flat Empleado-Edit" href="#Empleado-Modal" value="" data-link="ajax"><i class="material-icons">edit</i></a>
                 <form class="Destroy-Button" action="/turnos/destroy/<%= turno.id %>" method="POST" accept-charset="utf-8">

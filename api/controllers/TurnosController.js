@@ -51,7 +51,6 @@ module.exports = {
 			for(var i in turnos){
 				var diaSemana="";
 
-
 				if ( turnos[i].day === '0' )
 					diaSemana = "Lunes";
 				if ( turnos[i].day === '1' )
@@ -98,7 +97,12 @@ module.exports = {
 			if(err){
 				return next(err);
 			}
-			res.redirect('/admin');
+			Turnolog.destroy({id_turno: req.param('id')},function userDestroy(err){
+				if(err)
+					return next(err);
+				res.redirect('/admin');
+			});
+
 		});
 	},
 	populateTurnolog: function(req,res,next){

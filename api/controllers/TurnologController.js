@@ -19,7 +19,7 @@
                    if(turnolog.users){
                        var resul= false;
                        for(var i in turnolog.users){
-                         if(turnolog.users[i].id == req.session.User.id){
+                         if(turnolog.users[i].id === req.session.User.id){
                            resul=true;
                            console.log("El usuario ya tomo este turno")
                          }
@@ -29,13 +29,17 @@
                            console.log("El usuario no a tomado este turno")
                            var userObj = {
                              id: req.session.User.id,
-                             name: req.session.User.name
+                             name: req.session.User.name,
+                             tokens: req.session.User.tokens,
+                             group: req.session.Group.name
                            };
                            var actual = turnolog.cupoActual;
                            var parsed = parseInt(actual, 10);
                            parsed = parsed + 1;
                            turnolog.cupoActual = parsed;
                            turnolog.users.push(userObj);
+
+
 
                            turnolog.save(function(err){
                              var sucessTurno=[{message: 'Se tomo correctamente el turno'}]
@@ -76,7 +80,9 @@
                        if(turnolog.estado==='activo' && turnolog.cupoActual<turnolog.cupoTotal && req.session.User.tokens>0){
                          var userObj = {
                            id: req.session.User.id,
-                           name: req.session.User.name
+                           name: req.session.User.name,
+                           tokens: req.session.User.tokens,
+                           group: req.session.User.group
                          };
                          var actual = turnolog.cupoActual;
                          var parsed = parseInt(actual, 10);
@@ -252,6 +258,16 @@
        tokens = req.session.User.tokens;
        res.send({tokens: tokens});
       }
-   }
+   },
+
+   showEmpleados: function(req, res, next){
+
+ 		Turnolog.find({id_turno: req.param('id')}, function(err, turnolog){
+ 			res.view({
+ 				turnolog: turnolog
+ 			});
+ 		});
+
+ 	}
 
  };

@@ -29,6 +29,9 @@ module.exports = {
     },
     group: {
       model: 'group'
+    },
+    users:{
+      type: 'array'
     }
   }
 };
