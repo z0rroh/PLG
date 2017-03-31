@@ -41,22 +41,22 @@ module.exports = {
 	  		type: 'string',
 	  		defaultsTo: 'Sin ingresar'
 	  	},
-		tokens:{
-			type: 'int',
-			defaultsTo : '3'
-		},
-		id_group:{
-			type: 'string'
-		},
-		anuncios:{
-			collection: 'anuncio',
-			via: 'autor',
-		},
-		groups:{
-			collection: 'Group',
-			via: 'users',
-			dominant: true
-		},
+			tokens:{
+				type: 'int',
+				defaultsTo : '3'
+			},
+			id_group:{
+				type: 'string'
+			},
+			anuncios:{
+				collection: 'anuncio',
+				via: 'autor',
+			},
+			groups:{
+				collection: 'Group',
+				via: 'users',
+				dominant: true
+			},
 	  	toJSON: function(){
 		 	var obj= this.toObject();
 		  	//delete obj.password;

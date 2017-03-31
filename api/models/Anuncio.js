@@ -18,17 +18,19 @@ module.exports = {
   	},
     autor:{
       model: 'user'
-    }
+    },
+    comment:{
+      collection: 'comentario',
+      via: 'anuncio',
+    },
 
   },
   anunciosFindByGroup: function (options, cb) {
-     Anuncio.find({group:options}).populate('autor').sort({ createdAt: 'desc' }).exec(function (err, anuncios) {
+     Anuncio.find({group:options}).populate('autor').populate('comment').sort({ createdAt: 'desc' }).exec(function (err, anuncios) {
        if (err) return cb(err);
        if (!anuncios) return cb(new Error('Anuncios not found.'));
        return cb(null,anuncios);
      });
    }
-   
+
 };
-
-

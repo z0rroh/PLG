@@ -50,20 +50,38 @@ module.exports = {
 	index: function(req, res, next){
 
 		Anuncio.anunciosFindByGroup(req.session.User.id_group, function(err, anuncios){
-			moment.locale('es');
-			for(var i in anuncios){
-				var dia = anuncios[i].createdAt.getDate();
-				var mes = anuncios[i].createdAt.getMonth();
-				var año = anuncios[i].createdAt.getFullYear();
-				var hora = anuncios[i].createdAt.getHours();
-				var min = anuncios[i].createdAt.getMinutes();
-				var seg = anuncios[i].createdAt.getSeconds();
-				var now = moment([año,mes,dia,hora,min,seg]).fromNow();
-				anuncios[i].fecha = now;
-			}
-			res.view({
-				anuncios: anuncios
-			});
+
+			    moment.locale('es');
+			    for(var i in anuncios){
+						var dia = anuncios[i].createdAt.getDate();
+						var mes = anuncios[i].createdAt.getMonth();
+						var año = anuncios[i].createdAt.getFullYear();
+						var hora = anuncios[i].createdAt.getHours();
+						var min = anuncios[i].createdAt.getMinutes();
+						var seg = anuncios[i].createdAt.getSeconds();
+						var now = moment([año,mes,dia,hora,min,seg]).fromNow();
+						anuncios[i].fecha = now;
+
+						if( anuncios[i].comment !== ""){
+
+							for(var j=0; j< anuncios[i].comment.length; j++){
+								moment.locale('es');
+								var dia = anuncios[i].comment[j].createdAt.getDate();
+								var mes = anuncios[i].comment[j].createdAt.getMonth();
+								var año = anuncios[i].comment[j].createdAt.getFullYear();
+								var hora = anuncios[i].comment[j].createdAt.getHours();
+								var min = anuncios[i].comment[j].createdAt.getMinutes();
+								var seg = anuncios[i].comment[j].createdAt.getSeconds();
+								var now = moment([año,mes,dia,hora,min,seg]).fromNow();
+								anuncios[i].comment[j].fecha = now;
+
+							}
+						}
+					}
+
+					res.view({
+						anuncios: anuncios
+					});
 		});
 
 	}
