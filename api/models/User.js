@@ -57,6 +57,15 @@ module.exports = {
 				via: 'users',
 				dominant: true
 			},
+			rooms: {
+				collection: 'room',
+				via: 'users',
+				dominant: true
+			},
+			online:{
+				type: 'boolean',
+				defaultsTo: false
+			},
 	  	toJSON: function(){
 		 	var obj= this.toObject();
 		  	//delete obj.password;
@@ -103,6 +112,9 @@ module.exports = {
 	 				 return cb(null,[data,groupHijos])
 	 			 });
 	},
+		// Hook that gets called after the default publishUpdate is run.
+	// We'll use this to tell all public chat rooms about the user update.
+	
 
 
 

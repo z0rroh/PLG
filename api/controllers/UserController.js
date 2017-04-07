@@ -8,7 +8,51 @@
 
 module.exports = {
 
-    new:function (req, res){
+  announce: function(req, res) {
+      if(req.isSocket && req.session.User){
+
+                User.find({id_group:req.session.User.id_group}).exec(function (err, users) {
+                // Subscribe the requesting socket (e.g. req.socket) to all users (e.g. users)
+                    User.subscribe(req, users,['update','create','destroy']);
+                });
+
+                  // Get the socket ID from the reauest
+                  var socketId = sails.sockets.getId(req);
+
+                  // Get the session from the request
+
+                  // Create the session.users hash if it doesn't exist already
+                  req.session.users = req.session.users || {};
+                    // Save this user in the session, indexed by their socket ID.
+                    // This way we can look the user up by socket ID later.
+                    req.session.users[socketId] = req.session.User;
+
+                    // Subscribe the connected socket to custom messages regarding the user.
+                    // While any socket subscribed to the user will receive messages about the
+                    // user changing their name or being destroyed, ONLY this particular socket
+                    // will receive "message" events.  This allows us to send private messages
+                    // between users.
+                    User.subscribe(req, req.session.User, 'message');
+
+                    // Get updates about users being created
+                    User.watch(req);
+
+
+                  /*  // Publish this user creation event to every socket watching the User model via User.watch()
+                    User.publishUpdate(user.id, {
+                      id: user.id,
+                      name: user.name,
+                      socketId: user.socketId,
+                      online: user.online
+                    });*/
+
+                    res.json(req.session.User);
+
+
+    }
+},
+
+  new:function (req, res){
 		//console.log("pagina de registro");
 		//res.locals.flash=._clone(req.session.flash);
 		res.view('user/new');
@@ -33,14 +77,15 @@ module.exports = {
   		User.create(userObj,function (err, user) {
 
   			if(err){
+          var error = [{message: "Se produjo un error al crear el usuari"}]
   				req.session.flash={
-  					err:err
+            err: error
   				}
   				return res.redirect('user/new');
   			}
-  			req.session.authenticated = true;
-  			req.session.User = user;
-
+        req.session.authenticated = false;
+        req.session.User = user;
+        //User.publishCreate(user);
         var sucess =[{message: 'Usuario creado correctamente'}]
         req.session.flash={
           err: sucess
@@ -61,8 +106,11 @@ module.exports = {
 	},
 
 	index: function(req, res, next){
-		User.find(function foundUsers(err, users){
+
+		User.find({online: true,id_group:req.session.User.id_group},function foundUsers(err, users){
+
 			if(err) return next();
+
 			res.json({
 				users
 			});
@@ -113,12 +161,16 @@ module.exports = {
 	},
 
 	destroy: function(req, res, next){
-		User.destroy(req.param('id'), function userDestroy(err){
-			if(err){
-				return next(err);
-			}
-			res.redirect('/group/show');
-		});
+      User.findOne(req.param('id'), function foundUser(err, user){
+        if (err) return next(err);
+
+    		User.destroy(req.param('id'), function userDestroy(err){
+    			if(err) return next(err);
+          User.publishDestroy(user.id);
+
+    		});
+        res.redirect('/group/show');
+      });
 	},
 
 	associateGroup: function(req, res, next) {
@@ -143,6 +195,7 @@ module.exports = {
         .then(function(result){
           var user = result;
           user.id_group = group.id;
+          user.online = true;
           user.groups.add(group.id);
           user.save(
             function(err){
@@ -150,12 +203,14 @@ module.exports = {
                 err:err
               }
             });
+            User.publishCreate(user);
+
             req.session.User.id_group = user.id_group;
             Group.findOne(req.session.User.id_group, function foundGroup(err, group){
               if (err) return next(err);
               req.session.Group = group;
-              res.redirect('/anuncios/index');
             });
+            res.redirect('/session/new');
 
         })
         .fail(function(err){

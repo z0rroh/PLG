@@ -39,8 +39,6 @@
                            turnolog.cupoActual = parsed;
                            turnolog.users.push(userObj);
 
-
-
                            turnolog.save(function(err){
                              var sucessTurno=[{message: 'Se tomo correctamente el turno'}]
                              req.session.flash={

@@ -1,18 +1,11 @@
-<% if(flash && flash.err) { %>
-  <% Object.keys(flash.err).forEach(function(error){ %>
-    <% var error1 = flash.err[error] %>
-  <script>
-  var $toastContent = "<%= error1.message %>";
-  document.addEventListener("DOMContentLoaded", function(event) {
-    var displayCustomHTMLToast = function (content) {
-      Materialize.toast(content, 5000);
-    }
-    displayCustomHTMLToast($toastContent);
-  });
-  </script>
-  <% }); %>
+<div id="chatbox" class="startChat">
 
-<% } %>
-<section id="chatapp" class="Layout-Content row center-lg">
+	<h3>Users online</h3>
+	<div>
+	    <select id="users-list" class="col-lg-6"size="10"></select>
+	    <button id="private-msg-button">Send private message to selected user</button>
+	    <div id="convos"></div>
+	</div>
 
-</section>
+</div>
+<div id="disconnect" style="display:none">Waiting for reconnect...</div>

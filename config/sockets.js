@@ -11,8 +11,35 @@
  */
 
 module.exports.sockets = {
+/*
+  // This custom onDisconnect function will be run each time a socket disconnects
+    afterDisconnect: function(session, socket, cb) {
+      console.log("DISCONNECT SESSION", session);
+        try {
+          // Look up the user ID using the connected socket
+          var userId = session.users[sails.sockets.getId(socket)].id;
 
+          // Get the user instance
+          User.findOne(userId,function(err, user) {
 
+            if (err) {return cb();}
+            // update the user instance
+            User.update({id: user.id},{socketId: "", online: false}, function userUpdate(err){
+              if(err) {
+                return err;
+              }
+            User.publishUpdate(user.id, user);
+
+          });
+        });
+      } catch (e) {
+          console.log("Error in onDisconnect: ", e);
+          return cb();
+        }
+
+    },
+
+*/
   /***************************************************************************
   *                                                                          *
   * Node.js (and consequently Sails.js) apps scale horizontally. It's a      *

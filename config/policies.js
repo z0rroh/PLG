@@ -35,10 +35,11 @@ module.exports.policies = {
     edit : 'userCanSeeProfile',
     update : 'userCanSeeProfile',
     destroy: 'userCanSeeProfile',
-    index: 'userCanSeeProfile',
+    index: 'flash',
     modal: 'userCanSeeProfile',
     addGroup: 'flash',
-    updateUser: 'userCanSeeProfile'
+    updateUser: 'userCanSeeProfile',
+    announce: 'flash'
   },
   'group':{
     show: 'userCanSeeProfile',

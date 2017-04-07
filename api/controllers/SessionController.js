@@ -48,6 +48,20 @@ module.exports = {
                   //if the password is valid we get here and log the user in
                   req.session.authenticated = true;
                   req.session.User = user;
+
+									user.online = true;
+									user.save(function(err){
+										if (err) return next(err);
+
+									});
+									User.publishUpdate(user.id,{
+										id: user.id,
+										name: user.name,
+										id_group: user.id_group,
+										online: true
+									});
+
+
 									if(user.id_group == null){
 											return res.redirect('/user/group')
 									}
@@ -65,8 +79,26 @@ module.exports = {
               });//end findOneByEmail
 	},
   destroy: function(req, res, next){
-    req.session.destroy();
-    res.redirect('/');
+
+		User.findOne(req.session.User.id, function foundUser(err,user){
+			var userId = req.session.User.id;
+
+			user.online = false;
+			user.save(function(err){
+				if (err) return next(err);
+			});
+			User.publishUpdate(user.id,{
+				id: user.id,
+				name: user.name,
+				id_group: user.id_group,
+				online: false
+			});
+
+			req.session.destroy();
+			res.redirect('/');
+
+		});
+
   }
 
 

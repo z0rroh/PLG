@@ -1,3 +1,6 @@
+<script type=text/javascript>
+  window.overlord = { csrf: "<%= _csrf %>"};
+</script>
 <section class="Layout-Content row center-lg">
       <div class="card material-table col-lg-10 col-xlg-8">
         <div class="table-header"><span class="table-title">Lista de Funcionarios</span>
@@ -17,8 +20,8 @@
           </thead>
           <tbody>
             <% _.each(users, function(user){ %>
-            <tr class="Empleados-Item">
-              <th><img class="Empleado-Image circle" src="/images/avatars/default_user.png"></th>
+            <tr data-id="<%= user.id %>" data-model="user" class="Empleados-Item">
+              <th><img class="Empleado-Image" src="/images/avatars/default_user.png"></th>
               <th><%= user.name %></th>
               <th><%= user.email %></th>
               <th><%= user.phone %></th>
