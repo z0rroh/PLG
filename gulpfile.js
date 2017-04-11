@@ -151,14 +151,14 @@ gulp.task('js',['jscompiler','populatejs']);
 
 gulp.task('jscompiler',()=>{
   /* .pipe(uglify()) -> produccion*/
-  gulp.src(['./lib/util/**/*.js','./lib/Components/**/*.js','./lib/app.js'])
+  gulp.src(['./lib/util/**/*.js','./lib/Components/**/*.js','./lib/app.js','./lib/*.js'])
     .pipe(concat('app.js'))
     .pipe(rename('9app.js'))
     .pipe(gulp.dest('./assets/linker/js'));
 });
 
 gulp.task('populatejs',()=>{
-  gulp.src(['./lib/util/**/*.js','./lib/Components/**/*.js','./lib/app.js'])
+  gulp.src(['./lib/util/**/*.js','./lib/Components/**/*.js','./lib/app.js','./lib/*.js'])
     .pipe(concat('app.js'))
     .pipe(rename('9app.js'))
     .pipe(gulp.dest('./public/js/'));
