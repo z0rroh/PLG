@@ -8,8 +8,18 @@ var moment=require('moment');
 
 module.exports = {
 
+	subscribe: function functionName(req, res) {
+			if(req.isSocket && req.session.User){
+					Anuncio.anunciosFindByGroup(req.session.User.id_group, function(err, anuncios){
+					// Subscribe the requesting socket (e.g. req.socket) to all users (e.g. users)
+							Anuncio.subscribe(req, anuncios);
+					});
+					Anuncio.watch(req);
+
+			}
+	},
 	new: function(req,res){
-		res.view();
+		res.view('anuncios/new');
 	},
 	show: function(req, res, next){
 		/*
@@ -37,7 +47,6 @@ module.exports = {
 				}
 				return res.redirect('anuncios/new');
 			}
-			//console.log("se creo bien el anuncio");
 
 			var sucessAnuncio=[{message: 'Anuncio creado correctamente'}]
 			req.session.flash={

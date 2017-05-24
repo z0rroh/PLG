@@ -142,7 +142,7 @@
       else if(req.isSocket){
 
          Turnolog.find({}).exec(function(e,turnologs){
-         Turnolog.subscribe(req.socket,turnologs);
+            Turnolog.subscribe(req.socket,turnologs);
          });
          sails.log( 'Usuario suscrito a la id: ' + req.socket.id );
 

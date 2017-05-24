@@ -1,40 +1,56 @@
-<% if(session.authenticated && session.User.id_group) { %>
+  <% if(session.authenticated && session.User.id_group) { %>
   <header class="row between-lg">
     <div class="Header col-lg-12">
       <div class="box">
         <div class="row between-lg middle-lg">
-
           <div class="User col-lg-5">
             <div class="box">
               <div class="row">
                 <div class="User-image col-lg-2"><img src="/images/avatars/default_user.png"></div>
                 <div class="no-padding col-lg"><a class="User-name dropdown-button" data-activates="User-dropdown"><%= session.User.name  %><i class="material-icons User-Icon">arrow_drop_down</i></a>
-                  <ul class="dropdown-content" id="User-dropdown">
-                    <li><a  href="/user/edit/<%= session.User.id %>">Perfil<i class="material-icons profile">face</i></a></li>
-                    <li><a href="/session/destroy">Logout<i class="material-icons profile">power_settings_new</i></a></li>
+                  <ul class="optionUl dropdown-content col-lg-2" id="User-dropdown">
+                    <li class="col-lg-12" ><a href="/user/edit/<%= session.User.id %>"><i class="material-icons profile">face</i>Perfil</a></li>
+                    <li class="col-lg-12"><a href="/session/destroy"><i class="material-icons profile">power_settings_new</i>Logout</a></li>
                   </ul>
                   <p class="User-empresa"><%= session.Group.name %></p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="Logo col-lg-3"><img class="Header-img" src="/images/Logo.png" alt="some"></div>
+          <div class="Logo"><div class="Header-img" ><img src="/images/Logo.png" alt="some"></div></div>
         </div>
       </div>
     </div>
 
     <div class="Nav col-lg-12">
       <div class="box">
-        <div class="Nav-Items row around-lg middle-lg">
-            <div class="col-lg-2"><a id="Nav-Anuncios" class="Nav-Item" href="/anuncios/index">Anuncios</a></div>
-            <div class="col-lg-2"><a id="Nav-Turnos" class="Nav-Item" href="/turnolog/index">Turnos</a></div>
-            <div class="col-lg-2"><a id="Nav-Anuncios" class="Nav-Item" href="/chat/index">Chat</a></div>
+        <div class="Nav-Items row ">
+            <div class=" col-lg-2"><a id="Nav-Anuncios" class="Nav-Item" href="/anuncios/index">Anuncios</a></div>
+            <div class=" col-lg-2"><a id="Nav-Turnos" class="Nav-Item Nav-divider" href="/turnolog/index">Turnos</a></div>
+            <div class=" col-lg-2"><a id="Nav-Chat" class="Nav-Item Nav-divider" href="/chat/index">Chat</a></div>
             <% if(session.User.admin) { %>
-              <div class="col-lg-2"><a id="Nav-Grupos" class="Nav-Item" href="/group/show">Funcionarios</a></div>
-              <div class="col-lg-2"><a id="Nav-Admin" class="Nav-Item" href="/admin">Administrar</a></div>
-              <div id="Nav-Button" class="col-lg-4">
+              <div class=" col-lg-2"><a id="Nav-Grupos" class="Nav-Item Nav-divider" href="/group/show">Funcionarios</a></div>
+              <div class=" col-lg-2"><a id="Nav-Admin" class="Nav-Item Nav-divider" href="/admin">Administrar</a></div>
+              <div id="Nav-Button" class="col-lg-1">
               </div>
             <% } %>
+            <div class="chat-icon col-lg-1"><a id="chat-on" data-activates="slide-out" class="show-on-large" href=""><i class="material-icons comment">comment</i></a></div>
+            <div id="slide-out" class="side-nav chat-sidebar">
+              <div class="chat-exit"><a href='#' id="chat-off"><i class="tiny material-icons">close</i></a></div>
+
+              <div id="chatbox" class="startChat">
+                <div class="chat-exit"><h6>Group online</h6></div>
+                <div id="users-lists" >
+                </div>
+              	<div>
+              	    <select id="users-list" class="col-lg-12"size="10"></select>
+              	    <button id="private-msg-button">Send private message to selected user</button>
+              	    <div id="convos"></div>
+              	</div>
+
+              </div>
+              <div id="disconnect" style="display:none">Waiting for reconnect...</div>
+           </div>
           </div>
       </div>
     </div>

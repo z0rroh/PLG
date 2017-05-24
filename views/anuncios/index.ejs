@@ -37,12 +37,8 @@
   </section>
 
   <% _.each(anuncios, function(anuncio){ %>
-  <section class="col-lg-8 card" id="anuncios-card">
-    <% if(anuncio.autor.admin === true) { %>
-      <div class="Anuncio-admin">
-    <% }else { %>
+  <section data-id="<%= anuncio.id %>" data-model="anuncio" class="col-lg-8 card" id="anuncios-card">
       <div class="Anuncio">
-    <% } %>
         <div class="row start-lg">
           <div class="Anuncio-Image col-lg-1"><img id="User-anuncios-img" src="/images/avatars/default_user.png"></div>
           <div class="Anuncio-Info col-lg-10">

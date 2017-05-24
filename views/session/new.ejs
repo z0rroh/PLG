@@ -1,8 +1,18 @@
+<div class="Header-login col-lg-12">
+  <div class="box-login">
+      <div class="Logo-login">
+        <div class="Header-img-login" >
+          <img src="/images/Logo.png" alt="some">
+        </div>
+      </div>
+  </div>
+</div>
+
 <section class="background">
   <div class="row center-xs middle-xs">
     <div class="col-xs-4">
       <div class="Login-Card card-panel grey lighten-4">
-        <div class="Login-Logo"><img class="circle responsive-img" src="/images/login-img.png"></div>
+        <!-- <div class="Login-Logo"><img class="circle responsive-img" src="/images/login-img.png"></div> -->
         <form action="/session/create" method="post" class="row center-xs">
           <% if(flash && flash.err) { %>
             <% Object.keys(flash.err).forEach(function(error){ %>

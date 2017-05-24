@@ -1,65 +1,105 @@
 header
-  height: 7.5em
+  height: 7em
   color: $verdeoscuro
-  background-color: #ffffff
+  background-color: #24292e
   width: 100%
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
   margin: 0
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
 
 .Header
   .box
     width: 100%
     height: 100%
+.Header-img-logo
+  height: 60px
+  width: 60px
+  float: right
+  text-align: center
+  img
+    margin-left: 10px
+    border-radius: 10%
+    margin-top: 15px
+    vertical-align: middle
+    height: 35px
+    width: 35px
+    animation: spin4 3s infinite linear
 .Header-img
-  height: 70px
-  width: 280px
+  border-radius: 50%
+  height: 60px
+  width: 240px
+  float: right
+  img
+    border-radius: 50%
+    margin-top: 5px
+    height: 50px
+    width: 240px
 .User
   padding-top: .4em
   .User-name
     font-size: 1.4em
-    font-family: 'Varela Round'
     letter-spacing: 0
-    color: $verdeoscuro
+    color: #ffffff
     cursor: pointer
-
     i
       position: relative
       top: 5%
   .User-image
     img
       float: left
-      margin-top: .3em
+      margin-top: .1em
       height: 65px
       width: 65px
   .User-empresa
+    color: $verdeclaro
     margin: 0
     font-size: 1.2em
     line-height: 1
+  .optionUl
+    background-color: #24292e
 .Logo
-  padding-top: .5em
+  border-radius: 50%
+  margin-top: 5px
+  width: 240px
+  height: 60px
+  background-color: #ffffff
   padding-left: 0px
   padding-right: 0px
+  float: right
   img
-    float: right
+
 .Nav
-  background-color: #fafafa
+  margin-top: 5px
+  background-color: #8bc34a
+  height: 34px
   .box
     width: 100%
+    height: 100%
   .Nav-Items
     width: 100%
     div
-      text-align: center
+
+
   .Nav-Item
-    color: $verdeoscuro
+    opacity: 0.3
+    text-align: center
+    color: #fafafa
     cursor: pointer
-    font-size: 1.3em
-    padding: .4em 1em
+    font-size: 18px
+    text-transform: none
+    font-weight: 200
+    height: 34px
+    line-height: 33px
+    width: 100%
+    display: block
+    position: relative
+
   .Nav-Item:hover
-    border-bottom: 3px solid $verdeoscuro
-    padding-bottom: .3em
+    opacity: 0.8
+
   .Nav-Item.is-active
-    border-bottom: 3px solid $verdeoscuro
-    padding-bottom: .3em
+    opacity: 1
+
   .Nav-Button
     position: absolute
     background-color: $verdeclaro
@@ -69,3 +109,142 @@ header
     i
       font-size: 2em
       line-height: 67px
+
+  .Nav-divider
+    position: inline-block
+
+  .Nav-divider::after
+    content: ''
+    display: block
+    height: 18px
+    position: absolute
+    top: 9px
+    width: 1px
+    background: transparentize(#ffffff, 0.6)
+.chat-icon
+  position: absolute
+  right: 40px
+  a
+    opacity: 1
+    text-align: center
+    color: #fafafa
+    cursor: pointer
+    font-size: 18px
+    text-transform: none
+    font-weight: 200
+    height: 34px
+    line-height: 33px
+    width: 100%
+    display: block
+    position: relative
+
+.chat-exit
+  text-align: center
+  a
+    background-color: $verdeclaro
+    height: 33px
+  i
+    position: absolute
+    margin-top: 4px
+    color: #ffffff
+    font-size: 25px
+.chat-exit:hover
+    background-color: $verdeclaro
+    opacity: 0.9
+
+.chat-sidebar
+ margin-top: 78px
+
+
+.sidebar-name
+  height: 35px
+  text-align: initial
+  padding-left: 10px
+  padding-right: 10px
+  margin-bottom: 4px
+  font-size: 12px
+
+  a
+    width: 100%
+    overflow: hidden
+    padding-left: inherit
+    display: block
+    position: relative
+    height: 100%
+    text-decoration: none
+    color: inherit
+    white-space: nowrap
+
+    span
+      padding-left: 5px
+      font-size: 13px
+      top: -40%
+      position: relative
+      line-height: 17px
+      display:inline-block
+      width: 100%
+    img
+      width: 35px
+      height: 35px
+      vertical-align:middle
+
+.popup-box
+    display: none
+    position: fixed
+    bottom: 0px
+    right: 220px
+    height: 300px
+    background-color: rgb(237, 239, 244)
+    width: 270px
+    border: 1px solid #7f7f7f
+
+
+.popup-head
+    background-color: $verdeclaro
+    padding: 5px
+    color: white
+    font-weight: bold
+    font-size: 14px
+    clear: both
+
+
+.popup-head-left
+    float: left
+
+
+.popup-head-right
+    float: right
+    opacity: 0.8
+    a
+      text-decoration: none
+      color: #ffffff
+
+
+.popup-messages
+    height: 238px
+    overflow-y: scroll
+    background-color: #ffffff
+    border-bottom: .8px solid #7f7f7f
+    width: 268px
+.send-messages
+  font-family: inherit
+  height: 31px
+  background-color: #ffffff
+  border-bottom: .8px solid #7f7f7f
+  font-size: 14px
+  textarea
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+    margin: inherit
+    line-height: 30px
+    padding: 0 5px
+    color: #000000
+    width: 268px
+    height: 100%
+    border: none
+  textarea.placeholder
+      color: #424242
+
+
+@keyframes spin4
+    0%  {transform: rotate(360deg)}
+    100%{transform: rotate(0deg)}

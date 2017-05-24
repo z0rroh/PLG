@@ -262,13 +262,31 @@ $(document).ready(function(){
   if(pathArray[1] == 'group'){
     $('#Nav-Grupos').addClass('is-active');
   }
-  if(pathArray[1] == 'turnos'){
+  if(pathArray[1] == 'chat'){
+    $('#Nav-Chat').addClass('is-active');
+  }
+  if(pathArray[1] == 'turnolog'){
     $('#Nav-Turnos').addClass('is-active');
   }
   if(pathArray[1] == 'anuncios'){
     $('#Nav-Anuncios').addClass('is-active');
   }
   $('.Nav-Button').leanModal();
+
+  $('#chat-on').sideNav({
+      menuWidth: 200, // Default is 300
+      edge: 'right', // Choose the horizontal origin
+      closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+      draggable: true // Choose whether you can drag to open on touch screens
+    }
+  );
+  $('#chat-off').sideNav('hide');
+/*
+  $( "#chat-on" ).click(function() {
+    $('#slide-out').addClass('fixed');
+  });
+*/
+
 });
 
 
@@ -340,6 +358,7 @@ $(document).ready(function(){
  * Front-end code and event handling for sailsChat
  *
  */
+      window.overlord = { csrf: "<%= _csrf %>"};
 
        $(document).ready(function() {
 
@@ -351,6 +370,88 @@ $(document).ready(function(){
             }
         });
       });
+
+// Attach a listener which fires when a connection is established:
+/*
+io.socket.on('connect', function socketConnected() {
+
+    io.socket.get("/anuncios/subscribe", function(data){
+    });
+
+    io.socket.on('anuncio', function messageReceived(message) {
+      console.log(message);
+      var anuncioId = message.id;
+      switch (message.verb) {
+
+        // Handle anuncio creation
+        case 'created':
+          updateAnuncioInDom(anuncioId, message);
+          break;
+
+        // Handle a anuncio changing their name
+        case 'updated':
+          updateAnuncioInDom(anuncioId, message);
+          break;
+
+        // Handle anuncio destruction
+        case 'destroyed':
+          updateAnuncioInDom(anuncioId, message);
+          break;
+
+        default:
+          break;
+      }
+
+    });
+
+    console.log('Socket Anuncios is now connected!');
+
+});
+
+
+    function updateAnuncioInDom(anuncioId, message){
+          console.log("updateanuncioInDom");
+          console.log(message);
+          var page = document.location.pathname;
+          page = page.replace(/(\/)$/,'');
+          switch(page){
+              case '/anuncios/index':
+
+              if(message.verb === 'updated'){
+                anuncioIndexPage.updateAnuncio(anuncioId, message);
+              }
+              if(message.verb === 'created'){
+                anuncioIndexPage.addAnuncioCreate(message);
+              }
+              if(message.verb === 'destroyed'){
+                anuncioIndexPage.destroyAnuncio(anuncioId);
+              }
+
+      }
+    }
+
+    var anuncioIndexPage = {
+       updateAnuncio: function(id, message){
+          console.log("updateanuncio");
+       },
+
+       addAnuncioCreate: function(message){
+         console.log("addanuncioCreate");
+         var obj={
+           anuncio: message.data,
+           _csrf: window.overlord.crsf || ''
+         };
+         $('section:nth-child(2)').before(
+           window.JST['assets/templates/addAnuncioCreate.ejs']( obj )
+         );
+
+       },
+       destroyAnuncio: function(id){
+         console.log("anuncioDestroy");
+         $('section[data-id="'+id+'"]').remove();
+       }
+    }
+*/
 
     // Start a private conversation with another user
 
@@ -399,10 +500,11 @@ $(document).ready(function(){
       // Create a new div to contain the room
       var roomDiv = $('<div id="'+roomName+'"></div>');
 
-      // Create the HTML for the room
+      //Create the HTML for the room
       var roomHTML = '<h2>Private conversation with <span id="private-username-'+penPal.id+'">'+penPalName+'</span></h2>\n' +
-                     '<div id="private-messages-'+penPal.id+'" style="width: 50%; height: 150px; overflow: auto; border: solid 1px #666; padding: 5px; margin: 5px"></div>'+
+                     '<div id="private-messages-'+penPal.id+'" style="width: 50%; height: 300px; overflow: auto; border: solid 1px #666; padding: 5px; margin: 5px"></div>'+
                      '<input id="private-message-'+penPal.id+'"/> <button id="private-button-'+penPal.id+'">Send message</button">';
+
 
       roomDiv.html(roomHTML);
 
@@ -464,21 +566,6 @@ $(document).ready(function(){
     }
 
 
-
-    // Add a user to the list of available users to chat with
-    function addUser(user) {
-      if (user.id == me.id) {return;}
-      // Get a handle to the user list <select> element
-      var select = $('#users-list');
-
-      // Create a new <option> for the <select> with the new user's information
-      var option = $('<option id="'+"user-"+user.id+'" value="'+user.id+'">'+(user.name == "unknown" ? "User #" + user.id : user.name)+'</option>');
-
-      // Add the new <option> element
-
-      select.append(option);
-    }
-
     // Remove a user from the list of available users to chat with, by sending
     // either a user object or a user ID.
     function addOrRemove(user) {
@@ -489,15 +576,14 @@ $(document).ready(function(){
         var id = user.id || user;
 
         var userName = $('#user-'+id).text();
-
         // Remove the corresponding element from the users list
-        var userEl = $('#user-'+id).remove();
 
         // Re-append it to the body as a hidden element, so we can still
         // get the user's name if we need it for other messages.
         // A silly hack for a silly app.
-        userEl.css('display', 'none');
-        $('body').append(userEl);
+        $('#user-'+id).css('display', 'none');
+        $('#users-lists').find('#user-'+id).remove();
+        //$('#users-lists').find('#user-'+id).remove();
 
         // Post a user status message if we're in a private convo
         if ($('#private-room-'+id).length) {
@@ -508,17 +594,31 @@ $(document).ready(function(){
      }else if(user.online === true){
                if (user.id == me.id) {return;}
                // Get a handle to the user list <select> element
-               var select = $('#users-list');
+               var select = $('#users-lists');
 
                // Create a new <option> for the <select> with the new user's information
-               var option = $('<option id="'+"user-"+user.id+'" value="'+user.id+'">'+(user.name == "unknown" ? "User #" + user.id : user.name)+'</option>');
-
+               //var option = $('<option id="'+"user-"+user.id+'" value="'+user.id+'">'+(user.name == "unknown" ? "User #" + user.id : user.name)+'</option>');
+               var addToChatBox = $('<div  class="sidebar-name"><a id="'+"user-"+user.id+'" data-name="'+user.name+'" href="javascript:register_popup('+"'"+user.name+"'"+','+"'"+user.name+"'"+');"><img width="30" height="30" src="/images/avatars/default_user.png" /><span>'+user.name+'</span></a></div>');
                // Add the new <option> element
 
-               select.append(option);
+               select.append(addToChatBox);
      }
 
 
+    }
+
+    // Add a user to the list of available users to chat with
+    function addUser(user) {
+      var id = user.id || user;
+      if (user.id == me.id) {return;}
+      // Get a handle to the user list <select> element
+      var select = $('#users-lists');
+      // Create a new <option> for the <select> with the new user's information
+      //var option = $('<option id="'+"user-"+user.id+'" value="'+user.id+'">'+(user.name == "unknown" ? "User #" + user.id : user.name)+'</option>');
+      var addToChatBox = $('<div  class="sidebar-name"><a id="'+user.id+'" data-name="'+user.name+'" href="javascript:register_popup('+"'"+user.name+"'"+','+"'"+user.name+"'"+');"><img width="30" height="30" src="/images/avatars/default_user.png" /><span>'+user.name+'</span></a></div>');
+      // Add the new <option> element
+
+      select.append(addToChatBox);
     }
 
     // Add multiple users to the users list.
@@ -528,6 +628,120 @@ $(document).ready(function(){
         addUser(user);
       });
     }
+
+
+
+    //this function can remove a array element.
+    Array.remove = function(array, from, to) {
+        var rest = array.slice((to || from) + 1 || array.length);
+        array.length = from < 0 ? array.length + from : from;
+        return array.push.apply(array, rest);
+    };
+
+    //this variable represents the total number of popups can be displayed according to the viewport width
+    var total_popups = 0;
+
+    //arrays of popups ids
+    var popups = [];
+
+    //this is used to close a popup
+    function close_popup(id)
+    {
+        for(var iii = 0; iii < popups.length; iii++)
+        {
+            if(id == popups[iii])
+            {
+                Array.remove(popups, iii);
+
+                document.getElementById(id).style.display = "none";
+
+                calculate_popups();
+
+                return;
+            }
+        }
+    }
+
+    //displays the popups. Displays based on the maximum number of popups that can be displayed on the current viewport width
+    function display_popups()
+    {
+        var right = 220;
+
+        var iii = 0;
+        for(iii; iii < total_popups; iii++)
+        {
+            if(popups[iii] != undefined)
+            {
+                var element = document.getElementById(popups[iii]);
+                element.style.right = right + "px";
+                right = right + 320;
+                element.style.display = "block";
+            }
+        }
+
+        for(var jjj = iii; jjj < popups.length; jjj++)
+        {
+            var element = document.getElementById(popups[jjj]);
+            element.style.display = "none";
+        }
+    }
+
+    //creates markup for a new popup. Adds the id to popups array.
+    function register_popup(id, name)
+    {
+
+        for(var iii = 0; iii < popups.length; iii++)
+        {
+            //already registered. Bring it to front.
+            if(id == popups[iii])
+            {
+                Array.remove(popups, iii);
+
+                popups.unshift(id);
+
+                calculate_popups();
+
+
+                return;
+            }
+        }
+
+        var element = '<div class="popup-box chat-popup" id="'+ id +'">';
+        element = element + '<div class="popup-head">';
+        element = element + '<div class="popup-head-left">'+ name +'</div>';
+        element = element + '<div class="popup-head-right"><a href="javascript:close_popup(\''+ id +'\');">&#10005;</a></div>';
+        element = element + '<div style="clear: both"></div></div><div class="popup-messages"></div><div class="send-messages"> <textarea placeholder="Escribe..."></textarea></div></div>';
+
+        document.getElementsByTagName("body")[0].innerHTML = document.getElementsByTagName("body")[0].innerHTML + element;
+
+        popups.unshift(id);
+
+        calculate_popups();
+
+    }
+
+    //calculate the total number of popups suitable and then populate the toatal_popups variable.
+    function calculate_popups()
+    {
+        var width = window.innerWidth;
+        if(width < 540)
+        {
+            total_popups = 0;
+        }
+        else
+        {
+            width = width - 200;
+            //320 is width of a single popup box
+            total_popups = parseInt(width/320);
+        }
+
+        display_popups();
+
+    }
+
+    //recalculate when window is loaded and also when window is resized.
+    window.addEventListener("resize", calculate_popups);
+    window.addEventListener("load", calculate_popups);
 
 
 //     Underscore.js 1.8.3
@@ -2089,13 +2303,15 @@ io.socket.on('connect', function socketConnected() {
     // Announce that a new user is online--in this somewhat contrived example,
     // this also causes the CREATION of the user, so each window/tab is a new user.
     io.socket.get("/user/announce", function(data){
-
       window.me = data;
       // Get the current list of users online.  This will also subscribe us to
       // update and destroy events for the individual users.
       io.socket.get('/user', updateUserList);
-
     });
+
+    io.socket.get("/anuncios/subscribe", function(data){
+    });
+
 
     // Listen for the "room" event, which will be broadcast when something
     // happens to a room we're subscribed to.  See the "autosubscribe" attribute
@@ -2112,24 +2328,20 @@ io.socket.on('connect', function socketConnected() {
       console.log(message);
       var userId = message.id;
       switch (message.verb) {
-
         // Handle user creation
         case 'created':
           updateUserInDom(userId, message);
           break;
-
         // Handle a user changing their name
         case 'updated':
           addOrRemove(message.data);
           updateUserInDom(userId, message);
           break;
-
         // Handle user destruction
         case 'destroyed':
           console.log("destroy");
           updateUserInDom(userId, message);
           break;
-
         // Handle private messages.  Only sockets subscribed to the "message" context of a
         // User instance will get this message--see the onConnect logic in config/sockets.js
         // to see where a new user gets subscribed to their own "message" context

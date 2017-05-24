@@ -2039,7 +2039,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
         }
         else {
           // Insert as text;
-          toast.innerHTML = html; 
+          toast.innerHTML = html;
         }
         // Bind hammer
         var hammerHandler = new Hammer(toast, {prevent_default: false});
@@ -2240,7 +2240,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
             var y = e.gesture.center.y;
             var velocityX = e.gesture.velocityX;
 
-            // Disable Scrolling
+            //Disable Scrolling
             var $body = $('body');
             var oldWidth = $body.innerWidth();
             $body.css('overflow', 'hidden');
@@ -2347,9 +2347,9 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
                   menu_id.velocity({'translateX': [0, rightPos]}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 }
 
-                $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+              /*  $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
                 dragTarget.css({width: '50%', right: '', left: 0});
-                menuOut = true;
+                menuOut = true;*/
               }
               else if (!menuOut || velocityX < -0.3) {
                 // Enable Scrolling
@@ -2379,21 +2379,21 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
             }
             else {
 
-              // Disable Scrolling
+              /*//Disable Scrolling
               var $body = $('body');
               var oldWidth = $body.innerWidth();
               $body.css('overflow', 'hidden');
-              $body.width(oldWidth);
+              $body.width(oldWidth);*/
 
               // Push current drag target on top of DOM tree
               $('body').append(dragTarget);
 
               if (options.edge === 'left') {
-                dragTarget.css({width: '50%', right: 0, left: ''});
+                dragTarget.css({width: '', right: 0, left: ''});
                 menu_id.velocity({'translateX': [0, -1 * options.menuWidth]}, {duration: 300, queue: false, easing: 'easeOutQuad'});
               }
               else {
-                dragTarget.css({width: '50%', right: '', left: 0});
+                dragTarget.css({width: '', right: '', left: 0});
                 menu_id.velocity({'translateX': [0, options.menuWidth]}, {duration: 300, queue: false, easing: 'easeOutQuad'});
               }
 
@@ -5297,7 +5297,7 @@ function isUsingDefaultTheme( element ) {
 /**
  * Get the width of the browser’s scrollbar.
  * Taken from: https://github.com/VodkaBears/Remodal/blob/master/src/jquery.remodal.js
- */
+ *//*
 function getScrollbarWidth() {
 
     if ( $html.height() <= $window.height() ) {
@@ -5325,7 +5325,7 @@ function getScrollbarWidth() {
     // Return the difference between the widths.
     return widthWithoutScroll - widthWithScroll
 }
-
+*/
 
 
 /**
