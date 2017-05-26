@@ -8,15 +8,23 @@ var moment=require('moment');
 
 module.exports = {
 
-	subscribe: function functionName(req, res) {
+	index: function(req,res){
+		res.view('anuncios/index');
+	},
+	subscribe: function(req,res){
+			/*var infoUser = {
+				name: req.session.User.name,
+				group: req.session.User.id_group
+			}*/
 			if(req.isSocket && req.session.User){
 					Anuncio.anunciosFindByGroup(req.session.User.id_group, function(err, anuncios){
 					// Subscribe the requesting socket (e.g. req.socket) to all users (e.g. users)
 							Anuncio.subscribe(req, anuncios);
 					});
 					Anuncio.watch(req);
-
+					sails.log( 'Usuario suscrito a anuncios con la id: ' + req.socket.id );
 			}
+			//res.send(infoUser);
 	},
 	new: function(req,res){
 		res.view('anuncios/new');
@@ -56,8 +64,9 @@ module.exports = {
 
 		});
 	},
-	index: function(req, res, next){
-
+	getAnuncios: function(req, res){
+		var anuntios = [];
+		var comment = [];
 		Anuncio.anunciosFindByGroup(req.session.User.id_group, function(err, anuncios){
 
 			    moment.locale('es');
@@ -70,6 +79,15 @@ module.exports = {
 						var seg = anuncios[i].createdAt.getSeconds();
 						var now = moment([año,mes,dia,hora,min,seg]).fromNow();
 						anuncios[i].fecha = now;
+						var aux = {
+							id: anuncios[i].id,
+							autor: anuncios[i].autor.name,
+							text: anuncios[i].text,
+							group: anuncios[i].group,
+							fecha: now,
+							comment: []
+						}
+						anuntios.push(aux);
 
 						if( anuncios[i].comment !== ""){
 
@@ -85,14 +103,11 @@ module.exports = {
 								anuncios[i].comment[j].fecha = now;
 
 							}
-						}
 					}
 
-					res.view({
-						anuncios: anuncios
-					});
-		});
-
+				}
+				res.send(anuntios);
+			});
 	}
 
 };

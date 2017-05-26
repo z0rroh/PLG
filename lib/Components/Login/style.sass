@@ -1,39 +1,35 @@
 .Header-login
-  height: 78px
+  height: 70px
   background-color: #24292e
   .box-login
     display: flex
     flex-direction: column
     justify-content: center
-    width: 100%
+    width: 1000px
     height: 100%
+    margin-left: auto
+    margin-right: auto
     .Logo-login
-      width: 250px
       height: 60px
-      background-color: #ffffff
       padding-left: 0px
       padding-right: 0px
-      float: right
-      border-radius: 50%
+      float: left
     .Header-img-login
-      border-radius: 50%
       height: 60px
-      //width: 240px
-      float: right
+      width: 60px
+      float: left
       img
-        border-radius: 50%
-        margin-top: 5px
-        height: 50px
-        width: 240px
+        height: 60px
+        width: 60px
 
 .background
   background-color: $verdeclaro
   min-height: 100vh
 
 .Login-Card
-  margin-top: 1em
+  margin-top: 60px
   form
-    margin-top: 4em
+    margin-top: .5em
   .input-field
     label
       width: initial !important
@@ -41,9 +37,9 @@
     i
       margin-top: .4em
       color: #424242
-    input[type=email]:focus + label,
-    input[type=password]:focus + label,
-    input[type=text]:focus + label
+      input[type=email]:focus + label,
+      input[type=password]:focus + label,
+      input[type=text]:focus + label
       color: $verdeoscuro
   .Login-Remember
     margin-top: .4em !important

@@ -1,6 +1,6 @@
 header
-  height: 7em
-  color: $verdeoscuro
+  height: 105px
+  color: #fafafa
   background-color: #24292e
   width: 100%
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
@@ -8,36 +8,39 @@ header
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
 
 .Header
+  height: 75px
+  border-color: #fafafa
+  border-bottom: solid 0.5px
   .box
-    width: 100%
+    width: 1000px
     height: 100%
+    margin-left: auto
+    margin-right: auto
 .Header-img-logo
   height: 60px
   width: 60px
-  float: right
   text-align: center
   img
-    margin-left: 10px
-    border-radius: 10%
-    margin-top: 15px
     vertical-align: middle
-    height: 35px
-    width: 35px
-    animation: spin4 3s infinite linear
+    height: 60px
+    width: 60px
+    //animation: spin4 3s infinite linear
 .Header-img
-  border-radius: 50%
   height: 60px
   width: 240px
   float: right
   img
-    border-radius: 50%
-    margin-top: 5px
     height: 50px
     width: 240px
 .User
-  padding-top: .4em
+
+  .no-padding
+    display: flex
+    flex-direction: column
+    justify-content: center
+
   .User-name
-    font-size: 1.4em
+    font-size: 1.3em
     letter-spacing: 0
     color: #ffffff
     cursor: pointer
@@ -45,11 +48,12 @@ header
       position: relative
       top: 5%
   .User-image
+    width: 60px
+    height: 60px
     img
       float: left
-      margin-top: .1em
-      height: 65px
-      width: 65px
+      height: 60px
+      width: 60px
   .User-empresa
     color: $verdeclaro
     margin: 0
@@ -58,54 +62,63 @@ header
   .optionUl
     background-color: #24292e
 .Logo
-  border-radius: 50%
-  margin-top: 5px
-  width: 240px
   height: 60px
-  background-color: #ffffff
   padding-left: 0px
   padding-right: 0px
-  float: right
+  float: left
   img
 
 .Nav
-  margin-top: 5px
   background-color: #8bc34a
-  height: 34px
+  height: 30px
   .box
-    width: 100%
+    padding: 0px
+    margin-left: auto
+    margin-right: auto
     height: 100%
   .Nav-Items
-    width: 100%
+    width: 1000px
+    height: 100%
+    margin-left: 130px
     div
 
-
   .Nav-Item
-    opacity: 0.3
+    margin-top: -1px
     text-align: center
     color: #fafafa
     cursor: pointer
     font-size: 18px
     text-transform: none
     font-weight: 200
-    height: 34px
-    line-height: 33px
-    width: 100%
+    line-height: 30px
+    width: auto
     display: block
     position: relative
+    padding: 0px 25px
 
   .Nav-Item:hover
     opacity: 0.8
 
   .Nav-Item.is-active
     opacity: 1
-
+    background-color: #24292e
+    border-color: #fafafa
+    border-radius: 0 0 5px 5px
+    border-left: solid 0.5px
+    border-right: solid 0.5px
+    border-bottom: solid 0.5px
   .Nav-Button
     position: absolute
-    background-color: $verdeclaro
-    width: 70px
-    height: 70px
+    right: 80px
+    height: 30px
     line-height: 71px
+    a
+      background-color: $verdeclaro
+      width: 70px
+      height: 70px
+      display: block
+      position: relative
+
     i
       font-size: 2em
       line-height: 67px
@@ -114,11 +127,12 @@ header
     position: inline-block
 
   .Nav-divider::after
+    margin-left: -1px 
     content: ''
     display: block
     height: 18px
     position: absolute
-    top: 9px
+    top: 80px
     width: 1px
     background: transparentize(#ffffff, 0.6)
 .chat-icon
@@ -132,17 +146,19 @@ header
     font-size: 18px
     text-transform: none
     font-weight: 200
-    height: 34px
+    height: 30px
     line-height: 33px
     width: 100%
     display: block
     position: relative
+    i
+      font-size: 30px
 
 .chat-exit
   text-align: center
   a
     background-color: $verdeclaro
-    height: 33px
+    height: 30px
   i
     position: absolute
     margin-top: 4px

@@ -262,9 +262,6 @@ $(document).ready(function(){
   if(pathArray[1] == 'group'){
     $('#Nav-Grupos').addClass('is-active');
   }
-  if(pathArray[1] == 'chat'){
-    $('#Nav-Chat').addClass('is-active');
-  }
   if(pathArray[1] == 'turnolog'){
     $('#Nav-Turnos').addClass('is-active');
   }
@@ -2307,9 +2304,6 @@ io.socket.on('connect', function socketConnected() {
       // Get the current list of users online.  This will also subscribe us to
       // update and destroy events for the individual users.
       io.socket.get('/user', updateUserList);
-    });
-
-    io.socket.get("/anuncios/subscribe", function(data){
     });
 
 
