@@ -537,7 +537,7 @@ if ($) {
 
         // Constrain width
         if (options.constrain_width === true) {
-          activates.css('width', origin.outerWidth());
+          activates.css('width', "");
 
         } else {
           activates.css('white-space', 'nowrap');
@@ -609,8 +609,7 @@ if ($) {
         // Position dropdown
         activates.css({
           position: 'absolute',
-          top: origin.position().top + verticalOffset + scrollYOffset,
-          left: leftPosition + scrollXOffset
+
         });
 
 
@@ -777,7 +776,7 @@ if ($) {
         $modal.closeModal(options);
       });
 
-      $overlay.css({ display : "block", opacity : 0 });
+      $overlay.css({ display : "", opacity : 0 });
 
       $modal.css({
         display : "block",

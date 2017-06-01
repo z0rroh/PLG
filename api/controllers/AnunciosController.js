@@ -12,19 +12,19 @@ module.exports = {
 		res.view('anuncios/index');
 	},
 	subscribe: function(req,res){
-			/*var infoUser = {
+			var infoUser = {
 				name: req.session.User.name,
 				group: req.session.User.id_group
-			}*/
+			}
 			if(req.isSocket && req.session.User){
-					Anuncio.anunciosFindByGroup(req.session.User.id_group, function(err, anuncios){
+					Anuncio.find({id_group:req.session.User.id_group}).exec(function (err, anuncios) {
 					// Subscribe the requesting socket (e.g. req.socket) to all users (e.g. users)
-							Anuncio.subscribe(req, anuncios);
+							Anuncio.subscribe(req, anuncios,['update','create','destroy']);
 					});
 					Anuncio.watch(req);
 					sails.log( 'Usuario suscrito a anuncios con la id: ' + req.socket.id );
 			}
-			//res.send(infoUser);
+			res.send(infoUser);
 	},
 	new: function(req,res){
 		res.view('anuncios/new');
@@ -45,7 +45,7 @@ module.exports = {
 			autor: req.session.User.id,
 			group: req.session.User.id_group
 		}
-		//console.log(anuncioObj);
+
 		Anuncio.create(anuncioObj,function (err, anuncio) {
 
 			if(err){
@@ -60,13 +60,16 @@ module.exports = {
 			req.session.flash={
 					err: sucessAnuncio
 			}
-			res.redirect('anuncios/index');
+			Anuncio.anuncioFindByGroup(anuncio, function(err, anuncio){
+					res.send(anuncio);
+			})
 
 		});
+
 	},
 	getAnuncios: function(req, res){
 		var anuntios = [];
-		var comment = [];
+		var comments = [];
 		Anuncio.anunciosFindByGroup(req.session.User.id_group, function(err, anuncios){
 
 			    moment.locale('es');
@@ -78,16 +81,7 @@ module.exports = {
 						var min = anuncios[i].createdAt.getMinutes();
 						var seg = anuncios[i].createdAt.getSeconds();
 						var now = moment([año,mes,dia,hora,min,seg]).fromNow();
-						anuncios[i].fecha = now;
-						var aux = {
-							id: anuncios[i].id,
-							autor: anuncios[i].autor.name,
-							text: anuncios[i].text,
-							group: anuncios[i].group,
-							fecha: now,
-							comment: []
-						}
-						anuntios.push(aux);
+						//anuncios[i].fecha = now;
 
 						if( anuncios[i].comment !== ""){
 
@@ -100,10 +94,26 @@ module.exports = {
 								var min = anuncios[i].comment[j].createdAt.getMinutes();
 								var seg = anuncios[i].comment[j].createdAt.getSeconds();
 								var now = moment([año,mes,dia,hora,min,seg]).fromNow();
-								anuncios[i].comment[j].fecha = now;
+								//anuncios[i].comment[j].fecha = now;
 
+								var aux1= {
+									autor: anuncios[i].comment[j].autor.name,
+									text: anuncios[i].comment[j].text,
+									id: anuncios[i].comment[j].id,
+									fecha: now
+								}
+								comments.push(aux1);
 							}
 					}
+					var aux = {
+						id: anuncios[i].id,
+						autor: anuncios[i].autor.name,
+						text: anuncios[i].text,
+						group: anuncios[i].group,
+						fecha: now,
+						comment: comments
+					}
+					anuntios.push(aux);
 
 				}
 				res.send(anuntios);

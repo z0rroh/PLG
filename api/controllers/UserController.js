@@ -36,16 +36,7 @@ module.exports = {
 
                     // Get updates about users being created
                     User.watch(req);
-
-
-                  /*  // Publish this user creation event to every socket watching the User model via User.watch()
-                    User.publishUpdate(user.id, {
-                      id: user.id,
-                      name: user.name,
-                      socketId: user.socketId,
-                      online: user.online
-                    });*/
-
+                    
                     res.json(req.session.User);
 
 

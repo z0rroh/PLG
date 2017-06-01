@@ -2319,7 +2319,6 @@ io.socket.on('connect', function socketConnected() {
     // to subscribed sockets.
 
     io.socket.on('user', function messageReceived(message) {
-      console.log(message);
       var userId = message.id;
       switch (message.verb) {
         // Handle user creation
