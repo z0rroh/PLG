@@ -1108,18 +1108,16 @@ body {
 
 .Comentario {
   padding: .5em;
-  padding-left: 85px; }
-
-.Comentario-admin {
-  padding: .5em;
-  padding-left: 85px; }
+  padding-left: 12%;
+  border-top: 1px solid #cccccc; }
 
 .Comentario-Image {
   padding: 0; }
   .Comentario-Image img {
     float: left;
     height: 45px;
-    widows: 45px; }
+    width: 45px;
+    border-radius: 10%; }
 
 .ComentarioNuevo-Form .ComentarioNuevo-Text {
   font-family: 'Varela Rou';
@@ -1212,8 +1210,7 @@ header {
       flex-direction: column;
   -ms-flex-pack: center;
       justify-content: center;
-  padding-left: 1rem;
-  padding-right: 1rem; }
+  padding-left: 1rem; }
 
 .User .User-name {
   font-size: 1.3em;
@@ -1232,7 +1229,8 @@ header {
   .User .User-image img {
     float: right;
     height: 60px;
-    width: 60px; }
+    width: 60px;
+    border-radius: 50%; }
 
 .User .User-empresa {
   text-align: right;
@@ -1253,6 +1251,10 @@ header {
   padding: 2px;
   border: solid .5px;
   width: 200px; }
+  .User .optionUl a {
+    color: #fafafa; }
+  .User .optionUl a:hover {
+    color: #24292e; }
 
 .Logo {
   height: 60px;
@@ -1261,7 +1263,7 @@ header {
   float: left; }
 
 .Nav {
-  background-color: #00c853;
+  background-color: #8bc34a;
   height: 28px; }
   .Nav .box {
     padding: 0px;
@@ -1465,7 +1467,9 @@ header {
   width: 70px; }
   .AnuncioNuevo-Image img {
     float: left;
-    height: 70px; }
+    height: 70px;
+    border-radius: 10%;
+    width: 70px; }
 
 .AnuncioNuevo-Form {
   padding: 0; }
@@ -1506,18 +1510,24 @@ header {
     height: 3rem; }
 
 .Anuncio {
-  padding: .5em; }
+  padding: .5em;
+  padding-bottom: 0px; }
 
-.Anuncio-admin {
-  padding: .5em; }
+.Anuncio-container {
+  padding-bottom: .5em;
+  border-bottom: 1px solid #cccccc;
+    border-bottom-height: auto;
+    border-bottom-overflow: auto; }
 
 .Anuncio-Image {
   padding: 0;
-  margin-right: 1em; }
+  margin-right: 1em;
+  float: left; }
   .Anuncio-Image img {
     float: left;
     height: 70px;
-    widows: 70px; }
+    width: 70px;
+    border-radius: 10%; }
 
 .AnuncioNuevo-Form .AnuncioNuevo-Text {
   font-family: 'Varela Rou';
@@ -1529,14 +1539,18 @@ header {
 
 .Anuncio-Info {
   padding: 0;
-  font-family: 'Varela Rou'; }
+  font-family: 'Varela Rou';
+  line-height: .5px;
+  display: inline-block; }
   .Anuncio-Info .col-lg-12 {
-    padding: 0; }
+    padding: 0;
+    display: inline; }
   .Anuncio-Info .Anuncio-User {
     color: #8bc34a;
     font-weight: 500;
     font-size: 20px;
-    margin: 0em; }
+    margin: 0em;
+    display: inline; }
   .Anuncio-Info .Anuncio-Time {
     color: #9e9e9e;
     font-size: 12px;
@@ -1549,7 +1563,8 @@ header {
     letter-spacing: 0;
     word-wrap: break-word;
     margin: 0em;
-    opacity: 0.8; }
+    opacity: 0.8;
+    display: inline; }
 
 #text-anuncio {
   height: 75px; }
@@ -1826,6 +1841,8 @@ div.material-table {
     box-shadow: none; }
   .Turno-Button a:hover {
     background-color: #e22838; }
+    .Turno-Button a:hover i:hover {
+      color: #fafafa; }
   .Turno-Button i {
     font-size: 2em; }
 

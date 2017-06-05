@@ -8,7 +8,8 @@ var bcrypt=require('bcrypt');
 
 module.exports = {
 	new: function(req,res){
-		res.view('session/new');
+			res.view('session/new');
+
 	},
 	create: function(req, res, next){
 

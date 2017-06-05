@@ -1,4 +1,4 @@
-  <% if(session.authenticated && session.User.id_group) { %>
+
   <header class="row between-lg">
     <div class="Header col-lg-12">
       <div class="box">
@@ -8,6 +8,7 @@
               <img src="/images/newLogo.png" alt="some">
             </div>
           </div>
+          <% if(session.authenticated && session.User.id_group) { %>
           <div class="User col-lg-5">
             <div class="box">
               <div class="row">
@@ -23,11 +24,11 @@
               </div>
             </div>
           </div>
-
+          <% } %>
         </div>
       </div>
     </div>
-
+<% if(session.authenticated && session.User.id_group) { %>
     <div class="Nav col-lg-12">
       <div class="box col-lg-5">
         <div class="Nav-Items row ">
@@ -60,5 +61,5 @@
           </div>
       </div>
     </div>
+    <% } %>
   </header>
-<% } %>

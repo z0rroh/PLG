@@ -7,11 +7,21 @@
 
 module.exports = {
 
+		subscribe: function(req,res){
+				if(req.isSocket && req.session.User){
+						Comentario.find({id_group:req.session.User.id_group}).exec(function (err, comentarios) {
+						// Subscribe the requesting socket (e.g. req.socket) to all users (e.g. users)
+								Comentario.subscribe(req, comentarios,['update','create','destroy']);
+						});
+						Comentario.watch(req);
+						sails.log( 'Usuario suscrito a comentarios con la id: ' + req.socket.id );
+				}
+		},
 		create: function(req, res){
 			var commentObj={
 				text: req.param('text'),
 				autor: req.session.User.name,
-				anuncio: req.param('id')
+				anuncio: req.param('anuncio')
 			}
 			Comentario.create(commentObj,function (err, comentario) {
 
@@ -28,7 +38,10 @@ module.exports = {
 				req.session.flash={
 						err: sucessAnuncio
 				}
-				res.redirect('anuncios/index');
+
+				Comentario.comentarioFindByGroup(comentario, function(err, comentario){
+						res.send(comentario);
+				});
 
 			});
 		},

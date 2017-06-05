@@ -42,7 +42,6 @@ header
     flex-direction: column
     justify-content: center
     padding-left: 1rem
-    padding-right: 1rem
   .User-name
     font-size: 1.3em
     letter-spacing: 0
@@ -61,6 +60,7 @@ header
       float: right
       height: 60px
       width: 60px
+      border-radius: 50%
   .User-empresa
     text-align: right
     margin-right: 8%
@@ -79,6 +79,11 @@ header
     padding: 2px
     border: solid .5px
     width: 200px
+    a
+      color: #fafafa
+    a:hover
+      color: #24292e
+
 
 .Logo
   height: 60px
@@ -88,8 +93,8 @@ header
   img
 
 .Nav
-  background-color: #00c853
-  //background-color: #1ed760
+  //background-color: #00c853
+  background-color: $verdeclaro
   height: 28px
   .box
     padding: 0px
@@ -291,6 +296,6 @@ header
       color: #424242
 
 
-@keyframes spin4
-    0%  {transform: rotate(360deg)}
-    100%{transform: rotate(0deg)}
+  @keyframes spin4
+      0%  {transform: rotate(360deg)}
+      100%{transform: rotate(0deg)}

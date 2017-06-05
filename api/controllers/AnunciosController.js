@@ -69,11 +69,11 @@ module.exports = {
 	},
 	getAnuncios: function(req, res){
 		var anuntios = [];
-		var comments = [];
-		Anuncio.anunciosFindByGroup(req.session.User.id_group, function(err, anuncios){
 
+		Anuncio.anunciosFindByGroup(req.session.User.id_group, function(err, anuncios){
 			    moment.locale('es');
 			    for(var i in anuncios){
+						var comments = [];
 						var dia = anuncios[i].createdAt.getDate();
 						var mes = anuncios[i].createdAt.getMonth();
 						var año = anuncios[i].createdAt.getFullYear();
@@ -97,7 +97,7 @@ module.exports = {
 								//anuncios[i].comment[j].fecha = now;
 
 								var aux1= {
-									autor: anuncios[i].comment[j].autor.name,
+									autor: anuncios[i].comment[j].autor,
 									text: anuncios[i].comment[j].text,
 									id: anuncios[i].comment[j].id,
 									fecha: now
