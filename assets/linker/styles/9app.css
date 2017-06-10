@@ -1,5 +1,6 @@
 body {
-  font-size: 16px; }
+  background-color: #e9eaed;
+  height: 100%; }
 
 .col-1-7 {
   width: 14.28%; }
@@ -7,10 +8,13 @@ body {
 .row {
   margin: 0; }
 
-.Layout-Content .card {
-  background-color: #fafafa;
-  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.24), 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
-  padding: 0; }
+.Layout-Content {
+  padding-top: .5em; }
+  .Layout-Content .card {
+    background-color: #fafafa;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.24), 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+    padding: 0;
+    margin-top: 1em; }
 
 .User-edit-img {
   height: 85px;
@@ -1032,6 +1036,51 @@ body {
   /* Support for IE. */
   font-feature-settings: 'liga'; }
 
+.ComentarioNuevo {
+  padding: .5em;
+  padding-left: 10%; }
+
+.ComentarioNuevo-Image {
+  padding: 0;
+  height: 45px;
+  margin: auto 0; }
+  .ComentarioNuevo-Image img {
+    float: left;
+    height: 45px;
+    width: 45px;
+    border-radius: 10%; }
+
+.ComentarioNuevo-Form {
+  margin: auto 0;
+  padding: 0;
+  height: 45px; }
+  .ComentarioNuevo-Form .col-lg-12 {
+    padding: 0; }
+  .ComentarioNuevo-Form .ComentarioNuevo-Text {
+    border: 2px solid rgba(151, 151, 151, 0.5);
+    background-color: #fff;
+    resize: none;
+    font-family: 'Varela Rou';
+    font-size: 18px;
+    opacity: 0.6;
+    padding: 0 .5rem;
+    height: 45px;
+    min-height: 45px;
+    box-sizing: border-box;
+    color: #424242;
+    font-weight: 250; }
+    .ComentarioNuevo-Form .ComentarioNuevo-Text::-webkit-input-placeholder {
+      color: #424242; }
+    .ComentarioNuevo-Form .ComentarioNuevo-Text:-moz-placeholder {
+      color: #424242; }
+    .ComentarioNuevo-Form .ComentarioNuevo-Text::-moz-placeholder {
+      color: #424242; }
+    .ComentarioNuevo-Form .ComentarioNuevo-Text:-ms-input-placeholder {
+      color: #424242; }
+  .ComentarioNuevo-Form .ComentarioNuevo-Text:focus {
+    border-bottom: 2px solid #8bc34a;
+    box-shadow: 0 1px 0 0 #8bc34a; }
+
 .Header-login {
   height: 70px;
   background-color: #24292e; }
@@ -1108,7 +1157,7 @@ body {
 
 .Comentario {
   padding: .5em;
-  padding-left: 12%;
+  padding-left: 10%;
   border-top: 1px solid #cccccc; }
 
 .Comentario-Image {
@@ -1119,32 +1168,21 @@ body {
     width: 45px;
     border-radius: 10%; }
 
-.ComentarioNuevo-Form .ComentarioNuevo-Text {
-  font-family: 'Varela Rou';
-  font-size: 1.2em;
-  opacity: 0.6; }
-
-.ComentarioNuevo-Form .ComentarioNuevo-Btn {
-  font-size: 1em; }
-
 .Comentario-Info {
   font-family: 'Varela Rou';
   padding: 0; }
   .Comentario-Info .col-lg-12 {
     padding: 0;
     display: inline-block; }
-  .Comentario-Info .col-lg-10 {
-    padding: 0; }
   .Comentario-Info .Comentario-User {
     color: #8bc34a;
     font-weight: 500;
-    font-size: 1.1em;
-    margin: 0em;
-    display: inline; }
+    font-size: 18px;
+    margin: 0em; }
   .Comentario-Info .Comentario-Time {
     color: #9e9e9e;
     font-size: .6em;
-    line-height: 27px;
+    line-height: 10px;
     font-weight: 300;
     margin: 0em; }
   .Comentario-Info .Comentario-Text {
@@ -1154,7 +1192,6 @@ body {
     word-wrap: break-word;
     margin: 0em;
     opacity: 0.8;
-    display: inline;
     margin-left: 10px; }
 
 #text-Comentario {
@@ -1174,8 +1211,7 @@ header {
 
 .Header {
   height: 75px;
-  border-color: #fafafa;
-  border-bottom: solid 0.5px; }
+  border-bottom: solid 0.5px #fafafa; }
   .Header .box {
     width: 1000px;
     height: 100%;
@@ -1193,11 +1229,12 @@ header {
 
 .Header-img {
   height: 60px;
-  width: 240px;
-  float: right; }
+  width: 260px;
+  margin-top: 2px;
+  margin-left: -2px; }
   .Header-img img {
-    height: 50px;
-    width: 240px; }
+    height: 60px;
+    width: 260px; }
 
 .User .box {
   width: 100%;
@@ -1260,7 +1297,7 @@ header {
   height: 60px;
   padding-left: 0px;
   padding-right: 0px;
-  float: left; }
+  display: inherit; }
 
 .Nav {
   background-color: #8bc34a;
@@ -1346,7 +1383,7 @@ header {
 .chat-exit {
   text-align: center; }
   .chat-exit a {
-    background-color: #1ed760;
+    background-color: #8bc34a;
     height: 28px; }
   .chat-exit i {
     margin-left: auto;
@@ -1478,17 +1515,17 @@ header {
   .AnuncioNuevo-Form .AnuncioNuevo-Text {
     border: 2px solid rgba(151, 151, 151, 0.5);
     background-color: #fff;
-    resize: none; }
-  .AnuncioNuevo-Form .AnuncioNuevo-Text {
+    resize: none;
+    font-family: 'Varela Rou';
+    font-size: 1.5em;
+    opacity: 0.6;
     padding: 0 1rem;
-    font-size: 18px;
     height: 70px;
     min-height: 70px;
     box-sizing: border-box;
     margin-bottom: .5em;
     color: #424242;
-    font-weight: 250;
-    font-family: 'Varela Round'; }
+    font-weight: 250; }
     .AnuncioNuevo-Form .AnuncioNuevo-Text::-webkit-input-placeholder {
       color: #424242; }
     .AnuncioNuevo-Form .AnuncioNuevo-Text:-moz-placeholder {
@@ -1504,20 +1541,19 @@ header {
     float: right;
     background: #8bc34a;
     padding: 0 3rem;
-    font-size: 1.2em;
     text-transform: capitalize;
     font-weight: 500;
-    height: 3rem; }
+    height: 3rem;
+    font-size: 1em; }
 
 .Anuncio {
   padding: .5em;
   padding-bottom: 0px; }
 
 .Anuncio-container {
+  padding-left: 1em;
   padding-bottom: .5em;
-  border-bottom: 1px solid #cccccc;
-    border-bottom-height: auto;
-    border-bottom-overflow: auto; }
+  border-bottom: 1px solid #cccccc; }
 
 .Anuncio-Image {
   padding: 0;
@@ -1529,45 +1565,34 @@ header {
     width: 70px;
     border-radius: 10%; }
 
-.AnuncioNuevo-Form .AnuncioNuevo-Text {
-  font-family: 'Varela Rou';
-  font-size: 1.5em;
-  opacity: 0.6; }
-
-.AnuncioNuevo-Form .AnuncioNuevo-Btn {
-  font-size: 1em; }
-
 .Anuncio-Info {
   padding: 0;
   font-family: 'Varela Rou';
-  line-height: .5px;
-  display: inline-block; }
+  padding-top: .5%; }
   .Anuncio-Info .col-lg-12 {
     padding: 0;
-    display: inline; }
+    display: inline-block; }
   .Anuncio-Info .Anuncio-User {
     color: #8bc34a;
     font-weight: 500;
     font-size: 20px;
-    margin: 0em;
-    display: inline; }
+    margin: 0em; }
   .Anuncio-Info .Anuncio-Time {
     color: #9e9e9e;
-    font-size: 12px;
-    line-height: 27px;
+    font-size: 11px;
     font-weight: 300;
-    margin: 0em; }
+    margin: 0em;
+    line-height: 15px; }
   .Anuncio-Info .Anuncio-Text {
-    font-size: 18px;
+    font-size: 17px;
     color: #424242;
     letter-spacing: 0;
     word-wrap: break-word;
     margin: 0em;
-    opacity: 0.8;
-    display: inline; }
+    opacity: 0.8; }
 
 #text-anuncio {
-  height: 75px; }
+  height: auto; }
 
 #anuncios-card {
   margin-top: 0em; }
@@ -1820,7 +1845,9 @@ div.material-table {
 .Turno-Info h5 {
   margin: 4px;
   margin-bottom: 2px;
-  font-size: 1.2rem; }
+  font-size: 1.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 .Turno-Log {
   text-align: center;

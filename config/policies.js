@@ -27,7 +27,6 @@ module.exports.policies = {
   ***************************************************************************/
 
   '*': 'flash',
-
   'user':{
     new : 'flash',
     create : 'flash',
@@ -35,7 +34,7 @@ module.exports.policies = {
     edit : 'userCanSeeProfile',
     update : 'userCanSeeProfile',
     destroy: 'userCanSeeProfile',
-    index: 'flash',
+    //index: 'flash',
     modal: 'userCanSeeProfile',
     addGroup: 'flash',
     updateUser: 'userCanSeeProfile',
@@ -45,7 +44,7 @@ module.exports.policies = {
     show: 'userCanSeeProfile',
     new: 'flash'
   },
-  'anuncio':{
+  'anuncios':{
     new: 'flash',
     index: 'userCanSeeProfile'
   },
@@ -54,8 +53,9 @@ module.exports.policies = {
     show: 'userCanSeeProfile'
   },
   'turnolog':{
-    index: 'flash',
-    entrar: 'flash'
+    index: 'userCanSeeProfile',
+    entrar: 'userCanSeeProfile',
+
    },
   'session':{
     new: 'flash'

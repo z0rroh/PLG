@@ -9,8 +9,7 @@ header
 
 .Header
   height: 75px
-  border-color: #fafafa
-  border-bottom: solid 0.5px
+  border-bottom: solid 0.5px #fafafa
   .box
     width: 1000px
     height: 100%
@@ -27,11 +26,12 @@ header
     //animation: spin4 3s infinite linear
 .Header-img
   height: 60px
-  width: 240px
-  float: right
+  width: 260px
+  margin-top: 2px
+  margin-left: -2px
   img
-    height: 50px
-    width: 240px
+    height: 60px
+    width: 260px
 .User
 
   .box
@@ -85,15 +85,17 @@ header
       color: #24292e
 
 
+
 .Logo
   height: 60px
   padding-left: 0px
   padding-right: 0px
-  float: left
+  display: inherit
   img
 
 .Nav
   //background-color: #00c853
+  //border-top: solid 0.5px #fafafa
   background-color: $verdeclaro
   height: 28px
   .box
@@ -122,6 +124,7 @@ header
 
   .Nav-Item:hover
     opacity: 0.8
+
 
   .Nav-Item.is-active
     color: #f8f8f8
@@ -183,7 +186,7 @@ header
 .chat-exit
   text-align: center
   a
-    background-color: #1ed760
+    background-color: $verdeclaro
     height: 28px
   i
     margin-left: auto
