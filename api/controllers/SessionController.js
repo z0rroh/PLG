@@ -8,8 +8,12 @@ var bcrypt=require('bcrypt');
 
 module.exports = {
 	new: function(req,res){
-			res.view('session/new');
-
+		if(req.session.User && req.session.authenticated){
+				res.redirect('anuncios');
+		}
+		else {
+				res.view('session/new');
+		}
 	},
 	create: function(req, res, next){
 
@@ -71,7 +75,7 @@ module.exports = {
                   Group.findOne(req.session.User.id_group, function foundGroup(err, group){
                     if (err) return next(err);
                     req.session.Group = group;
-                    res.redirect('/anuncios/index');
+                    res.redirect('/anuncios');
                   });
 
 

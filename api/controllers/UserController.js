@@ -36,7 +36,7 @@ module.exports = {
 
                     // Get updates about users being created
                     User.watch(req);
-                    
+
                     res.json(req.session.User);
 
 
@@ -108,7 +108,9 @@ module.exports = {
 
 		});
 	},
-
+  perfil: function(req,res, next){
+    res.view('user/perfil')
+  },
 	edit: function(req, res, next){
 		User.findOne(req.param('id'), function userFounded(err, user){
 			if(err) return next(err);

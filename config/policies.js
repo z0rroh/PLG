@@ -38,7 +38,8 @@ module.exports.policies = {
     modal: 'userCanSeeProfile',
     addGroup: 'flash',
     updateUser: 'userCanSeeProfile',
-    announce: 'flash'
+    announce: 'flash',
+    perfil: 'userCanSeeProfile',
   },
   'group':{
     show: 'userCanSeeProfile',
@@ -46,19 +47,23 @@ module.exports.policies = {
   },
   'anuncios':{
     new: 'flash',
-    index: 'userCanSeeProfile'
+    index: 'authenticated'
   },
   'turno':{
     create: 'flash',
     show: 'userCanSeeProfile'
   },
   'turnolog':{
-    index: 'userCanSeeProfile',
-    entrar: 'userCanSeeProfile',
+    index: 'authenticated',
+    entrar: 'authenticated',
 
    },
   'session':{
     new: 'flash'
+  },
+  'archivo':{
+    index: 'userCanSeeProfile',
+    upload: 'userCanSeeProfile'
   }
 
 
