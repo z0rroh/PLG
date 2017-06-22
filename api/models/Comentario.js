@@ -22,20 +22,19 @@ module.exports = {
 
   },
   comentarioFindByGroup: function (options, cb) {
-     Comentario.findOne({id:options.id}, function (err, comentario) {
+     Comentario.findOne({id:options.id}).populate('autor').exec(function (err, comentario) {
        if (err) return cb(err);
        if (!comentario) return cb(new Error('Comentario not found.'));
        moment.locale('es');
-       var dia = comentario.createdAt.getDate();
-       var mes = comentario.createdAt.getMonth();
-       var año = comentario.createdAt.getFullYear();
-       var hora = comentario.createdAt.getHours();
-       var min = comentario.createdAt.getMinutes();
-       var seg = comentario.createdAt.getSeconds();
-       var now = moment([año,mes,dia,hora,min,seg]).fromNow();
+       var now = moment(comentario.createdAt).fromNow();
        var comments = [];
+       var autor = {
+         id: comentario.autor.id,
+         name: comentario.autor.name,
+         user_img: comentario.autor.user_image
+       }
        var newComment = {
-         autor: comentario.autor,
+         autor: autor,
          id: comentario.id,
          text: comentario.text,
          anuncio: comentario.anuncio,
@@ -44,5 +43,6 @@ module.exports = {
        Comentario.publishCreate(newComment);
        cb(null,newComment);
      });
-   }
+   },
+
 };

@@ -4,7 +4,7 @@
  * @description :: Server-side logic for managing files
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
+const path = require('path');
 module.exports = {
 	index: function (req,res){
 
@@ -22,12 +22,30 @@ module.exports = {
 
 		sails.log.debug('We have entered the uploading process ');
 
-	 console.log("holaaaa");
 	 req.file('avatar').upload({
-	  dirname: '../../assets/images/avatars'
+	  dirname: '../../assets/images/avatars/'+req.session.User.id
 		},function (err, uploadedFiles) {
 		  if (err) return res.negotiate(err);
-			console.log(uploadedFiles)
+			var obj={
+				name: path.posix.basename(uploadedFiles[0].fd),
+				owner: req.session.User.id,
+				tipo: uploadedFiles[0].type,
+				size: uploadedFiles[0].size
+			}
+			archivo.create(obj,function(err, image){
+				if (err){
+					console.log(err);
+				}
+				else{
+
+					User.update({id:image.owner},{user_image:image.name},function editImage(err, user){
+							if(err){
+							}
+							//User.publishUpdate()
+					})
+				}
+
+			});
 		  //return res.json({
 		    //message: uploadedFiles.length + ' file(s) uploaded successfully!'
 		  //});

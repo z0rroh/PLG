@@ -30,7 +30,7 @@ module.exports = {
 	  	},
 	  	user_image:{
 	   		model: 'archivo',
-				defaultsTo : 'default_user'
+				defaultsTo : 'default_user.png'
 	  	},
 	  	phone:{
 	  		type: 'string',
@@ -114,7 +114,7 @@ module.exports = {
 	},
 		// Hook that gets called after the default publishUpdate is run.
 	// We'll use this to tell all public chat rooms about the user update.
-	
+
 
 
 

@@ -25,7 +25,7 @@
                   </ul>
                   <p class="User-empresa"><%= session.Group.name %></p>
                 </div>
-                <div class="User-image"><img src="/images/avatars/default_user.png"></div>
+                <div class="User-image"><img src="/images/avatars/<%= session.User.id%>/<%= session.User.user_image %>"></div>
               </div>
             </div>
           </div>
@@ -35,9 +35,10 @@
     </div>
 <% if(session.authenticated && session.User.id_group) { %>
     <div class="Nav col-lg-12">
-      <div class="box col-lg-5">
-        <div class="Nav-Items row ">
-            <div class=""><a id="Nav-Anuncios" class="Nav-Item" href="/anuncios">Anuncios</a></div>
+      <div class="box">
+        <div class="Nav-Items row center-lg">
+            <div class=""><a id="Nav-Perfil" class="Nav-Item" href="/perfil">Perfil</a></div>
+            <div class="Nav-divider"><a id="Nav-Anuncios" class="Nav-Item" href="/anuncios">Anuncios</a></div>
             <div class="Nav-divider"><a id="Nav-Turnos" class="Nav-Item" href="/turnos">Turnos</a></div>
             <% if(session.User.admin) { %>
               <div class="Nav-divider"><a id="Nav-Grupos" class="Nav-Item" href="/group/show">Funcionarios</a></div>

@@ -10,7 +10,7 @@ module.exports = function (req, res, ok){
 		req.session.flash = {
 			err: noRightsError
 		}
-		res.redirect('anuncios/index');
+		res.redirect('/anuncios');
 		return;
 	}
 	ok();

@@ -5,6 +5,8 @@
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
 */
 var moment=require('moment');
+var lang = require('lodash/lang');
+var nestedPop = require('nested-pop');
 module.exports = {
 
   attributes: {
@@ -26,11 +28,60 @@ module.exports = {
 
   },
   anunciosFindByGroup: function (options, cb) {
-     Anuncio.find({group:options}).populate('autor').populate('comment').sort({ createdAt: 'desc' }).exec(function (err, anuncios) {
-       if (err) return cb(err);
-       if (!anuncios) return cb(new Error('Anuncios not found.'));
-       return cb(null,anuncios);
-     });
+     var anuntios = [];
+     Anuncio.find({group:options}).populate('autor').populate('comment').sort({ createdAt: 'desc' })
+      .then(function(anuncios){
+        return nestedPop(anuncios,{
+          comment: {
+            as: 'Comentario',
+            populate:[
+              'autor'
+            ]
+          }
+        }).then(function(anuncios){
+            moment.locale('es');
+            anuncios.map(anuncio =>{
+              var comments = []
+              anuncio.comment.map(comment =>{
+                var autor = {
+                  id: comment.autor.id,
+                  name: comment.autor.name,
+                  user_img: comment.autor.user_image
+                }
+                var now = moment(comment.createdAt).fromNow();
+                var newComment = {
+                  autor: autor,
+                  id: comment.id,
+                  text: comment.text,
+                  anuncio: comment.anuncio,
+                  fecha: now
+                }
+                comments.push(newComment);
+              })
+              var autor = {
+                id: anuncio.autor.id,
+                name: anuncio.autor.name,
+                user_img: anuncio.autor.user_image
+              }
+              var now = moment(anuncio.createdAt).fromNow();
+              var newAnuncio = {
+                id: anuncio.id,
+                autor: autor,
+                text: anuncio.text,
+                group: anuncio.group,
+                fecha: now,
+                comment: comments
+              }
+              anuntios.push(newAnuncio)
+            })
+            return cb(null,anuntios);
+        }).catch(function(err){
+            throw err;
+        })
+      }).catch(function(err){
+          throw err;
+      })
+
    },
 
    anuncioFindByGroup: function (options, cb) {
@@ -38,16 +89,15 @@ module.exports = {
         if (err) return cb(err);
         if (!anuncio) return cb(new Error('Anuncios not found.'));
         moment.locale('es');
-        var dia = anuncio.createdAt.getDate();
-        var mes = anuncio.createdAt.getMonth();
-        var año = anuncio.createdAt.getFullYear();
-        var hora = anuncio.createdAt.getHours();
-        var min = anuncio.createdAt.getMinutes();
-        var seg = anuncio.createdAt.getSeconds();
-        var now = moment([año,mes,dia,hora,min,seg]).fromNow();
+        var now = moment(anuncio.createdAt).fromNow();
         var comments = [];
+        var autor = {
+          id: anuncio.autor.id,
+          name: anuncio.autor.name,
+          user_img: anuncio.autor.user_image
+        }
         var newAnuncio = {
-          autor: anuncio.autor.name,
+          autor: autor,
           id: anuncio.id,
           text: anuncio.text,
           comment: comments,

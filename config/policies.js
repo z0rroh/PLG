@@ -30,19 +30,19 @@ module.exports.policies = {
   'user':{
     new : 'flash',
     create : 'flash',
-    show : 'userCanSeeProfile',
-    edit : 'userCanSeeProfile',
-    update : 'userCanSeeProfile',
-    destroy: 'userCanSeeProfile',
+    show : 'authenticated',
+    edit : 'authenticated',
+    update : 'authenticated',
+    destroy: 'authenticated',
     //index: 'flash',
-    modal: 'userCanSeeProfile',
+    modal: 'authenticated',
     addGroup: 'flash',
-    updateUser: 'userCanSeeProfile',
+    updateUser: 'authenticated',
     announce: 'flash',
-    perfil: 'userCanSeeProfile',
+    perfil: 'authenticated',
   },
   'group':{
-    show: 'userCanSeeProfile',
+    show: 'authenticated',
     new: 'flash'
   },
   'anuncios':{
@@ -51,7 +51,7 @@ module.exports.policies = {
   },
   'turno':{
     create: 'flash',
-    show: 'userCanSeeProfile'
+    show: 'authenticated'
   },
   'turnolog':{
     index: 'authenticated',
@@ -62,8 +62,8 @@ module.exports.policies = {
     new: 'flash'
   },
   'archivo':{
-    index: 'userCanSeeProfile',
-    upload: 'userCanSeeProfile'
+    index: 'authenticated',
+    upload: 'authenticated'
   }
 
 

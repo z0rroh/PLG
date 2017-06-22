@@ -18,9 +18,10 @@ module.exports = {
 				}
 		},
 		create: function(req, res){
+
 			var commentObj={
 				text: req.param('text'),
-				autor: req.session.User.name,
+				autor: req.session.User.id,
 				anuncio: req.param('anuncio')
 			}
 			Comentario.create(commentObj,function (err, comentario) {
@@ -30,7 +31,7 @@ module.exports = {
 					req.session.flash={
 							err: noAnuncio
 					}
-					return res.redirect('anuncios/new');
+					return res.redirect('/anuncios');
 				}
 				//console.log("se creo bien el anuncio");
 
@@ -40,7 +41,7 @@ module.exports = {
 				}
 
 				Comentario.comentarioFindByGroup(comentario, function(err, comentario){
-						res.send(comentario);
+						res.ok(comentario);
 				});
 
 			});

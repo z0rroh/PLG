@@ -268,6 +268,9 @@ $(document).ready(function(){
   if(pathArray[1] == 'anuncios'){
     $('#Nav-Anuncios').addClass('is-active');
   }
+  if(pathArray[1] == 'perfil'){
+    $('#Nav-Perfil').addClass('is-active');
+  }
   $('.Nav-Button').leanModal();
 
   $('#chat-on').sideNav({

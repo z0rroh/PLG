@@ -8,8 +8,17 @@
 module.exports = {
 
   attributes: {
-    image: {
+    name:{
+      type:'string'
+    },
+    owner: {
       model: 'user'
-    }
+    },
+    tipo:{
+      type:'string'
+    },
+    size:{
+      type:'string'
+    },
   }
 };
