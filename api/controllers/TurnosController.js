@@ -43,9 +43,6 @@ module.exports = {
 
 	},
 
-	show: function(req, res, next){
-	},
-
 	index: function(req, res, next){
 		Turno.find({group:req.session.User.id_group},function foundUsers(err, turnos){
 			for(var i in turnos){
@@ -70,25 +67,6 @@ module.exports = {
 			res.view({
 				turnos: turnos
 			});
-		});
-	},
-
-	edit: function(req, res, next){
-		User.findOne(req.param('id'), function userFounded(err, user){
-			if(err) return next(err);
-			if(!user) return next(err);
-			res.view({
-				user: user
-			});
-		});
-	},
-
-	update: function(req, res, next){
-		User.update(req.param('id'), req.params.all(), function userUpdate(err){
-			if(err) {
-				return res.redirect('user/edit/' + req.param('id'));
-			}
-			res.redirect('/group/show');
 		});
 	},
 
@@ -133,12 +111,12 @@ module.exports = {
 				  }
 					Turnolog.findOrCreate({id_turno: turnos[i].id, estado: 'activo'},turnologObj,function (err,turnologs) {
 						if(err){
-
+							return next(err);
 						}
 
 					});
 				}
-				res.redirect('/turnolog/index');
+				res.redirect('/turnos');
 			}
 		});
 	},

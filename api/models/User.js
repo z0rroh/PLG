@@ -57,6 +57,11 @@ module.exports = {
 				via: 'users',
 				dominant: true
 			},
+			turnos:{
+				collection: 'turnolog',
+				via: 'users',
+
+			},
 			rooms: {
 				collection: 'room',
 				via: 'users',

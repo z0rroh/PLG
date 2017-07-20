@@ -42,8 +42,11 @@ module.exports = {
       type: 'string',
       required: true
     },
+
     users:{
-      type:'array'
+      collection: 'user',
+      via: 'turnos',
+      dominant: true
     },
     id_turno:{
       type:'string',

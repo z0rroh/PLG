@@ -4,7 +4,7 @@
  * @description :: Server-side logic for managing turnologs
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
+var lang = require('lodash/lang');
  module.exports = {
 
    index: function(req,res){
@@ -13,31 +13,25 @@
    entrar:function (req,res) {
 
        if(req.isSocket && req.method === 'POST') {
-         Turnolog.findOne(req.param('id'))
+         Turnolog.findOne(req.param('id')).populate('users')
                  .then(function(result){
                    var turnolog = result;
-                   if(turnolog.users){
+                   if(_.isEmpty(turnolog.users) === false){
                        var resul= false;
-                       for(var i in turnolog.users){
-                         if(turnolog.users[i].id === req.session.User.id){
-                           resul=true;
-                           console.log("El usuario ya tomo este turno")
+                       turnolog.users.map(user =>{
+                         if(user.id === req.session.User.id){
+                           resul = true;
+                           console.log("El usuario ya tomo este turno");
                          }
-                       }
+                       })
 
                        if (resul===false && turnolog.estado==='activo' && turnolog.cupoActual<turnolog.cupoTotal && req.session.User.tokens>0){
                            console.log("El usuario no a tomado este turno")
-                           var userObj = {
-                             id: req.session.User.id,
-                             name: req.session.User.name,
-                             tokens: req.session.User.tokens,
-                             group: req.session.Group.name
-                           };
                            var actual = turnolog.cupoActual;
                            var parsed = parseInt(actual, 10);
                            parsed = parsed + 1;
                            turnolog.cupoActual = parsed;
-                           turnolog.users.push(userObj);
+                           turnolog.users.add(req.session.User.id);
 
                            turnolog.save(function(err){
                              var sucessTurno=[{message: 'Se tomo correctamente el turno'}]
@@ -76,18 +70,12 @@
                      }
                      else{
                        if(turnolog.estado==='activo' && turnolog.cupoActual<turnolog.cupoTotal && req.session.User.tokens>0){
-                         var userObj = {
-                           id: req.session.User.id,
-                           name: req.session.User.name,
-                           tokens: req.session.User.tokens,
-                           group: req.session.User.group
-                         };
+
                          var actual = turnolog.cupoActual;
                          var parsed = parseInt(actual, 10);
                          parsed = parsed + 1;
                          turnolog.cupoActual = parsed;
-                         turnolog.users = [];
-                         turnolog.users.push(userObj);
+                         turnolog.users.add(req.session.User.id);
 
                          turnolog.save(function(err){
                            var sucessTurno=[{message: 'Se tomo correctamente el turno'}]
@@ -125,9 +113,8 @@
                          });
                        }
 
-
-
                      }
+                     //console.log(turnolog);
          })
          .fail(function(err){
            var failTurno=[{message: 'No se pudo tomar el turno'}]
@@ -184,7 +171,6 @@
 
              for(var i=0; i<7; i++){
                var aux;
-
                if( i === 0){
                  aux = {
                    name: "Lunes",

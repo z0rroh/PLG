@@ -1566,8 +1566,7 @@ header {
 
 .Anuncio-Image {
   padding: 0;
-  margin-right: 1em;
-  float: left; }
+  margin-right: 1em; }
   .Anuncio-Image img {
     float: left;
     height: 70px;
@@ -1575,12 +1574,12 @@ header {
     border-radius: 10%; }
 
 .Anuncio-Info {
-  padding: 0;
   font-family: 'Varela Rou';
-  padding-top: .5%; }
-  .Anuncio-Info .col-lg-12 {
+  padding-top: .5%;
+  display: inline-block; }
+  .Anuncio-Info .Info-content {
     padding: 0;
-    display: inline-block; }
+    padding-bottom: 2px; }
   .Anuncio-Info .Anuncio-User {
     color: #8bc34a;
     font-weight: 500;
@@ -1925,18 +1924,33 @@ div.material-table {
     padding: 0px;
     display: inherit;
     background-color: #fafafa;
-    border-bottom: 1px solid #efefef;
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.24), 0px 0px 2px 0px rgba(0, 0, 0, 0.12); }
     .Perfil-Container .User-Edit-Tittle h1 {
       color: #8bc34a;
-      font-size: 28px;
-      margin: 10px 0 10px 10px; }
+      font-size: 26px;
+      margin: 10px 10px;
+      margin-left: auto;
+      margin-right: auto; }
+  .Perfil-Container .Tittle-Element {
+    border-bottom: 1px solid #efefef;
+    margin: 10px 10px;
+    margin-left: auto;
+    margin-right: auto; }
+    .Perfil-Container .Tittle-Element h4 {
+      font-size: 18px; }
   .Perfil-Container .User-Info {
+    display: inherit;
     padding: 0px;
     background-color: #fafafa;
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.24), 0px 0px 2px 0px rgba(0, 0, 0, 0.12); }
+    .Perfil-Container .User-Info .User-Info-Datos {
+      display: inline-block;
+      border-right: 1px solid #efefef;
+      padding: 0px; }
+    .Perfil-Container .User-Info .User-Info-Turnos {
+      display: inline-block; }
     .Perfil-Container .User-Info .User-element {
-      padding: 20px 20px 20px 20px;
+      padding: 20px 20px 20px 10px;
       display: -ms-flexbox;
       display: flex; }
       .Perfil-Container .User-Info .User-element strong {
@@ -1949,3 +1963,20 @@ div.material-table {
         width: auto;
         height: auto;
         float: left; }
+    .Perfil-Container .User-Info .Turno-element {
+      padding: 20px 20px 20px 10px;
+      display: -ms-flexbox;
+      display: flex;
+      border-bottom: 1px solid #efefef; }
+      .Perfil-Container .User-Info .Turno-element strong {
+        margin-left: 15px;
+        float: left;
+        width: auto;
+        height: auto;
+        font-size: 10px; }
+      .Perfil-Container .User-Info .Turno-element span {
+        margin-left: 5px;
+        width: auto;
+        height: auto;
+        float: left;
+        font-size: 10px; }

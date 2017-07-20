@@ -8,40 +8,104 @@
 
 module.exports = {
 
-  announce: function(req, res) {
-      if(req.isSocket && req.session.User){
+    announce: function(req, res) {
+        if(req.isSocket && req.session.User){
 
-                User.find({id_group:req.session.User.id_group}).exec(function (err, users) {
-                // Subscribe the requesting socket (e.g. req.socket) to all users (e.g. users)
-                    User.subscribe(req, users,['update','create','destroy']);
-                });
+                  User.find({id_group:req.session.User.id_group}).exec(function (err, users) {
+                  // Subscribe the requesting socket (e.g. req.socket) to all users (e.g. users)
+                      User.subscribe(req, users,['update','create','destroy']);
+                  });
 
-                  // Get the socket ID from the reauest
-                  var socketId = sails.sockets.getId(req);
+                    // Get the socket ID from the reauest
+                    var socketId = sails.sockets.getId(req);
 
-                  // Get the session from the request
+                    // Get the session from the request
 
-                  // Create the session.users hash if it doesn't exist already
-                  req.session.users = req.session.users || {};
-                    // Save this user in the session, indexed by their socket ID.
-                    // This way we can look the user up by socket ID later.
-                    req.session.users[socketId] = req.session.User;
+                    // Create the session.users hash if it doesn't exist already
+                    req.session.users = req.session.users || {};
+                      // Save this user in the session, indexed by their socket ID.
+                      // This way we can look the user up by socket ID later.
+                      req.session.users[socketId] = req.session.User;
 
-                    // Subscribe the connected socket to custom messages regarding the user.
-                    // While any socket subscribed to the user will receive messages about the
-                    // user changing their name or being destroyed, ONLY this particular socket
-                    // will receive "message" events.  This allows us to send private messages
-                    // between users.
-                    User.subscribe(req, req.session.User, 'message');
+                      // Subscribe the connected socket to custom messages regarding the user.
+                      // While any socket subscribed to the user will receive messages about the
+                      // user changing their name or being destroyed, ONLY this particular socket
+                      // will receive "message" events.  This allows us to send private messages
+                      // between users.
+                      User.subscribe(req, req.session.User, 'message');
 
-                    // Get updates about users being created
-                    User.watch(req);
+                      // Get updates about users being created
+                      User.watch(req);
+                      User.findOne({id: req.session.User.id}).populate('groups').populate('turnos')
+                      .then(function(user){
+                        res.ok(user);
+                      });
 
-                    res.json(req.session.User);
+      }
+  },
 
-
-    }
-},
+  getUser: function(req,res){
+    User.findOne({id: req.session.User.id}).populate('groups').populate('turnos')
+    .then(function(user){
+      var turnos = [];
+      var grupo;
+      var admin;
+      user.turnos.map(turno =>{
+        var dia;
+        if( turno.day === "0"){
+          dia = "Lunes"
+        }
+        if( turno.day === "1"){
+          dia = "Martes"
+        }
+        if( turno.day === "2"){
+          dia = "Miercoles"
+        }
+        if( turno.day === "3"){
+          dia = "Jueves"
+        }
+        if( turno.day === "4"){
+          dia = "Viernes"
+        }
+        if( turno.day === "5"){
+          dia = "Sabado"
+        }
+        if( turno.day === "6"){
+          dia = "Domingo"
+        }
+        var turno = {
+          id: turno.id,
+          name: turno.name,
+          start: turno.start,
+          end: turno.end,
+          day: dia
+        }
+        turnos.push(turno);
+      })
+      user.groups.map(group =>{
+        grupo = group.name;
+      })
+      if ( user.admin === true){
+        admin = "Administrador"
+      }
+      else{
+        admin = "Comun"
+      }
+      var userInfo = {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        adress: user.adress,
+        tokens: user.tokens,
+        admin: admin,
+        user_image: user.user_image,
+        turnos: turnos,
+        group: grupo
+      }
+      res.ok(userInfo);
+    });
+  },
 
   new:function (req, res){
 		//console.log("pagina de registro");
