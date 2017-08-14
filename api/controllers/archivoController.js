@@ -19,13 +19,12 @@ module.exports = {
 	upload: function  (req, res) {
 		if(req.method === 'GET')
 			return res.json({'status':'GET not allowed'});
-
 		sails.log.debug('We have entered the uploading process ');
-
-	 req.file('avatar').upload({
+	  req.file('avatar').upload({
 	  dirname: '../../assets/images/avatars/'+req.session.User.id
 		},function (err, uploadedFiles) {
 		  if (err) return res.negotiate(err);
+			console.log(uploadedFiles);
 			var obj={
 				name: path.posix.basename(uploadedFiles[0].fd),
 				owner: req.session.User.id,

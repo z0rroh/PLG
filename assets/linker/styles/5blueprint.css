@@ -3038,6 +3038,7 @@ a.pt-button {
   cursor: text;
   max-width: 100%;
   vertical-align: top;
+  margin-left: 10px;
   white-space: nowrap; }
   .pt-editable-text::before {
     position: absolute;
@@ -3993,7 +3994,8 @@ a.pt-button {
   display: inline-block;
   position: relative;
   cursor: pointer;
-  height: 30px; }
+  height: 30px;
+  width: 100%; }
   .pt-file-upload input {
     opacity: 0;
     margin: 0;

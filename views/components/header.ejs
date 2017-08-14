@@ -1,8 +1,8 @@
 
-  <header class="row between-lg">
+  <header class="row">
     <div class="line col-lg-12"> </div>
     <div class="Header col-lg-12">
-      <div class="box">
+      <div class="box col-lg-10">
         <div class="row box between-lg middle-lg">
           <div class="Logo col-lg-4">
             <div class="Header-img-logo" >
@@ -37,13 +37,13 @@
     <div class="Nav col-lg-12">
       <div class="box">
         <div class="Nav-Items row center-lg">
-            <div class=""><a id="Nav-Perfil" class="Nav-Item" href="/perfil">Perfil</a></div>
-            <div class="Nav-divider"><a id="Nav-Anuncios" class="Nav-Item" href="/anuncios">Anuncios</a></div>
-            <div class="Nav-divider"><a id="Nav-Turnos" class="Nav-Item" href="/turnos">Turnos</a></div>
+            <div id="Nav-Perfil" class="Nav-Item"><a href="/perfil">Perfil</a></div>
+            <div id="Nav-Anuncios" class="Nav-Item"><a href="/anuncios">Anuncios</a></div>
+            <div id="Nav-Turnos" class="Nav-Item"><a href="/turnos">Turnos</a></div>
             <% if(session.User.admin) { %>
-              <div class="Nav-divider"><a id="Nav-Grupos" class="Nav-Item" href="/group/show">Funcionarios</a></div>
+              <div id="Nav-Grupos" class="Nav-Item"><a href="/group/show">Funcionarios</a></div>
 
-              <div class="Nav-divider"><a id="Nav-Admin" class="Nav-Item" href="/admin">Administrar</a></div>
+              <div id="Nav-Admin" class="Nav-Item"><a href="/admin">Administrar</a></div>
               <div id="Nav-Button" class="Nav-Button col-lg-1">
               </div>
             <% } %>

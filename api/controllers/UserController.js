@@ -108,10 +108,12 @@ module.exports = {
   },
 
   new:function (req, res){
-		//console.log("pagina de registro");
-		//res.locals.flash=._clone(req.session.flash);
-		res.view('user/new');
-		//req.session.flas={};
+    if(req.session.User && req.session.authenticated){
+        res.redirect('anuncios');
+    }
+    else {
+        res.view('user/new');
+    }
 
 	},
 
@@ -132,7 +134,7 @@ module.exports = {
   		User.create(userObj,function (err, user) {
 
   			if(err){
-          var error = [{message: "Se produjo un error al crear el usuari"}]
+          var error = [{message: "Se produjo un error al crear el Usuario"}]
   				req.session.flash={
             err: error
   				}
@@ -159,19 +161,19 @@ module.exports = {
 			res.json(user);
 		});
 	},
+  index: function(req, res, next){
 
-	index: function(req, res, next){
+      User.find({online: true,id_group:req.session.User.id_group},function foundUsers(err, users){
 
-		User.find({online: true,id_group:req.session.User.id_group},function foundUsers(err, users){
+        if(err) return next();
 
-			if(err) return next();
+        res.json({
+          users
+        });
 
-			res.json({
-				users
-			});
+      });
+    },
 
-		});
-	},
   perfil: function(req,res, next){
     res.view('user/perfil')
   },
