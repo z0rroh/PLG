@@ -1,13 +1,6 @@
 
-
-
-.Main
-  background-color: #e9ebee
-
 .comments-container
-  background-color: #e9ebee
-
-  margin: 60px auto 15px
+  margin: 30px auto 15px
   width: 768px
   h1
   	font-size: 36px
@@ -41,9 +34,9 @@
 .comments-list::after
 	content: ''
 	position: absolute
-	background: #c7cacb
+	//background: #c7cacb
 	bottom: 0
-	left: 27px
+	left: 29px
 	width: 7px
 	height: 7px
 	border: 3px solid $verdeclaro
@@ -52,7 +45,7 @@
 	border-radius: 50%
 
 
-.reply-list::before .reply-list::after
+.reply-list::before, .reply-list::after
   display: none
 .reply-list
   li:before
@@ -132,7 +125,7 @@
 	box-shadow: 0 1px 1px rgba(0,0,0,0.15)
 
 
-.comments-list .comment-box::before .comments-list .comment-box::after
+.comments-list .comment-box::before, .comments-list .comment-box:after
 	content: ''
 	height: 0
 	width: 0
@@ -145,7 +138,7 @@
 	left: -11px
 
 
-.comments-list .comment-box::before
+.comments-list .comment-box:before
 	border-width: 11px 13px 11px 0
 	border-color: transparent rgba(0,0,0,0.05)
 	left: -12px
@@ -216,10 +209,10 @@
 
 .comment-box .comment-name.by-author .comment-box .comment-name.by-author
   a
-    color: #03658c
+    color: #24292e
 .comment-box .comment-name.by-author::after
 	content: 'autor'
-	background: #03658c
+	background: $verdeclaro
 	color: #FFF
 	font-size: 12px
 	padding: 3px 5px
@@ -228,3 +221,16 @@
 	-webkit-border-radius: 3px
 	-moz-border-radius: 3px
 	border-radius: 3px
+
+
+@media only screen and (max-width: 766px)
+	.comments-container
+		width: 480px
+
+
+	.comments-list .comment-box
+		width: 390px
+
+
+	.reply-list .comment-box
+		width: 320px
