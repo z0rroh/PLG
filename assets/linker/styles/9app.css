@@ -1984,8 +1984,12 @@ div.material-table {
   width: 100%;
   margin-top: 5px; }
 
+.Main {
+  background: #f6f7f8;
+  margin-top: 10px; }
+
 .comments-container {
-  margin: 30px auto 15px;
+  margin: 10px auto 15px;
   width: 768px; }
   .comments-container h1 {
     font-size: 36px;
@@ -1998,7 +2002,6 @@ div.material-table {
     padding: 0px; }
 
 .comments-list {
-  margin-top: 30px;
   position: relative; }
 
 .comments-list::before {
@@ -2117,7 +2120,10 @@ div.material-table {
   cursor: pointer;
   transition: color 0.3s ease; }
 
-.comment-box .comment-head i:hover {
+.comment-box .comment-head .heart:hover {
+  color: red; }
+
+.comment-box .comment-head .reply:hover {
   color: #03658c; }
 
 .comment-box .comment-name {
@@ -2144,7 +2150,15 @@ div.material-table {
   color: #595959;
   border-radius: 0 0 4px 4px; }
 
-.comment-box .comment-name.by-author .comment-box .comment-name.by-author a {
+.comment-box .comment-content {
+  text-align: initial; }
+  .comment-box .comment-content p {
+    letter-spacing: 0;
+    word-wrap: break-word;
+    padding-left: 10px;
+    margin: 0 0 5px; }
+
+.comment-box .comment-name.by-author a, .comment-box .comment-name.by-author a {
   color: #24292e; }
 
 .comment-box .comment-name.by-author::after {

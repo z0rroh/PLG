@@ -1,6 +1,8 @@
-
+.Main
+  background: #f6f7f8
+  margin-top: 10px
 .comments-container
-  margin: 30px auto 15px
+  margin: 10px auto 15px
   width: 768px
   h1
   	font-size: 36px
@@ -15,10 +17,7 @@
 
 
 .comments-list
-	margin-top: 30px
 	position: relative
-
-
 
 
 .comments-list::before
@@ -170,10 +169,10 @@
   	transition: color 0.3s ease
 
 
-.comment-box .comment-head
-  i:hover
+.comment-box .comment-head .heart:hover
+	   color: red
+.comment-box .comment-head .reply:hover
 	   color: #03658c
-
 
 .comment-box .comment-name
 	color: #283035
@@ -206,8 +205,17 @@
 	-moz-border-radius: 0 0 4px 4px
 	border-radius: 0 0 4px 4px
 
+.comment-box .comment-content
+  text-align: initial
+  p
+    letter-spacing: 0
+    word-wrap: break-word
+    padding-left: 10px
+    margin: 0 0 5px
 
-.comment-box .comment-name.by-author .comment-box .comment-name.by-author
+
+
+.comment-box .comment-name.by-author, .comment-box .comment-name.by-author
   a
     color: #24292e
 .comment-box .comment-name.by-author::after
