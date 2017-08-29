@@ -10,11 +10,11 @@ header
 .line
   height: 4px
   background: $verdeclaro
-  border-bottom: 1px solid #fafafa
+  border-bottom: 1px solid #000
   width: 100%
 .Header
   height: 75px
-  border-bottom: solid 0.5px #fafafa
+  border-bottom: solid 0.5px #000
   width: 100%
   .box
     height: 100%
@@ -118,8 +118,9 @@ header
     display: block
     position: relative
     cursor: pointer
+    padding-top: 1px
     a
-      padding: 4px 25px
+      padding: 0px 25px
       color: #f8f8f8
       font-size: 18px
       text-transform: none
@@ -128,23 +129,25 @@ header
   .Nav-Item:hover
     color: #f8f8f8
     background-color: #24292e
-    border-color: #fafafa
+    //border-color: #fafafa
     cursor: pointer
     //border-radius: 0 0 5px 5px
-    border-left: solid 0.5px
-    border-right: solid 0.5px
-    border-bottom: solid 0.5px
+    //border-left: solid 0.5px #000
+    //border-right: solid 0.5px #000
+    border-bottom: solid 0.5px #000
     height: 5px
+    padding-top: 2px
 
   .Nav-Item.is-active
     color: #f8f8f8
     background-color: #24292e
     border-color: #fafafa
     //border-radius: 0 0 5px 5px
-    border-left: solid 0.5px
-    border-right: solid 0.5px
-    border-bottom: solid 0.5px
+    border-left: solid 0.5px #000
+    border-right: solid 0.5px #000
+    border-bottom: solid 0.5px #000
     height: 30px
+    padding-top: 1px
   .Nav-Button
     position: absolute
     right: 80px
