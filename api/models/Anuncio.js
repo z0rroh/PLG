@@ -7,6 +7,7 @@
 var moment=require('moment');
 var lang = require('lodash/lang');
 var nestedPop = require('nested-pop');
+
 module.exports = {
 
   attributes: {
@@ -58,6 +59,7 @@ module.exports = {
                 }
                 comments.push(newComment);
               })
+              comments.reverse();
               var autor = {
                 id: anuncio.autor.id,
                 name: anuncio.autor.name,
@@ -85,7 +87,8 @@ module.exports = {
    },
 
    anuncioFindByGroup: function (options, cb) {
-      Anuncio.findOne({id:options.id}).populate('autor').populate('comment').exec(function (err, anuncio) {
+      Anuncio.findOne({id:options.id}).populate('autor').populate('comment')
+      .exec(function (err, anuncio) {
         if (err) return cb(err);
         if (!anuncio) return cb(new Error('Anuncios not found.'));
         moment.locale('es');

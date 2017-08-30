@@ -22,7 +22,8 @@ module.exports = {
 
   },
   comentarioFindByGroup: function (options, cb) {
-     Comentario.findOne({id:options.id}).populate('autor').exec(function (err, comentario) {
+     Comentario.findOne({id:options.id}).populate('autor')
+     .exec(function (err, comentario) {
        if (err) return cb(err);
        if (!comentario) return cb(new Error('Comentario not found.'));
        moment.locale('es');
